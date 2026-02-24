@@ -164,11 +164,6 @@
     }
     p{ margin: 0 0 12px; color: var(--muted); }
     .muted{ color: var(--muted2); }
-    .kicker{
-      color: var(--muted2);
-      font-size: 13px;
-      margin-bottom: 12px;
-    }
     .divider{
       height: 1px;
       background: var(--border);
@@ -190,6 +185,7 @@
       font-size: 13px;
       cursor: pointer;
       transition: transform .12s ease, background .12s ease, border-color .12s ease;
+      user-select: none;
     }
     .btn:hover{
       transform: translateY(-1px);
@@ -200,7 +196,6 @@
     .btn.primary{
       background: rgba(37,99,235,0.10);
       border-color: rgba(37,99,235,0.28);
-      color: rgba(14,23,38,0.92);
     }
     .btn.primary:hover{
       background: rgba(37,99,235,0.14);
@@ -245,7 +240,25 @@
       margin-top: 4px;
     }
 
-    /* “Instagram-like” post gallery */
+    /* Home profile block */
+    .heroRow{
+      display:flex;
+      gap: 14px;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-bottom: 10px;
+    }
+    .heroAvatar{
+      width: 84px;
+      height: 84px;
+      border-radius: 22px;
+      border: 1px solid var(--border);
+      box-shadow: 0 16px 30px rgba(12,18,28,0.12);
+      background: #fff;
+      object-fit: cover;
+    }
+
+    /* Post-style cards (used for articles too) */
     .postHeader{
       display:flex;
       align-items:flex-end;
@@ -254,20 +267,14 @@
       flex-wrap: wrap;
       margin-bottom: 10px;
     }
-    .postsWrap{
-      overflow-x: auto;
-      padding-bottom: 6px;
-      scroll-snap-type: x mandatory;
-    }
-    .posts{
+
+    .stack{
       display: grid;
-      grid-auto-flow: column;
-      grid-auto-columns: minmax(260px, 340px);
       gap: 14px;
-      padding: 2px;
+      margin-top: 12px;
     }
+
     .post{
-      scroll-snap-align: start;
       border-radius: 18px;
       border: 1px solid var(--border);
       background: #fff;
@@ -275,7 +282,6 @@
       overflow: hidden;
       display:flex;
       flex-direction: column;
-      min-height: 360px;
     }
     .postMedia{
       height: 190px;
@@ -300,7 +306,6 @@
       display:flex;
       flex-direction: column;
       gap: 8px;
-      flex: 1;
     }
     .postTitle{
       font-size: 14px;
@@ -312,18 +317,15 @@
       font-size: 13px;
       color: var(--muted);
       margin: 0;
-      display: -webkit-box;
-      -webkit-line-clamp: 6;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
+      line-height: 1.45;
     }
     .postFooter{
-      margin-top: auto;
       display:flex;
       justify-content: space-between;
       align-items: center;
       gap: 10px;
       flex-wrap: wrap;
+      margin-top: 2px;
     }
     .mini{
       font-size: 12px;
@@ -361,7 +363,7 @@
   <header class="topbar">
     <div class="topbarInner">
       <div class="brand" role="banner">
-        <!-- Profile photo (replace with your preferred URL if needed) -->
+        <!-- Profile photo (same as home) -->
         <img
           class="avatar"
           src="https://media.licdn.com/dms/image/v2/D4E03AQHGI9a5MyIa3A/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1730209655021?e=2147483647&t=HgT-tlrRoORyL3Ceta22UAp6S2l_dSJabJzMwwcDqoM&v=beta"
@@ -388,11 +390,20 @@
     <section class="page" id="page-home" data-page="home">
       <div class="grid cols2">
         <div class="card pad">
-          <h1>Hi! I’m Natasha Yotmanee <span class="muted">(she/her)</span>.</h1>
-          <p>
-            I’m a senior at William &amp; Mary graduating in <strong>May 2026</strong>, majoring in <strong>International Relations</strong>
-            and minoring in <strong>Data Science</strong>.
-          </p>
+          <div class="heroRow">
+            <img
+              class="heroAvatar"
+              src="https://media.licdn.com/dms/image/v2/D4E03AQHGI9a5MyIa3A/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1730209655021?e=2147483647&t=HgT-tlrRoORyL3Ceta22UAp6S2l_dSJabJzMwwcDqoM&v=beta"
+              alt="Natasha Yotmanee"
+            />
+            <div>
+              <h1 style="margin-bottom:6px;">Hi! I’m Natasha Yotmanee <span class="muted">(she/her)</span>.</h1>
+              <p style="margin:0;">
+                Senior at William &amp; Mary · International Relations major · Data Science minor · Graduating <strong>May 2026</strong>
+              </p>
+            </div>
+          </div>
+
           <p>
             I am driven to build a career dedicated to <strong>peacekeeping</strong>, <strong>conflict prevention</strong>, and
             <strong>humanitarian aid</strong>, focusing on promoting resilience and sustainable peace in fragile regions.
@@ -591,38 +602,55 @@
         <div class="divider"></div>
 
         <h2>Research Contributions</h2>
-        <div class="tItem" style="background:#fff;">
-          <ul class="list">
-            <li>
-              <strong>Research contributor/co-editor:</strong>
-              <a href="https://asiamattersforamerica.org/uploads/publications/2023-ASEAN-Matters-for-America.pdf" target="_blank" rel="noopener">
-                <em>ASEAN Matters for America / America Matters for ASEAN</em> (6th ed.), East-West Center (2023)
-              </a>
-            </li>
-            <li>
-              <strong>Internal study contributor:</strong> “Crisis in the Caucasus: Invasion of Georgia, 2008–2014.” Strategic Studies Institute, USAWC (2024) — prepared for a forthcoming monograph on partner capacity in Ukraine.
-            </li>
-          </ul>
+        <div class="stack">
+          <article class="post">
+            <div class="postBody">
+              <p class="postTitle">ASEAN Matters for America / America Matters for ASEAN (6th ed.)</p>
+              <p class="postText">Research contributor / co-editor · East-West Center (2023)</p>
+              <div class="postFooter">
+                <span class="mini">PDF</span>
+                <a class="btn primary" href="https://asiamattersforamerica.org/uploads/publications/2023-ASEAN-Matters-for-America.pdf" target="_blank" rel="noopener">Open ↗</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="post">
+            <div class="postBody">
+              <p class="postTitle">Crisis in the Caucasus: Invasion of Georgia, 2008–2014</p>
+              <p class="postText">Internal study contributor · Strategic Studies Institute, USAWC (2024)</p>
+              <div class="postFooter">
+                <span class="mini">Internal contribution</span>
+                <span class="btn" style="cursor:default;">No public link</span>
+              </div>
+            </div>
+          </article>
         </div>
 
         <div class="divider"></div>
 
         <h2>Programs &amp; Awards</h2>
-        <div class="tItem" style="background:#fff;">
-          <ul class="list">
-            <li>
-              <strong>Global Scholars Program:</strong>
-              <a href="https://www.wm.edu/offices/dccenter/opportunities/gsp/gsp-alumni/23-24scholars/" target="_blank" rel="noopener">
-                Global Research Institute, W&amp;M (Aug 2023–2024) — selected as 1 of 18
-              </a>
-            </li>
-            <li>
-              <strong>Gates Scholarship:</strong>
-              <a href="https://studyabroad.wm.edu/index.cfm?FuseAction=Programs.ViewProgram&Program_ID=2659" target="_blank" rel="noopener">
-                Reves Center for International Studies, W&amp;M (Feb–Jun 2025) — $7,500 study abroad award
-              </a>
-            </li>
-          </ul>
+        <div class="stack">
+          <article class="post">
+            <div class="postBody">
+              <p class="postTitle">Global Scholars Program (Global Research Institute, W&amp;M)</p>
+              <p class="postText">Selected as 1 of 18 · Aug 2023–2024</p>
+              <div class="postFooter">
+                <span class="mini">W&amp;M</span>
+                <a class="btn primary" href="https://www.wm.edu/offices/dccenter/opportunities/gsp/gsp-alumni/23-24scholars/" target="_blank" rel="noopener">Open ↗</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="post">
+            <div class="postBody">
+              <p class="postTitle">Gates Scholarship (Reves Center, W&amp;M)</p>
+              <p class="postText">$7,500 study abroad award · Feb–Jun 2025</p>
+              <div class="postFooter">
+                <span class="mini">Study Abroad</span>
+                <a class="btn primary" href="https://studyabroad.wm.edu/index.cfm?FuseAction=Programs.ViewProgram&Program_ID=2659" target="_blank" rel="noopener">Open ↗</a>
+              </div>
+            </div>
+          </article>
         </div>
       </div>
     </section>
@@ -674,23 +702,42 @@
           <div class="card pad">
             <h2>Selected publications</h2>
             <p class="muted">Writing and reporting on U.S.–Asia relations and regional developments.</p>
-            <ul class="list">
-              <li>
-                <a href="https://asiamattersforamerica.org/articles/south-korea-japan-taiwan-donate-to-maui" target="_blank" rel="noopener">
-                  “Japan, &amp; Taiwan Donate to Maui,” <em>Asia Matters for America</em> (EWC, 2023)
-                </a>
-              </li>
-              <li>
-                <a href="https://asiamattersforamerica.org/articles/eden-center-redevelopment-plan-approved" target="_blank" rel="noopener">
-                  “Eden Center Redevelopment Plan Approved,” <em>Asia Matters for America</em> (EWC, 2023)
-                </a>
-              </li>
-              <li>
-                <a href="https://asiamattersforamerica.org/articles/sawasdee-festival-celebrating-the-190th-anniversary-of-us-thai-relations" target="_blank" rel="noopener">
-                  “Sawasdee Festival: Celebrating the 190th Anniversary of US-Thai Relations,” <em>Asia Matters for America</em> (EWC, 2023)
-                </a>
-              </li>
-            </ul>
+
+            <!-- Vertical, stacked article cards -->
+            <div class="stack">
+              <article class="post">
+                <div class="postBody">
+                  <p class="postTitle">South Korea, Japan, &amp; Taiwan Donate to Maui</p>
+                  <p class="postText">Asia Matters for America (2023) — regional reporting on U.S.–Asia connections and current events.</p>
+                  <div class="postFooter">
+                    <span class="mini">Asia Matters for America</span>
+                    <a class="btn primary" href="https://asiamattersforamerica.org/articles/south-korea-japan-taiwan-donate-to-maui" target="_blank" rel="noopener">Open ↗</a>
+                  </div>
+                </div>
+              </article>
+
+              <article class="post">
+                <div class="postBody">
+                  <p class="postTitle">Eden Center Redevelopment Plan Approved</p>
+                  <p class="postText">Asia Matters for America (2023) — community and regional development coverage.</p>
+                  <div class="postFooter">
+                    <span class="mini">Asia Matters for America</span>
+                    <a class="btn primary" href="https://asiamattersforamerica.org/articles/eden-center-redevelopment-plan-approved" target="_blank" rel="noopener">Open ↗</a>
+                  </div>
+                </div>
+              </article>
+
+              <article class="post">
+                <div class="postBody">
+                  <p class="postTitle">Sawasdee Festival: Celebrating the 190th Anniversary of US-Thai Relations</p>
+                  <p class="postText">Asia Matters for America (2023) — highlighting cultural diplomacy and U.S.–Thailand ties.</p>
+                  <div class="postFooter">
+                    <span class="mini">Asia Matters for America</span>
+                    <a class="btn primary" href="https://asiamattersforamerica.org/articles/sawasdee-festival-celebrating-the-190th-anniversary-of-us-thai-relations" target="_blank" rel="noopener">Open ↗</a>
+                  </div>
+                </div>
+              </article>
+            </div>
           </div>
         </aside>
       </div>
@@ -704,7 +751,7 @@
             <h1>LinkedIn Posts</h1>
           </div>
           <div class="btnRow">
-            <button class="btn" id="toggleCaptionsBtn" type="button">Captions</button>
+            <button class="btn" id="toggleCaptionsBtn" type="button">Captions (on)</button>
             <a class="btn primary" href="https://www.linkedin.com/in/natashayotmanee" target="_blank" rel="noopener">Open LinkedIn ↗</a>
           </div>
         </div>
@@ -712,7 +759,7 @@
         <div class="divider"></div>
 
         <div class="postsWrap" aria-label="LinkedIn post gallery (horizontal scroll)">
-          <div class="posts" id="postsGrid">
+          <div class="posts" id="postsGrid" style="grid-auto-columns:minmax(260px, 340px);">
 
             <article class="post" data-has-caption="true">
               <div class="postMedia" aria-hidden="true"></div>
@@ -843,61 +890,36 @@
 
     <!-- CONTACT -->
     <section class="page" id="page-contact" data-page="contact">
-      <div class="grid cols2">
-        <div class="card pad">
-          <h1>Contact</h1>
-          <p class="muted">If you’d like to collaborate or connect, reach out here:</p>
+      <div class="card pad">
+        <h1>Contact</h1>
+        <p class="muted">If you’d like to collaborate or connect, reach out here:</p>
 
-          <div class="divider"></div>
+        <div class="divider"></div>
 
-          <h2>Ways to reach me</h2>
-          <div class="grid">
-            <div class="card pad" style="box-shadow:none;background:rgba(37,99,235,0.03);">
-              <h3>Email</h3>
-              <p class="muted"><a href="mailto:nyotmanee@gmail.com">nyotmanee@gmail.com</a></p>
-            </div>
-
-            <div class="card pad" style="box-shadow:none;background:rgba(37,99,235,0.03);">
-              <h3>LinkedIn</h3>
-              <p class="muted"><a href="https://www.linkedin.com/in/natashayotmanee" target="_blank" rel="noopener">www.linkedin.com/in/natashayotmanee ↗</a></p>
-            </div>
+        <div class="grid" style="gap:14px;">
+          <div class="card pad" style="box-shadow:none;background:rgba(37,99,235,0.03);">
+            <h3>Email</h3>
+            <p class="muted"><a href="mailto:nyotmanee@gmail.com">nyotmanee@gmail.com</a></p>
           </div>
 
-          <div class="divider"></div>
-
-          <h2>What to include in your message</h2>
-          <ul class="list">
-            <li>Context: role, project, or what you want to connect about</li>
-            <li>Timing: deadline or target window</li>
-            <li>Anything helpful: links, docs, or background</li>
-          </ul>
-
-          <footer>
-            <div>© <span id="year"></span> Natasha Yotmanee</div>
-            <div class="footLinks">
-              <a href="#home" data-route="home">Home</a>
-              <span class="muted2">·</span>
-              <a href="#cv" data-route="cv">CV</a>
-              <span class="muted2">·</span>
-              <a href="#research" data-route="research">Research &amp; Publications</a>
-              <span class="muted2">·</span>
-              <a href="#posts" data-route="posts">Posts</a>
-            </div>
-          </footer>
+          <div class="card pad" style="box-shadow:none;background:rgba(37,99,235,0.03);">
+            <h3>LinkedIn</h3>
+            <p class="muted"><a href="https://www.linkedin.com/in/natashayotmanee" target="_blank" rel="noopener">www.linkedin.com/in/natashayotmanee ↗</a></p>
+          </div>
         </div>
 
-        <aside class="card pad">
-          <h2>Links</h2>
-          <ul class="list">
-            <li><a href="https://www.linkedin.com/in/natashayotmanee" target="_blank" rel="noopener">LinkedIn profile ↗</a></li>
-            <li><a href="#cv" data-route="cv">CV (on this site)</a></li>
-            <li><a href="#research" data-route="research">Research &amp; Publications (on this site)</a></li>
-          </ul>
-          <div class="divider"></div>
-          <div class="note">
-            If you want, I can also swap the top-right navigation labels, reorder tabs, or adjust spacing/typography to feel more “portfolio” vs “resume.”
+        <footer>
+          <div>© <span id="year"></span> Natasha Yotmanee</div>
+          <div class="footLinks">
+            <a href="#home" data-route="home">Home</a>
+            <span class="muted2">·</span>
+            <a href="#cv" data-route="cv">CV</a>
+            <span class="muted2">·</span>
+            <a href="#research" data-route="research">Research &amp; Publications</a>
+            <span class="muted2">·</span>
+            <a href="#posts" data-route="posts">Posts</a>
           </div>
-        </aside>
+        </footer>
       </div>
     </section>
   </main>
@@ -915,7 +937,7 @@
       navLinks.forEach(a => a.classList.toggle("active", a.dataset.route === safe));
 
       // a11y: move focus to main heading of the page
-      const activePage = document.querySelector(`.page[data-page="${safe}"]`);
+      const activePage = document.querySelector(\`.page[data-page="\${safe}"]\`);
       const heading = activePage ? activePage.querySelector("h1") : null;
       if (heading) {
         heading.setAttribute("tabindex", "-1");
@@ -935,16 +957,23 @@
     // Footer year
     document.getElementById("year").textContent = new Date().getFullYear();
 
-    // Posts: toggle captions
+    // Posts: toggle captions button label should show on/off
     const toggleBtn = document.getElementById("toggleCaptionsBtn");
     let captionsOn = true;
-    toggleBtn?.addEventListener("click", () => {
-      captionsOn = !captionsOn;
+
+    function updateCaptionsUI(){
       document.querySelectorAll(".caption").forEach(el => {
         el.style.display = captionsOn ? "" : "none";
       });
-      toggleBtn.textContent = captionsOn ? "Captions" : "Captions (off)";
+      if (toggleBtn) toggleBtn.textContent = captionsOn ? "Captions (on)" : "Captions (off)";
+    }
+
+    toggleBtn?.addEventListener("click", () => {
+      captionsOn = !captionsOn;
+      updateCaptionsUI();
     });
+
+    updateCaptionsUI();
   </script>
 </body>
 </html>
