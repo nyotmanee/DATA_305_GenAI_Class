@@ -8,21 +8,22 @@
 
   <style>
     :root{
-      --bg: #0b0f17;
-      --panel: rgba(255,255,255,0.06);
-      --panel2: rgba(255,255,255,0.08);
-      --text: rgba(255,255,255,0.92);
-      --muted: rgba(255,255,255,0.72);
-      --muted2: rgba(255,255,255,0.62);
-      --border: rgba(255,255,255,0.12);
-      --shadow: 0 18px 40px rgba(0,0,0,0.35);
+      /* Light theme */
+      --bg: #f6f8fb;
+      --panel: #ffffff;
+      --panel2: #f2f5fb;
+      --text: rgba(14, 23, 38, 0.92);
+      --muted: rgba(14, 23, 38, 0.72);
+      --muted2: rgba(14, 23, 38, 0.62);
+      --border: rgba(20, 34, 55, 0.12);
+      --shadow: 0 18px 40px rgba(12, 18, 28, 0.10);
       --radius: 18px;
       --max: 1040px;
 
-      --accent: #7dd3fc;   /* light blue */
-      --accent2: #a7f3d0;  /* mint */
-      --warn: #fde68a;     /* amber */
-      --good: #bbf7d0;     /* green */
+      --accent: #2563eb;   /* blue */
+      --accent2: #06b6d4;  /* cyan */
+      --accentSoft: rgba(37,99,235,0.10);
+      --accentSoft2: rgba(6,182,212,0.10);
     }
 
     * { box-sizing: border-box; }
@@ -32,14 +33,13 @@
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
       color: var(--text);
       background:
-        radial-gradient(1000px 700px at 12% 10%, rgba(125,211,252,0.12), transparent 60%),
-        radial-gradient(900px 600px at 90% 18%, rgba(167,243,208,0.10), transparent 55%),
-        radial-gradient(700px 500px at 55% 90%, rgba(253,230,138,0.08), transparent 55%),
+        radial-gradient(900px 600px at 10% 10%, var(--accentSoft), transparent 60%),
+        radial-gradient(850px 550px at 92% 18%, var(--accentSoft2), transparent 55%),
         var(--bg);
       line-height: 1.5;
     }
 
-    a{ color: var(--text); text-decoration: none; }
+    a{ color: inherit; text-decoration: none; }
     a:hover{ text-decoration: underline; }
 
     /* Layout */
@@ -56,7 +56,7 @@
       top: 0;
       z-index: 50;
       backdrop-filter: blur(10px);
-      background: linear-gradient(to bottom, rgba(11,15,23,0.82), rgba(11,15,23,0.55));
+      background: rgba(246,248,251,0.78);
       border-bottom: 1px solid var(--border);
     }
     .topbarInner{
@@ -75,11 +75,13 @@
       min-width: 220px;
     }
     .avatar{
-      width: 34px; height: 34px;
+      width: 36px; height: 36px;
       border-radius: 12px;
-      background: linear-gradient(135deg, rgba(125,211,252,0.9), rgba(167,243,208,0.9));
-      box-shadow: 0 10px 20px rgba(0,0,0,0.25);
-      border: 1px solid rgba(255,255,255,0.16);
+      object-fit: cover;
+      border: 1px solid var(--border);
+      box-shadow: 0 10px 20px rgba(12,18,28,0.10);
+      background: #fff;
+      flex: 0 0 auto;
     }
     .brandText{
       display: grid;
@@ -101,7 +103,7 @@
       gap: 8px;
       padding: 10px 12px;
       border-radius: 999px;
-      background: rgba(255,255,255,0.06);
+      background: rgba(255,255,255,0.70);
       border: 1px solid var(--border);
       color: var(--muted);
       font-size: 13px;
@@ -110,14 +112,14 @@
     }
     .pill:hover{
       transform: translateY(-1px);
-      background: rgba(255,255,255,0.085);
-      border-color: rgba(255,255,255,0.18);
+      background: rgba(255,255,255,0.95);
+      border-color: rgba(20, 34, 55, 0.18);
       text-decoration: none;
     }
     .pill.active{
-      color: var(--text);
-      background: rgba(125,211,252,0.12);
-      border-color: rgba(125,211,252,0.32);
+      color: rgba(14,23,38,0.95);
+      background: rgba(37,99,235,0.10);
+      border-color: rgba(37,99,235,0.30);
     }
 
     /* Sections (subpages) */
@@ -141,7 +143,6 @@
     }
     @media (min-width: 900px){
       .grid.cols2{ grid-template-columns: 1.1fr 0.9fr; }
-      .grid.cols3{ grid-template-columns: 1fr 1fr 1fr; }
     }
 
     /* Typography */
@@ -159,30 +160,23 @@
       margin: 0 0 6px;
       font-size: 15px;
       letter-spacing: 0.1px;
-      color: rgba(255,255,255,0.9);
+      color: rgba(14, 23, 38, 0.90);
     }
     p{ margin: 0 0 12px; color: var(--muted); }
     .muted{ color: var(--muted2); }
-    .tagRow{
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 10px;
+    .kicker{
+      color: var(--muted2);
+      font-size: 13px;
+      margin-bottom: 12px;
     }
-    .tag{
-      font-size: 12px;
-      padding: 7px 10px;
-      border-radius: 999px;
-      background: rgba(255,255,255,0.06);
-      border: 1px solid var(--border);
-      color: rgba(255,255,255,0.78);
+    .divider{
+      height: 1px;
+      background: var(--border);
+      margin: 14px 0;
     }
-    .tag.accent{ border-color: rgba(125,211,252,0.32); background: rgba(125,211,252,0.10); }
-    .tag.mint{ border-color: rgba(167,243,208,0.28); background: rgba(167,243,208,0.08); }
-    .tag.amber{ border-color: rgba(253,230,138,0.25); background: rgba(253,230,138,0.08); }
 
     /* Buttons */
-    .btnRow{ display:flex; gap:10px; flex-wrap:wrap; margin-top: 14px; }
+    .btnRow{ display:flex; gap:10px; flex-wrap:wrap; margin-top: 12px; }
     .btn{
       display: inline-flex;
       align-items: center;
@@ -191,28 +185,26 @@
       border-radius: 12px;
       padding: 11px 12px;
       border: 1px solid var(--border);
-      background: rgba(255,255,255,0.06);
-      color: var(--text);
+      background: rgba(255,255,255,0.85);
+      color: rgba(14,23,38,0.92);
       font-size: 13px;
       cursor: pointer;
       transition: transform .12s ease, background .12s ease, border-color .12s ease;
     }
     .btn:hover{
       transform: translateY(-1px);
-      background: rgba(255,255,255,0.085);
-      border-color: rgba(255,255,255,0.18);
+      background: rgba(255,255,255,1);
+      border-color: rgba(20, 34, 55, 0.20);
       text-decoration: none;
     }
     .btn.primary{
-      background: rgba(125,211,252,0.14);
-      border-color: rgba(125,211,252,0.34);
+      background: rgba(37,99,235,0.10);
+      border-color: rgba(37,99,235,0.28);
+      color: rgba(14,23,38,0.92);
     }
     .btn.primary:hover{
-      background: rgba(125,211,252,0.18);
-      border-color: rgba(125,211,252,0.42);
-    }
-    .btn.ghost{
-      background: transparent;
+      background: rgba(37,99,235,0.14);
+      border-color: rgba(37,99,235,0.36);
     }
 
     /* Lists / timeline */
@@ -220,11 +212,6 @@
       margin: 0; padding-left: 18px; color: var(--muted);
     }
     .list li{ margin: 6px 0; }
-    .divider{
-      height: 1px;
-      background: var(--border);
-      margin: 14px 0;
-    }
 
     .timeline{
       display: grid;
@@ -234,7 +221,7 @@
     .tItem{
       border-radius: 16px;
       border: 1px solid var(--border);
-      background: rgba(255,255,255,0.05);
+      background: rgba(37,99,235,0.03);
       padding: 14px;
     }
     .tTop{
@@ -250,7 +237,7 @@
       padding: 6px 10px;
       border-radius: 999px;
       border: 1px solid var(--border);
-      background: rgba(255,255,255,0.04);
+      background: rgba(255,255,255,0.75);
     }
     .tMeta{
       color: var(--muted2);
@@ -275,7 +262,7 @@
     .posts{
       display: grid;
       grid-auto-flow: column;
-      grid-auto-columns: minmax(260px, 320px);
+      grid-auto-columns: minmax(260px, 340px);
       gap: 14px;
       padding: 2px;
     }
@@ -283,20 +270,30 @@
       scroll-snap-align: start;
       border-radius: 18px;
       border: 1px solid var(--border);
-      background: rgba(255,255,255,0.05);
-      box-shadow: 0 12px 26px rgba(0,0,0,0.28);
+      background: #fff;
+      box-shadow: 0 12px 26px rgba(12,18,28,0.10);
       overflow: hidden;
       display:flex;
       flex-direction: column;
-      min-height: 320px;
+      min-height: 360px;
     }
     .postMedia{
-      height: 180px;
+      height: 190px;
       background:
-        radial-gradient(380px 180px at 18% 25%, rgba(125,211,252,0.18), transparent 60%),
-        radial-gradient(320px 200px at 84% 30%, rgba(167,243,208,0.14), transparent 65%),
-        rgba(255,255,255,0.03);
+        radial-gradient(380px 180px at 18% 25%, rgba(37,99,235,0.14), transparent 60%),
+        radial-gradient(320px 200px at 84% 30%, rgba(6,182,212,0.12), transparent 65%),
+        rgba(37,99,235,0.03);
       border-bottom: 1px solid var(--border);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      overflow:hidden;
+    }
+    .postImg{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
     }
     .postBody{
       padding: 12px 12px 14px;
@@ -307,7 +304,7 @@
     }
     .postTitle{
       font-size: 14px;
-      color: rgba(255,255,255,0.92);
+      color: rgba(14,23,38,0.92);
       line-height: 1.25;
       margin: 0;
     }
@@ -316,7 +313,7 @@
       color: var(--muted);
       margin: 0;
       display: -webkit-box;
-      -webkit-line-clamp: 5;
+      -webkit-line-clamp: 6;
       -webkit-box-orient: vertical;
       overflow: hidden;
     }
@@ -349,8 +346,8 @@
 
     /* Small helper */
     .note{
-      border: 1px dashed rgba(255,255,255,0.18);
-      background: rgba(255,255,255,0.04);
+      border: 1px dashed rgba(20, 34, 55, 0.18);
+      background: rgba(37,99,235,0.03);
       border-radius: 14px;
       padding: 12px;
       color: var(--muted);
@@ -364,7 +361,12 @@
   <header class="topbar">
     <div class="topbarInner">
       <div class="brand" role="banner">
-        <div class="avatar" aria-hidden="true"></div>
+        <!-- Profile photo (replace with your preferred URL if needed) -->
+        <img
+          class="avatar"
+          src="https://media.licdn.com/dms/image/v2/D4E03AQHGI9a5MyIa3A/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1730209655021?e=2147483647&t=HgT-tlrRoORyL3Ceta22UAp6S2l_dSJabJzMwwcDqoM&v=beta"
+          alt="Natasha Yotmanee"
+        />
         <div class="brandText">
           <strong>Natasha Yotmanee</strong>
           <span>International Relations · Data Science · Asia-Pacific</span>
@@ -374,7 +376,7 @@
       <nav class="nav" aria-label="Primary">
         <a class="pill" href="#home" data-route="home">Home</a>
         <a class="pill" href="#cv" data-route="cv">CV</a>
-        <a class="pill" href="#research" data-route="research">Research</a>
+        <a class="pill" href="#research" data-route="research">Research &amp; Publications</a>
         <a class="pill" href="#posts" data-route="posts">Posts</a>
         <a class="pill" href="#contact" data-route="contact">Contact</a>
       </nav>
@@ -386,29 +388,22 @@
     <section class="page" id="page-home" data-page="home">
       <div class="grid cols2">
         <div class="card pad">
-          <h1>Hi — I’m Natasha Yotmanee <span class="muted">(she/her)</span>.</h1>
+          <h1>Hi! I’m Natasha Yotmanee <span class="muted">(she/her)</span>.</h1>
           <p>
             I’m a senior at William &amp; Mary graduating in <strong>May 2026</strong>, majoring in <strong>International Relations</strong>
             and minoring in <strong>Data Science</strong>.
           </p>
           <p>
-            I’m focused on building a career dedicated to <strong>peacekeeping</strong>, <strong>conflict prevention</strong>, and
-            <strong>humanitarian aid</strong> — with a particular interest in the <strong>Asia-Pacific</strong>. I’m driven to bridge
-            technology and diplomacy by using data-driven insights and strategic thinking to support resilience and sustainable peace.
+            I am driven to build a career dedicated to <strong>peacekeeping</strong>, <strong>conflict prevention</strong>, and
+            <strong>humanitarian aid</strong>, focusing on promoting resilience and sustainable peace in fragile regions.
+            Committed to advancing peace, security, and development across the <strong>Asia-Pacific</strong>, I aim to bridge
+            technology and diplomacy—using data-driven insights and strategic thinking to make meaningful contributions within the region and beyond.
           </p>
 
-          <div class="tagRow" aria-label="Focus areas">
-            <span class="tag accent">Peace &amp; security</span>
-            <span class="tag mint">Humanitarian &amp; development</span>
-            <span class="tag amber">Asia-Pacific policy</span>
-            <span class="tag">Data analysis</span>
-            <span class="tag">Research synthesis</span>
-          </div>
+          <div class="divider"></div>
 
-          <div class="btnRow">
-            <a class="btn primary" href="#contact" data-route="contact">Contact</a>
-            <a class="btn" href="#cv" data-route="cv">View CV</a>
-            <a class="btn ghost" href="https://www.linkedin.com/in/natashayotmanee" target="_blank" rel="noopener">LinkedIn ↗</a>
+          <div class="note">
+            <strong>Some things I love:</strong> Food 🍲 · Travel 🌎 · Books 📚
           </div>
         </div>
 
@@ -416,8 +411,8 @@
           <div class="card pad">
             <h2>Current direction</h2>
             <p>
-              Seeking opportunities that blend real-world impact with analysis — especially roles connected to peacebuilding,
-              humanitarian operations, and evidence-based policy.
+              Seeking opportunities that let me apply my skills in real-world settings, build meaningful connections,
+              and prepare for a career dedicated to advancing peace and humanitarian efforts.
             </p>
           </div>
 
@@ -425,9 +420,8 @@
             <h2>Quick facts</h2>
             <ul class="list">
               <li><strong>School:</strong> William &amp; Mary (BA, International Relations; minor in Data Science)</li>
-              <li><strong>Languages:</strong> English (native), Thai (oral proficiency), Mandarin (intermediate)</li>
-              <li><strong>Tools:</strong> Python (intermediate), SQL/R (basic)</li>
-              <li><strong>Interests:</strong> food 🍲 · travel 🌎 · books 📚</li>
+              <li><strong>Languages:</strong> English (native), Thai (oral proficiency), Mandarin Chinese (intermediate)</li>
+              <li><strong>Software:</strong> Python (intermediate); SQL (basic, developing); R (basic)</li>
             </ul>
           </div>
 
@@ -437,8 +431,7 @@
               UNDP Crisis Bureau (Risk Anticipation Hub) communications fellow · Asia Policy Lab team lead · USAWC strategic studies intern
             </p>
             <div class="btnRow">
-              <a class="btn" href="#research" data-route="research">See research</a>
-              <a class="btn" href="#posts" data-route="posts">See posts</a>
+              <a class="btn primary" href="#cv" data-route="cv">View CV</a>
             </div>
           </div>
         </aside>
@@ -449,7 +442,6 @@
     <section class="page" id="page-cv" data-page="cv">
       <div class="card pad">
         <h1>Curriculum Vitae</h1>
-        <p class="muted">A formatted, readable version of your CV (static text for easy GitHub hosting).</p>
 
         <div class="divider"></div>
 
@@ -465,7 +457,6 @@
             </div>
             <ul class="list">
               <li><strong>Senior Capstone:</strong> “Why States Hedge Differently: Systemic Pressures &amp; Domestic Constraints in Southeast Asia.”</li>
-              <li><strong>Relevant coursework:</strong> Development: Theory and Practice · Public Policy · Politics &amp; Policy of International Organizations · Databases · Data Visualization · Data Science</li>
             </ul>
           </div>
 
@@ -589,40 +580,49 @@
 
         <div class="divider"></div>
 
-        <div class="grid cols2">
-          <div class="card pad" style="box-shadow:none;background:rgba(255,255,255,0.04);">
-            <h2>Publications</h2>
-            <ul class="list">
-              <li>Yotmanee, N. “Japan, &amp; Taiwan Donate to Maui,” <em>Asia Matters for America</em>, East-West Center (2023).</li>
-              <li>Yotmanee, N. “Eden Center Redevelopment Plan Approved,” <em>Asia Matters for America</em>, East-West Center (2023).</li>
-              <li>Maga, J., and Yotmanee, N. “Sawasdee Festival: Celebrating the 190th Anniversary of US-Thai Relations,” <em>Asia Matters for America</em>, East-West Center (2023).</li>
-            </ul>
-          </div>
-
-          <div class="card pad" style="box-shadow:none;background:rgba(255,255,255,0.04);">
-            <h2>Research contributions &amp; awards</h2>
-            <ul class="list">
-              <li><strong>Research contributor/co-editor:</strong> <em>ASEAN Matters for America / America Matters for ASEAN</em> (6th ed.), East-West Center (2023).</li>
-              <li><strong>Internal study contributor:</strong> “Crisis in the Caucasus: Invasion of Georgia, 2008–2014.” Strategic Studies Institute, USAWC (2024) — prepared for a forthcoming monograph on partner capacity in Ukraine.</li>
-              <li><strong>Gates Scholarship:</strong> Reves Center for International Studies, W&amp;M (Feb–Jun 2025) — $7,500 study abroad award.</li>
-              <li><strong>Global Scholars Program:</strong> Global Research Institute, W&amp;M (Aug 2023–2024) — selected as 1 of 18.</li>
-            </ul>
-          </div>
+        <h2>Skills</h2>
+        <div class="tItem" style="background:#fff;">
+          <ul class="list">
+            <li><strong>Software:</strong> Python (intermediate); SQL (basic, developing); R (basic).</li>
+            <li><strong>Languages:</strong> English (native), Thai (oral proficiency), Mandarin Chinese (intermediate).</li>
+          </ul>
         </div>
 
         <div class="divider"></div>
 
-        <h2>Skills</h2>
-        <div class="tagRow">
-          <span class="tag">Python (intermediate)</span>
-          <span class="tag">SQL (basic)</span>
-          <span class="tag">R (basic)</span>
-          <span class="tag accent">Research synthesis</span>
-          <span class="tag mint">Policy writing</span>
-          <span class="tag amber">Data documentation</span>
-          <span class="tag">English (native)</span>
-          <span class="tag">Thai (oral proficiency)</span>
-          <span class="tag">Mandarin (intermediate)</span>
+        <h2>Research Contributions</h2>
+        <div class="tItem" style="background:#fff;">
+          <ul class="list">
+            <li>
+              <strong>Research contributor/co-editor:</strong>
+              <a href="https://asiamattersforamerica.org/uploads/publications/2023-ASEAN-Matters-for-America.pdf" target="_blank" rel="noopener">
+                <em>ASEAN Matters for America / America Matters for ASEAN</em> (6th ed.), East-West Center (2023)
+              </a>
+            </li>
+            <li>
+              <strong>Internal study contributor:</strong> “Crisis in the Caucasus: Invasion of Georgia, 2008–2014.” Strategic Studies Institute, USAWC (2024) — prepared for a forthcoming monograph on partner capacity in Ukraine.
+            </li>
+          </ul>
+        </div>
+
+        <div class="divider"></div>
+
+        <h2>Programs &amp; Awards</h2>
+        <div class="tItem" style="background:#fff;">
+          <ul class="list">
+            <li>
+              <strong>Global Scholars Program:</strong>
+              <a href="https://www.wm.edu/offices/dccenter/opportunities/gsp/gsp-alumni/23-24scholars/" target="_blank" rel="noopener">
+                Global Research Institute, W&amp;M (Aug 2023–2024) — selected as 1 of 18
+              </a>
+            </li>
+            <li>
+              <strong>Gates Scholarship:</strong>
+              <a href="https://studyabroad.wm.edu/index.cfm?FuseAction=Programs.ViewProgram&Program_ID=2659" target="_blank" rel="noopener">
+                Reves Center for International Studies, W&amp;M (Feb–Jun 2025) — $7,500 study abroad award
+              </a>
+            </li>
+          </ul>
         </div>
       </div>
     </section>
@@ -631,10 +631,8 @@
     <section class="page" id="page-research" data-page="research">
       <div class="grid cols2">
         <div class="card pad">
-          <h1>Research &amp; Projects</h1>
-          <p class="muted">
-            Current and recent work, including China-focused experiences and related publications.
-          </p>
+          <h1>Research &amp; Publications</h1>
+          <p class="muted">Current and recent work.</p>
 
           <div class="divider"></div>
 
@@ -643,64 +641,31 @@
             <div class="tItem">
               <div class="tTop">
                 <div>
-                  <h3>Politics of Recognition &amp; the Case of One China</h3>
+                  <h3>Politics of Recognition and the Case of One China</h3>
                   <div class="tMeta">William &amp; Mary · Department of Government</div>
                 </div>
                 <div class="when">Feb 2026–Present</div>
               </div>
               <ul class="list">
-                <li>Cross-national dataset (1945–1991) on diplomatic recognition and conditions shaping recognition of PRC vs. ROC among newly decolonized states.</li>
-                <li>Data modeling, preparation, documentation, and literature review support.</li>
+                <li>
+                  Politics of Recognition and the Case of One China: analyze an original dataset of diplomatic recognition patterns between 1945-1991, studying the conditions under which newly decolonized states opted to recognize either the People's Republic of China (PRC) versus Republic of China (ROC)
+                </li>
               </ul>
-              <div class="tagRow">
-                <span class="tag accent">Diplomatic recognition</span>
-                <span class="tag">Comparative politics</span>
-                <span class="tag mint">Data modeling</span>
-              </div>
             </div>
 
             <div class="tItem">
               <div class="tTop">
                 <div>
                   <h3>Storied States (Asia Policy Lab)</h3>
-                  <div class="tMeta">Coding and analysis of elite political discourse</div>
+                  <div class="tMeta">William &amp; Mary</div>
                 </div>
                 <div class="when">Aug 2025–Jan 2026</div>
               </div>
               <ul class="list">
-                <li>Led a team coding political speeches from Taiwan and South Korea; created a structured coding framework.</li>
-                <li>Cleaned/standardized a 260-document subset and supported comparative analysis across democratization periods.</li>
+                <li>
+                  1 of 13 undergraduates for a competitive faculty-led research program contributing to professor-led scholarly and applied research project analyzing changes in elite poltiical discource in Taiwan and South Korea across different democratization periods.
+                </li>
               </ul>
-              <div class="tagRow">
-                <span class="tag">Political speech analysis</span>
-                <span class="tag mint">Qualitative coding</span>
-                <span class="tag amber">Archival datasets</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="divider"></div>
-
-          <h2>China-related work &amp; study</h2>
-          <div class="timeline">
-            <div class="tItem">
-              <div class="tTop">
-                <div>
-                  <h3>Exchange Semester — Tsinghua University (清华大学), Beijing</h3>
-                  <div class="tMeta">Academic study in China</div>
-                </div>
-                <div class="when">Feb–Jun 2025</div>
-              </div>
-            </div>
-
-            <div class="tItem">
-              <div class="tTop">
-                <div>
-                  <h3>Summer Language Program — BLCU (北京语言大学), Beijing</h3>
-                  <div class="tMeta">Mandarin Chinese language immersion</div>
-                </div>
-                <div class="when">Jun–Aug 2025</div>
-              </div>
             </div>
           </div>
         </div>
@@ -710,31 +675,22 @@
             <h2>Selected publications</h2>
             <p class="muted">Writing and reporting on U.S.–Asia relations and regional developments.</p>
             <ul class="list">
-              <li>“Japan, &amp; Taiwan Donate to Maui,” <em>Asia Matters for America</em> (EWC, 2023)</li>
-              <li>“Eden Center Redevelopment Plan Approved,” <em>Asia Matters for America</em> (EWC, 2023)</li>
-              <li>“Sawasdee Festival: Celebrating the 190th Anniversary of US-Thai Relations,” <em>Asia Matters for America</em> (EWC, 2023)</li>
+              <li>
+                <a href="https://asiamattersforamerica.org/articles/south-korea-japan-taiwan-donate-to-maui" target="_blank" rel="noopener">
+                  “Japan, &amp; Taiwan Donate to Maui,” <em>Asia Matters for America</em> (EWC, 2023)
+                </a>
+              </li>
+              <li>
+                <a href="https://asiamattersforamerica.org/articles/eden-center-redevelopment-plan-approved" target="_blank" rel="noopener">
+                  “Eden Center Redevelopment Plan Approved,” <em>Asia Matters for America</em> (EWC, 2023)
+                </a>
+              </li>
+              <li>
+                <a href="https://asiamattersforamerica.org/articles/sawasdee-festival-celebrating-the-190th-anniversary-of-us-thai-relations" target="_blank" rel="noopener">
+                  “Sawasdee Festival: Celebrating the 190th Anniversary of US-Thai Relations,” <em>Asia Matters for America</em> (EWC, 2023)
+                </a>
+              </li>
             </ul>
-            <div class="btnRow">
-              <a class="btn" href="#posts" data-route="posts">See LinkedIn posts</a>
-              <a class="btn ghost" href="#cv" data-route="cv">Full CV</a>
-            </div>
-          </div>
-
-          <div class="card pad">
-            <h2>Work style</h2>
-            <ul class="list">
-              <li><strong>Clear deliverables:</strong> memos, briefs, slide outlines, annotated bibliographies</li>
-              <li><strong>Evidence-first:</strong> transparent sourcing, careful claims, reproducible notes</li>
-              <li><strong>Practical:</strong> decision-ready insights, not just summaries</li>
-            </ul>
-          </div>
-
-          <div class="card pad">
-            <h2>Want this section to be richer?</h2>
-            <p class="muted">
-              If you paste your “China work” notes or a publications list beyond what’s in your CV, I can expand this into a fuller
-              projects portfolio (methods, outputs, datasets, links).
-            </p>
           </div>
         </aside>
       </div>
@@ -746,17 +702,15 @@
         <div class="postHeader">
           <div>
             <h1>LinkedIn Posts</h1>
-            <p class="muted">A scrollable gallery (Instagram-style) linking to your posts.</p>
           </div>
           <div class="btnRow">
-            <button class="btn" id="toggleCaptionsBtn" type="button">Toggle captions</button>
-            <a class="btn ghost" href="https://www.linkedin.com/in/natashayotmanee" target="_blank" rel="noopener">Open LinkedIn ↗</a>
+            <button class="btn" id="toggleCaptionsBtn" type="button">Captions</button>
+            <a class="btn primary" href="https://www.linkedin.com/in/natashayotmanee" target="_blank" rel="noopener">Open LinkedIn ↗</a>
           </div>
         </div>
 
         <div class="divider"></div>
 
-        <!-- FIXED STRUCTURE: postsWrap -> postsGrid -> articles -> close postsGrid -> close postsWrap -->
         <div class="postsWrap" aria-label="LinkedIn post gallery (horizontal scroll)">
           <div class="posts" id="postsGrid">
 
@@ -870,13 +824,14 @@
             <article class="post" data-has-caption="true">
               <div class="postMedia" aria-hidden="true"></div>
               <div class="postBody">
-                <p class="postTitle">Shared post (text unavailable)</p>
+                <p class="postTitle">Week one of Global Scholars Program</p>
                 <p class="postText caption">
-                  LinkedIn returned an internal error for this link when I tried to fetch the post text. If you paste the post text here, it’ll display like the others.
+                  Week one of William &amp; Mary's Global Scholar Program. Great site visits at State, USAID, Pentagon, and EOB, with guest speakers from across the interagency. A special thanks to Thomas Shannon, Troy Thomas, Katie Sell Garcia, Anne Coleman-Honn, Anushree Banerjee, Matt Cordova, Phoebe Benich, Sasha Baker, Jason M. Chung for helping to organize the visits, and for twenty W&amp;M alums who joined us for a writing and career session on Saturday. Students are hard at work on policy memos, early morning monument runs, and policy briefings as they prepare for week 2 with my colleagues Mike Tierney and Ryan A. Musto, Ph.D. and course TA Katelyn Oxer.<br><br>
+                  And, if you're looking for great future interns, here's the student list! Alena Jones, Eileen Ackley, Carson Belmear, Elizabeth Brady, Owen Dyer, Gabriella Flores, Brennan Greeves, Ella MacLean, Madeleine Riggs, Patrick Hoover, Emilia Hughes, Kate Carline, Daniel Kalish, Emma King, Kaleea Korunka, Aiden Sanders, Leo Sereni, and Natasha Yotmanee.
                 </p>
                 <div class="postFooter">
                   <span class="mini">LinkedIn · Shared</span>
-                  <a class="btn primary" href="https://www.linkedin.com/posts/ugcPost-7152694777858203648-gQGR?utm_source=share&utm_medium=member_desktop&rcm=ACoAAC_3cMEBJmeZzCb0Cy3e5WIgP7KIHPNgeKw" target="_blank" rel="noopener">Open ↗</a>
+                  <a class="btn primary" href="https://www.linkedin.com/posts/activity-7152694780970299393-M0gr?utm_source=share&utm_medium=member_desktop&rcm=ACoAAC_3cMEBJmeZzCb0Cy3e5WIgP7KIHPNgeKw" target="_blank" rel="noopener">Open ↗</a>
                 </div>
               </div>
             </article>
@@ -891,20 +846,18 @@
       <div class="grid cols2">
         <div class="card pad">
           <h1>Contact</h1>
-          <p class="muted">
-            If you’d like to collaborate or connect about opportunities in peace &amp; humanitarian work, reach out here:
-          </p>
+          <p class="muted">If you’d like to collaborate or connect, reach out here:</p>
 
           <div class="divider"></div>
 
           <h2>Ways to reach me</h2>
           <div class="grid">
-            <div class="card pad" style="box-shadow:none;background:rgba(255,255,255,0.04);">
+            <div class="card pad" style="box-shadow:none;background:rgba(37,99,235,0.03);">
               <h3>Email</h3>
               <p class="muted"><a href="mailto:nyotmanee@gmail.com">nyotmanee@gmail.com</a></p>
             </div>
 
-            <div class="card pad" style="box-shadow:none;background:rgba(255,255,255,0.04);">
+            <div class="card pad" style="box-shadow:none;background:rgba(37,99,235,0.03);">
               <h3>LinkedIn</h3>
               <p class="muted"><a href="https://www.linkedin.com/in/natashayotmanee" target="_blank" rel="noopener">www.linkedin.com/in/natashayotmanee ↗</a></p>
             </div>
@@ -912,37 +865,40 @@
 
           <div class="divider"></div>
 
-          <h2>GitHub Pages setup</h2>
-          <ol class="list">
-            <li>Create a repo named <strong>yourusername.github.io</strong> (or any repo if you prefer a project site).</li>
-            <li>Add this file as <strong>index.html</strong> (root of the repo).</li>
-            <li>In GitHub: <strong>Settings → Pages</strong> → Source: <strong>Deploy from branch</strong> → Branch: <strong>main</strong>, Folder: <strong>/(root)</strong>.</li>
-          </ol>
+          <h2>What to include in your message</h2>
+          <ul class="list">
+            <li>Context: role, project, or what you want to connect about</li>
+            <li>Timing: deadline or target window</li>
+            <li>Anything helpful: links, docs, or background</li>
+          </ul>
+
+          <footer>
+            <div>© <span id="year"></span> Natasha Yotmanee</div>
+            <div class="footLinks">
+              <a href="#home" data-route="home">Home</a>
+              <span class="muted2">·</span>
+              <a href="#cv" data-route="cv">CV</a>
+              <span class="muted2">·</span>
+              <a href="#research" data-route="research">Research &amp; Publications</a>
+              <span class="muted2">·</span>
+              <a href="#posts" data-route="posts">Posts</a>
+            </div>
+          </footer>
         </div>
 
         <aside class="card pad">
-          <h2>One-paragraph intro (copy/paste)</h2>
-          <p class="muted">
-            Hi! I’m Natasha Yotmanee (she/her), a senior at William &amp; Mary graduating in May 2026. I study International Relations
-            and Data Science, and I’m building a career focused on peacekeeping, conflict prevention, and humanitarian aid—especially
-            in the Asia-Pacific. I’m interested in bridging technology and diplomacy through data-driven analysis and practical
-            policy strategy.
-          </p>
+          <h2>Links</h2>
+          <ul class="list">
+            <li><a href="https://www.linkedin.com/in/natashayotmanee" target="_blank" rel="noopener">LinkedIn profile ↗</a></li>
+            <li><a href="#cv" data-route="cv">CV (on this site)</a></li>
+            <li><a href="#research" data-route="research">Research &amp; Publications (on this site)</a></li>
+          </ul>
+          <div class="divider"></div>
+          <div class="note">
+            If you want, I can also swap the top-right navigation labels, reorder tabs, or adjust spacing/typography to feel more “portfolio” vs “resume.”
+          </div>
         </aside>
       </div>
-
-      <footer>
-        <div>© <span id="year"></span> Natasha Yotmanee</div>
-        <div class="footLinks">
-          <a href="#home" data-route="home">Home</a>
-          <span class="muted2">·</span>
-          <a href="#cv" data-route="cv">CV</a>
-          <span class="muted2">·</span>
-          <a href="#research" data-route="research">Research</a>
-          <span class="muted2">·</span>
-          <a href="#posts" data-route="posts">Posts</a>
-        </div>
-      </footer>
     </section>
   </main>
 
@@ -977,8 +933,7 @@
     onHashChange();
 
     // Footer year
-    const yearEl = document.getElementById("year");
-    if (yearEl) yearEl.textContent = new Date().getFullYear();
+    document.getElementById("year").textContent = new Date().getFullYear();
 
     // Posts: toggle captions
     const toggleBtn = document.getElementById("toggleCaptionsBtn");
@@ -988,7 +943,7 @@
       document.querySelectorAll(".caption").forEach(el => {
         el.style.display = captionsOn ? "" : "none";
       });
-      toggleBtn.textContent = captionsOn ? "Toggle captions" : "Show captions";
+      toggleBtn.textContent = captionsOn ? "Captions" : "Captions (off)";
     });
   </script>
 </body>
