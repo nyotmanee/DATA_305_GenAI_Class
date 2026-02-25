@@ -16,6 +16,7 @@
       --muted2: rgba(14, 23, 38, 0.62);
       --border: rgba(20, 34, 55, 0.12);
       --shadow: 0 18px 40px rgba(12, 18, 28, 0.10);
+      --shadowSoft: 0 10px 24px rgba(12, 18, 28, 0.10);
       --radius: 18px;
       --max: 1040px;
 
@@ -180,6 +181,7 @@
       transition: transform .12s ease, background .12s ease, border-color .12s ease;
       user-select:none;
       text-decoration:none;
+      white-space: nowrap;
     }
     .btn:hover{
       transform: translateY(-1px);
@@ -280,7 +282,7 @@
       border-radius:18px;
       border:1px solid var(--border);
       background:#fff;
-      box-shadow: 0 12px 26px rgba(12,18,28,0.10);
+      box-shadow: var(--shadowSoft);
       overflow:hidden;
       display:flex;
       flex-direction:column;
@@ -322,19 +324,19 @@
     }
     .mini{ font-size:12px; color: var(--muted2); }
 
-    /* CV side-by-side blocks (NOW SAME mint/education tone) */
+    /* Publications article cards slightly tinted */
+    .articleCard{
+      background: var(--articleBg) !important;
+      border-color: var(--articleBorder) !important;
+    }
+
+    /* CV side-by-side blocks (mint like Education) */
     .subBlock{
       border-radius:18px;
       padding:16px;
       border:1px solid var(--eduBorder);
       background: var(--eduBg);
       box-shadow:none;
-    }
-
-    /* Publications article cards slightly tinted */
-    .articleCard{
-      background: var(--articleBg) !important;
-      border-color: var(--articleBorder) !important;
     }
 
     /* Notes */
@@ -370,6 +372,23 @@
       transform:none !important;
       background: var(--skillBg) !important;
       border-color: var(--skillBorder) !important;
+    }
+
+    /* Education logos */
+    .eduLine{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+    .eduLogo{
+      width: 26px;
+      height: 26px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: #fff;
+      object-fit: contain;
+      flex: 0 0 auto;
     }
 
     /* Footer */
@@ -501,7 +520,11 @@
             <div class="tItem" style="background:rgba(255,255,255,0.75);" id="edu-wm">
               <div class="tTop">
                 <div>
-                  <h3>William &amp; Mary — Williamsburg, VA</h3>
+                  <div class="eduLine">
+                    <!-- William & Mary logo (public) -->
+                    <img class="eduLogo" src="https://upload.wikimedia.org/wikipedia/en/thumb/7/7b/College_of_William_%26_Mary_seal.svg/120px-College_of_William_%26_Mary_seal.svg.png" alt="William &amp; Mary logo" />
+                    <h3 style="margin:0;">William &amp; Mary — Williamsburg, VA</h3>
+                  </div>
                   <div class="tMeta">B.A. International Relations · Minor: Data Science · <strong>Expected May 2026</strong></div>
                 </div>
                 <div class="when">2022–2026</div>
@@ -514,7 +537,11 @@
             <div class="tItem" style="background:rgba(255,255,255,0.75);" id="edu-tsinghua">
               <div class="tTop">
                 <div>
-                  <h3>Tsinghua University (清华大学) — Beijing, China</h3>
+                  <div class="eduLine">
+                    <!-- Tsinghua logo (public) -->
+                    <img class="eduLogo" src="https://upload.wikimedia.org/wikipedia/en/thumb/4/4a/Tsinghua_University_Logo.svg/120px-Tsinghua_University_Logo.svg.png" alt="Tsinghua University logo" />
+                    <h3 style="margin:0;">Tsinghua University (清华大学) — Beijing, China</h3>
+                  </div>
                   <div class="tMeta">Exchange semester</div>
                 </div>
                 <div class="when">Feb–Jun 2025</div>
@@ -524,7 +551,11 @@
             <div class="tItem" style="background:rgba(255,255,255,0.75);" id="edu-blcu">
               <div class="tTop">
                 <div>
-                  <h3>Beijing Language and Culture University (北京语言大学) — Beijing, China</h3>
+                  <div class="eduLine">
+                    <!-- BLCU logo (public) -->
+                    <img class="eduLogo" src="https://upload.wikimedia.org/wikipedia/en/thumb/7/79/Beijing_Language_and_Culture_University_logo.svg/120px-Beijing_Language_and_Culture_University_logo.svg.png" alt="Beijing Language and Culture University logo" />
+                    <h3 style="margin:0;">Beijing Language and Culture University (北京语言大学) — Beijing, China</h3>
+                  </div>
                   <div class="tMeta">Summer language program</div>
                 </div>
                 <div class="when">Jun–Aug 2025</div>
@@ -567,7 +598,7 @@
                 <div class="when">Aug 2025–Jan 2026</div>
               </div>
               <ul class="list">
-                <li>Selected as 1 of 13 undergraduates for a competitive faculty-led research program contributing to scholarly and applied projects.</li>
+                <li>Selected as 1 of 13 undergraduates for a competitive faculty-led research program contributing to professor-led scholarly and applied research on changes in elite political discourse in Taiwan and South Korea across democratization periods.</li>
                 <li>Led a 3-person team coding political speeches from Taiwan and South Korea; coordinated timelines and quality control.</li>
                 <li>Designed and applied a structured coding framework for a comparative archival dataset (~500 documents); cleaned/standardized a 260-document subset of Taiwanese speeches.</li>
                 <li>Conducted sentence-level analysis of elite political discourse in Taiwan across democratization periods.</li>
@@ -639,7 +670,6 @@
         <div class="divider"></div>
 
         <div class="grid cols2equal">
-          <!-- SAME mint background as Education -->
           <div class="subBlock">
             <h2>Research Contributions</h2>
             <div class="stack" style="margin-top:8px;">
@@ -669,7 +699,6 @@
             </div>
           </div>
 
-          <!-- SAME mint background as Education -->
           <div class="subBlock">
             <h2>Programs &amp; Awards</h2>
             <div class="stack" style="margin-top:8px;">
@@ -724,36 +753,28 @@
           <div class="divider"></div>
 
           <h2>Current Research</h2>
-          <div class="timeline">
-            <div class="tItem">
-              <div class="tTop">
-                <div>
-                  <h3>Politics of Recognition and the Case of One China</h3>
-                  <div class="tMeta">William &amp; Mary · Department of Government</div>
-                </div>
-                <div class="when">Feb 2026–Present</div>
-              </div>
-              <ul class="list">
-                <li>
-                  Politics of Recognition and the Case of One China: analyze an original dataset of diplomatic recognition patterns between 1945-1991, studying the conditions under which newly decolonized states opted to recognize either the People's Republic of China (PRC) versus Republic of China (ROC)
-                </li>
-              </ul>
-            </div>
 
-            <div class="tItem">
-              <div class="tTop">
-                <div>
-                  <h3>Storied States (Asia Policy Lab)</h3>
-                  <div class="tMeta">William &amp; Mary</div>
-                </div>
-                <div class="when">Aug 2025–Jan 2026</div>
+          <!-- UPDATED: match article “shadowed box” look -->
+          <div class="stack" style="margin-top:12px;">
+            <article class="post">
+              <div class="postBody">
+                <p class="postTitle"><strong>Politics of Recognition and the Case of One China</strong></p>
+                <p class="postText muted">William &amp; Mary · Department of Government · Feb 2026–Present</p>
+                <p class="postText">
+                  Analyze an original dataset of diplomatic recognition patterns between 1945–1991, studying the conditions under which newly decolonized states opted to recognize either the People’s Republic of China (PRC) versus the Republic of China (ROC).
+                </p>
               </div>
-              <ul class="list">
-                <li>
-                  1 of 13 undergraduates for a competitive faculty-led research program contributing to professor-led scholarly and applied research project analyzing changes in elite poltiical discource in Taiwan and South Korea across different democratization periods.
-                </li>
-              </ul>
-            </div>
+            </article>
+
+            <article class="post">
+              <div class="postBody">
+                <p class="postTitle"><strong>Storied States (Asia Policy Lab)</strong></p>
+                <p class="postText muted">William &amp; Mary · Aug 2025–Jan 2026</p>
+                <p class="postText">
+                  Selected as 1 of 13 undergraduates for a competitive faculty-led research program contributing to professor-led scholarly and applied research analyzing changes in elite political discourse in Taiwan and South Korea across democratization periods.
+                </p>
+              </div>
+            </article>
           </div>
         </div>
 
@@ -805,9 +826,7 @@
     <section class="page" id="page-posts" data-page="posts">
       <div class="card pad">
         <div class="postHeader">
-          <div>
-            <h1>LinkedIn Posts</h1>
-          </div>
+          <div><h1>LinkedIn Posts</h1></div>
           <div class="btnRow">
             <button class="btn" id="toggleCaptionsBtn" type="button">Captions (on)</button>
             <a class="btn primary" href="https://www.linkedin.com/in/natashayotmanee" target="_blank" rel="noopener">Open LinkedIn ↗</a>
