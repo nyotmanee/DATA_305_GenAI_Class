@@ -8,21 +8,20 @@
 
   <style>
     :root{
-      /* Light theme */
+      /* Light theme (no yellow blocks) */
       --bg: #ffffff;
       --bg2: #f6fbfa;
-      --panel: #ffffff;
 
-      /* Tints */
-      --panelAlt: #f2fbf7;   /* light green tint */
-      --panelAlt2:#f3f7ff;   /* light blue tint */
-      --panelAlt3:#fff7ed;   /* light peach tint */
-      --panelAlt4:#f6f3ff;   /* light lavender tint (Current research background) */
+      --panel: #ffffff;
+      --panelSoft: rgba(14,165,166,0.06);     /* subtle teal tint */
+      --panelSoft2: rgba(37,99,235,0.06);     /* subtle blue tint */
+      --panelSoft3: rgba(99,102,241,0.06);    /* subtle indigo tint */
 
       --text: #0f172a;
       --muted:#475569;
       --muted2:#64748b;
       --border:#e2e8f0;
+
       --shadow: 0 10px 22px rgba(15, 23, 42, 0.08);
       --shadow2: 0 14px 30px rgba(15, 23, 42, 0.10);
       --radius: 18px;
@@ -30,10 +29,18 @@
 
       --accent: #0ea5a6;     /* teal */
       --accent2:#2563eb;     /* blue */
-      --chipBg: rgba(14,165,166,0.10);
-      --chipBd: rgba(14,165,166,0.28);
       --link: #0b6b6b;
       --focus: rgba(37,99,235,0.18);
+
+      /* “Last code” button vibe */
+      --btnBg: rgba(14,165,166,0.10);
+      --btnBd: rgba(14,165,166,0.28);
+      --btnTx: #064e4e;
+
+      /* Skills chip color (ALL same) */
+      --chipBg: rgba(14,165,166,0.12);
+      --chipBd: rgba(14,165,166,0.32);
+      --chipTx: #064e4e;
     }
 
     * { box-sizing: border-box; }
@@ -150,15 +157,13 @@
       box-shadow: var(--shadow);
     }
     .card.pad{ padding: 18px; }
-    .card.softGreen{ background: var(--panelAlt); }
-    .card.softBlue{ background: var(--panelAlt2); }
-    .card.softPeach{ background: var(--panelAlt3); }
-    .card.softLavender{ background: var(--panelAlt4); }
+    .soft{ background: var(--panelSoft); }
+    .soft2{ background: var(--panelSoft2); }
+    .soft3{ background: var(--panelSoft3); }
 
     .grid{ display: grid; gap: 16px; }
     @media (min-width: 900px){
       .grid.cols2{ grid-template-columns: 1.1fr 0.9fr; }
-      .grid.cols3{ grid-template-columns: 1fr 1fr 1fr; }
       .grid.cols2even{ grid-template-columns: 1fr 1fr; }
     }
 
@@ -186,14 +191,13 @@
       font-size: 13px;
       margin-bottom: 12px;
     }
-
     .divider{
       height: 1px;
       background: var(--border);
       margin: 14px 0;
     }
 
-    /* Buttons */
+    /* Buttons (keep “last code” vibe) */
     .btnRow{ display:flex; gap:10px; flex-wrap:wrap; margin-top: 10px; }
     .btn{
       display: inline-flex;
@@ -202,50 +206,42 @@
       gap: 8px;
       border-radius: 12px;
       padding: 10px 12px;
-      border: 1px solid var(--border);
-      background: #ffffff;
-      color: var(--text);
+      border: 1px solid var(--btnBd);
+      background: var(--btnBg);
+      color: var(--btnTx);
       font-size: 13px;
       cursor: pointer;
       transition: transform .12s ease, background .12s ease, border-color .12s ease, box-shadow .12s ease;
       box-shadow: 0 6px 14px rgba(15,23,42,0.06);
       white-space: nowrap;
+      text-decoration: none;
     }
     .btn:hover{
       transform: translateY(-1px);
-      background: rgba(14,165,166,0.06);
-      border-color: rgba(14,165,166,0.24);
+      background: rgba(14,165,166,0.16);
+      border-color: rgba(14,165,166,0.40);
       text-decoration: none;
     }
-    .btn.primary{
-      background: rgba(14,165,166,0.12);
-      border-color: rgba(14,165,166,0.34);
-      color: #064e4e;
+    .btn.ghost{
+      background: transparent;
+      border-color: var(--border);
+      color: var(--text);
     }
-    .btn.primary:hover{
-      background: rgba(14,165,166,0.16);
-      border-color: rgba(14,165,166,0.42);
-    }
-    .btn.blue{
-      background: rgba(37,99,235,0.10);
-      border-color: rgba(37,99,235,0.30);
-      color: #1e40af;
-    }
-    .btn.blue:hover{
-      background: rgba(37,99,235,0.14);
-      border-color: rgba(37,99,235,0.38);
+    .btn.ghost:hover{
+      background: rgba(15,23,42,0.04);
+      border-color: rgba(15,23,42,0.14);
     }
 
     /* Lists */
     .list{ margin: 0; padding-left: 18px; color: var(--muted); }
     .list li{ margin: 6px 0; }
 
-    /* Timeline-ish blocks */
+    /* Timeline blocks */
     .timeline{ display: grid; gap: 12px; margin-top: 10px; }
     .tItem{
       border-radius: 16px;
       border: 1px solid var(--border);
-      background: rgba(255,255,255,0.85);
+      background: rgba(255,255,255,0.92);
       padding: 14px;
       box-shadow: 0 8px 18px rgba(15,23,42,0.06);
     }
@@ -262,7 +258,7 @@
       padding: 6px 10px;
       border-radius: 999px;
       border: 1px solid var(--border);
-      background: rgba(255,255,255,0.8);
+      background: rgba(255,255,255,0.9);
     }
     .tMeta{ color: var(--muted2); font-size: 13px; margin-top: 4px; }
 
@@ -290,32 +286,27 @@
     }
 
     /* “Posts-like” cards (vertical stack) */
-    .stack{
-      display: grid;
-      gap: 14px;
-    }
+    .stack{ display: grid; gap: 14px; }
     .cardPost{
       border-radius: 18px;
       border: 1px solid var(--border);
-      background: rgba(255,255,255,0.9);
+      background: rgba(255,255,255,0.92);
       box-shadow: var(--shadow2);
       overflow: hidden;
       display:flex;
       flex-direction: column;
     }
-    .cardPost.tintBlue{ background: rgba(37,99,235,0.06); }
-    .cardPost.tintPeach{ background: rgba(251,191,36,0.10); }
-    .cardPost.tintGreen{ background: rgba(16,185,129,0.10); }
-    .cardPost.tintLavender{ background: rgba(139,92,246,0.08); }
+    .cardPost.soft{ background: rgba(14,165,166,0.06); }
+    .cardPost.soft2{ background: rgba(37,99,235,0.06); }
+    .cardPost.soft3{ background: rgba(99,102,241,0.06); }
 
     .cardMedia{
       height: 190px;
       background:
         radial-gradient(380px 180px at 18% 25%, rgba(14,165,166,0.16), transparent 60%),
         radial-gradient(320px 200px at 84% 30%, rgba(37,99,235,0.14), transparent 65%),
-        rgba(255,255,255,0.75);
+        rgba(255,255,255,0.85);
       border-bottom: 1px solid var(--border);
-      position: relative;
       overflow:hidden;
     }
     .cardMedia img{
@@ -324,7 +315,6 @@
       object-fit: cover;
       display:block;
     }
-
     .cardBody{
       padding: 12px 14px 14px;
       display:flex;
@@ -353,7 +343,7 @@
     }
     .mini{ font-size: 12px; color: var(--muted2); }
 
-    /* Skills as buttons */
+    /* Skills as same-color buttons */
     .chips{
       display:flex;
       flex-wrap:wrap;
@@ -366,21 +356,11 @@
       border-radius: 999px;
       background: var(--chipBg);
       border: 1px solid var(--chipBd);
-      color: #0f3d3d;
+      color: var(--chipTx);
       box-shadow: 0 6px 14px rgba(15,23,42,0.06);
     }
-    .chip.blue{
-      background: rgba(37,99,235,0.10);
-      border-color: rgba(37,99,235,0.26);
-      color: #1e3a8a;
-    }
-    .chip.peach{
-      background: rgba(251,191,36,0.12);
-      border-color: rgba(251,191,36,0.26);
-      color: #7c2d12;
-    }
 
-    /* Section headings */
+    /* Section heading row */
     .sectionHead{
       display:flex;
       align-items:flex-end;
@@ -413,12 +393,10 @@
 </head>
 
 <body>
-  <!-- Top Navigation -->
   <header class="topbar">
     <div class="topbarInner">
       <div class="brand" role="banner">
         <div class="avatar" aria-hidden="true">
-          <!-- LinkedIn profile photo -->
           <img alt="Natasha Yotmanee" src="https://media.licdn.com/dms/image/v2/D4E03AQHGI9a5MyIa3A/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1730209655021?e=2147483647&t=HgT-tlrRoORyL3Ceta22UAp6S2l_dSJabJzMwwcDqoM&v=beta" />
         </div>
         <div class="brandText">
@@ -465,12 +443,10 @@
 
           <div class="divider"></div>
 
-          <!-- Updated header + same section -->
-          <h2>Some Things I Love: Food 🍲 · Travel 🌎 · Books 📚 · Senior Year Bucket List</h2>
+          <h2>Some Things I Love:</h2>
 
-          <!-- New expanded section (kept in same area) -->
           <div class="grid" style="margin-top:12px;">
-            <div class="card pad" style="box-shadow:none;background:rgba(14,165,166,0.06);border-color:rgba(14,165,166,0.22);">
+            <div class="card pad soft" style="box-shadow:none;border-color:rgba(14,165,166,0.22);">
               <h3>Food 🍲</h3>
               <p class="muted" style="margin-bottom:8px;">
                 I’m a foodie who loves trying new places—connect with me and share your food recommendations!
@@ -481,7 +457,7 @@
               </ul>
             </div>
 
-            <div class="card pad" style="box-shadow:none;background:rgba(37,99,235,0.06);border-color:rgba(37,99,235,0.22);">
+            <div class="card pad soft2" style="box-shadow:none;border-color:rgba(37,99,235,0.22);">
               <h3>Travel 🌎</h3>
               <p class="muted" style="margin-bottom:8px;">
                 I love traveling to see new places, experience culture, and learn from how people live—travel recs? Connect with me and I’d love to hear about your travels!
@@ -492,14 +468,14 @@
               </ul>
             </div>
 
-            <div class="card pad" style="box-shadow:none;background:rgba(251,191,36,0.10);border-color:rgba(251,191,36,0.24);">
+            <div class="card pad soft3" style="box-shadow:none;border-color:rgba(99,102,241,0.22);">
               <h3>Books 📚</h3>
-              <p class="muted" style="margin-bottom:8px;">
+              <p class="muted" style="margin-bottom:0;">
                 Who doesn’t like to read?? I’m currently reading <em>A Thousand Splendid Suns</em> by Khaled Hosseini—got book recommendations? Share them with me!
               </p>
             </div>
 
-            <div class="card pad" style="box-shadow:none;background:rgba(139,92,246,0.08);border-color:rgba(139,92,246,0.22);">
+            <div class="card pad" style="box-shadow:none;background:rgba(14,165,166,0.04);border-color:rgba(14,165,166,0.18);">
               <h3>Senior Year Bucket List</h3>
               <p class="muted" style="margin-bottom:8px;">
                 Time is ticking—here are some things I’m looking forward to:
@@ -515,7 +491,8 @@
         </div>
 
         <aside class="grid">
-          <div class="card pad softGreen">
+          <!-- Current Direction should be white -->
+          <div class="card pad">
             <h2>Current Direction</h2>
             <p>
               Seeking opportunities that blend real-world impact with analysis — especially roles connected to peacebuilding,
@@ -538,12 +515,12 @@
               A few organizations I’ve worked with and learned from (click to jump to the related section on my CV).
             </p>
             <div class="btnRow">
-              <a class="btn primary" href="#cv" data-route="cv" data-scrolltarget="cv-deptgov">W&amp;M - Department of Government</a>
-              <a class="btn primary" href="#cv" data-route="cv" data-scrolltarget="cv-asiapolicylab">W&amp;M - Asia Policy Lab</a>
-              <a class="btn primary" href="#cv" data-route="cv" data-scrolltarget="cv-undp">UNDP - Crisis Bureau</a>
-              <a class="btn primary" href="#cv" data-route="cv" data-scrolltarget="cv-usawc">USAWC - Strategic Studies Institute</a>
-              <a class="btn primary" href="#cv" data-route="cv" data-scrolltarget="cv-ewc">East-West Center in Washington</a>
-              <a class="btn primary" href="#cv" data-route="cv" data-scrolltarget="cv-rte">Royal Thai Embassy &amp; US-Asia Institute</a>
+              <a class="btn" href="#cv" data-route="cv" data-scrolltarget="cv-deptgov">W&amp;M - Department of Government</a>
+              <a class="btn" href="#cv" data-route="cv" data-scrolltarget="cv-asiapolicylab">W&amp;M - Asia Policy Lab</a>
+              <a class="btn" href="#cv" data-route="cv" data-scrolltarget="cv-undp">UNDP - Crisis Bureau</a>
+              <a class="btn" href="#cv" data-route="cv" data-scrolltarget="cv-usawc">USAWC - Strategic Studies Institute</a>
+              <a class="btn" href="#cv" data-route="cv" data-scrolltarget="cv-ewc">East-West Center in Washington</a>
+              <a class="btn" href="#cv" data-route="cv" data-scrolltarget="cv-rte">Royal Thai Embassy &amp; US-Asia Institute</a>
             </div>
           </div>
         </aside>
@@ -559,7 +536,7 @@
             <p class="muted">Education, experience, research contributions, programs &amp; awards, and skills.</p>
           </div>
           <div class="btnRow">
-            <a class="btn blue" href="https://www.linkedin.com/in/natashayotmanee" target="_blank" rel="noopener">LinkedIn ↗</a>
+            <a class="btn ghost" href="https://www.linkedin.com/in/natashayotmanee" target="_blank" rel="noopener">LinkedIn ↗</a>
           </div>
         </div>
 
@@ -567,7 +544,7 @@
 
         <!-- EDUCATION -->
         <section id="cv-education">
-          <div class="card pad softGreen" style="box-shadow:none;">
+          <div class="card pad soft" style="box-shadow:none;">
             <h2>Education</h2>
             <div class="timeline">
               <div class="tItem">
@@ -610,7 +587,7 @@
 
         <!-- EXPERIENCE -->
         <section id="cv-experience">
-          <div class="card pad softBlue" style="box-shadow:none;">
+          <div class="card pad soft2" style="box-shadow:none;">
             <h2>Professional &amp; Research Experience</h2>
             <div class="timeline">
 
@@ -712,66 +689,63 @@
 
         <div class="divider"></div>
 
-        <!-- CONTRIBUTIONS + AWARDS -->
+        <!-- CONTRIBUTIONS + AWARDS (buttons at bottom) -->
         <section id="cv-contrib-awards">
           <div class="grid cols2even">
-            <div class="card pad softGreen" style="box-shadow:none;">
+            <div class="card pad soft" style="box-shadow:none;">
               <h2>Research Contributions</h2>
 
               <div class="tItem" style="box-shadow:none;">
-                <h3>
-                  <a class="btn primary" href="https://asiamattersforamerica.org/uploads/publications/2023-ASEAN-Matters-for-America.pdf" target="_blank" rel="noopener">
-                    Open ASEAN Matters for America (PDF) ↗
-                  </a>
-                </h3>
-                <p class="muted">
+                <p class="cardTitle" style="margin:0 0 6px;"><strong>ASEAN Matters for America / America Matters for ASEAN (6th ed.)</strong></p>
+                <p class="muted" style="margin:0 0 8px;">
                   A regional overview of U.S.–ASEAN ties covering key trends in diplomacy, security, economics, and people-to-people connections.
                 </p>
-                <p class="muted" style="margin:0;">
+                <p class="muted" style="margin:0 0 10px;">
                   <strong>Research contributor/co-editor:</strong> <em>ASEAN Matters for America / America Matters for ASEAN</em> (6th ed.), East-West Center (2023).
                 </p>
+                <div class="btnRow">
+                  <a class="btn" href="https://asiamattersforamerica.org/uploads/publications/2023-ASEAN-Matters-for-America.pdf" target="_blank" rel="noopener">Open PDF ↗</a>
+                </div>
               </div>
 
               <div class="tItem" style="box-shadow:none;">
-                <h3>Crisis in the Caucasus: Invasion of Georgia (2008–2014)</h3>
-                <p class="muted">
+                <p class="cardTitle" style="margin:0 0 6px;"><strong>Crisis in the Caucasus: Invasion of Georgia (2008–2014)</strong></p>
+                <p class="muted" style="margin:0 0 8px;">
                   A case study on the Russo–Georgian war and its aftermath, focusing on escalation dynamics, regional security, and strategic implications.
                 </p>
-                <p class="muted" style="margin:0;">
+                <p class="muted" style="margin:0 0 10px;">
                   <strong>Internal study contributor:</strong> “Crisis in the Caucasus: Invasion of Georgia, 2008–2014.” Strategic Studies Institute, USAWC (2024) — prepared for a forthcoming monograph on partner capacity in Ukraine.
                 </p>
               </div>
             </div>
 
-            <div class="card pad softGreen" style="box-shadow:none;">
+            <div class="card pad soft" style="box-shadow:none;">
               <h2>Programs &amp; Awards</h2>
 
               <div class="tItem" style="box-shadow:none;">
-                <h3>
-                  <a class="btn primary" href="https://www.wm.edu/offices/dccenter/opportunities/gsp/gsp-alumni/23-24scholars/" target="_blank" rel="noopener">
-                    Open Global Scholars Program ↗
-                  </a>
-                </h3>
-                <p class="muted">
+                <p class="cardTitle" style="margin:0 0 6px;"><strong>Global Scholars Program</strong></p>
+                <p class="muted" style="margin:0 0 8px;">
                   An intensive cohort program combining policy-focused learning with professional development through site visits and practitioner engagement.
                 </p>
-                <p class="muted" style="margin:0;">
+                <p class="muted" style="margin:0 0 10px;">
                   <strong>Global Scholars Program:</strong> Global Research Institute, W&amp;M (Aug 2023–2024) — selected as 1 of 18.
                 </p>
+                <div class="btnRow">
+                  <a class="btn" href="https://www.wm.edu/offices/dccenter/opportunities/gsp/gsp-alumni/23-24scholars/" target="_blank" rel="noopener">Open ↗</a>
+                </div>
               </div>
 
               <div class="tItem" style="box-shadow:none;">
-                <h3>
-                  <a class="btn primary" href="https://studyabroad.wm.edu/index.cfm?FuseAction=Programs.ViewProgram&Program_ID=2659" target="_blank" rel="noopener">
-                    Open Gates Scholarship ↗
-                  </a>
-                </h3>
-                <p class="muted">
+                <p class="cardTitle" style="margin:0 0 6px;"><strong>Gates Scholarship</strong></p>
+                <p class="muted" style="margin:0 0 8px;">
                   A study-abroad scholarship supporting global learning and academic immersion through the Reves Center for International Studies.
                 </p>
-                <p class="muted" style="margin:0;">
+                <p class="muted" style="margin:0 0 10px;">
                   <strong>Gates Scholarship:</strong> Reves Center for International Studies, W&amp;M (Feb–Jun 2025) — $7,500 study abroad award.
                 </p>
+                <div class="btnRow">
+                  <a class="btn" href="https://studyabroad.wm.edu/index.cfm?FuseAction=Programs.ViewProgram&Program_ID=2659" target="_blank" rel="noopener">Open ↗</a>
+                </div>
               </div>
             </div>
           </div>
@@ -788,11 +762,10 @@
 
           <div class="chips" aria-label="Skills">
             <span class="chip">Python (intermediate)</span>
-            <span class="chip blue">SQL (basic, developing)</span>
-            <span class="chip peach">R (basic)</span>
-
+            <span class="chip">SQL (basic, developing)</span>
+            <span class="chip">R (basic)</span>
             <span class="chip">English (native)</span>
-            <span class="chip blue">Thai (oral proficiency)</span>
+            <span class="chip">Thai (oral proficiency)</span>
             <span class="chip">Mandarin Chinese (intermediate)</span>
           </div>
         </section>
@@ -802,7 +775,8 @@
     <!-- RESEARCH & PUBLICATIONS -->
     <section class="page" id="page-research" data-page="research">
       <div class="grid cols2">
-        <div class="card pad softLavender">
+        <!-- Keep the research side using the same “last code” palette (no yellow) -->
+        <div class="card pad soft3" style="box-shadow:none;">
           <div class="sectionHead">
             <div>
               <h1>Research &amp; Publications</h1>
@@ -815,7 +789,7 @@
           <h2>Current Research</h2>
 
           <div class="stack">
-            <article class="cardPost tintLavender">
+            <article class="cardPost soft3">
               <div class="cardBody">
                 <p class="cardTitle">Politics of Recognition and the Case of One China</p>
                 <p class="cardText">
@@ -823,12 +797,12 @@
                 </p>
                 <div class="cardFooter">
                   <span class="mini">William &amp; Mary · Department of Government</span>
-                  <a class="btn primary" href="#cv" data-route="cv" data-scrolltarget="cv-deptgov">Open in CV ↗</a>
+                  <a class="btn" href="#cv" data-route="cv" data-scrolltarget="cv-deptgov">Open in CV ↗</a>
                 </div>
               </div>
             </article>
 
-            <article class="cardPost tintLavender">
+            <article class="cardPost soft3">
               <div class="cardBody">
                 <p class="cardTitle">Storied States (Asia Policy Lab)</p>
                 <p class="cardText">
@@ -836,49 +810,50 @@
                 </p>
                 <div class="cardFooter">
                   <span class="mini">William &amp; Mary · Asia Policy Lab</span>
-                  <a class="btn blue" href="#cv" data-route="cv" data-scrolltarget="cv-asiapolicylab">Open in CV ↗</a>
+                  <a class="btn" href="#cv" data-route="cv" data-scrolltarget="cv-asiapolicylab">Open in CV ↗</a>
                 </div>
               </div>
             </article>
           </div>
         </div>
 
-        <aside class="card pad softPeach">
+        <!-- Publications side: same shadow + subtle teal/blue tint like before (no yellow) -->
+        <aside class="card pad soft" style="box-shadow:none;">
           <h2>Selected Publications</h2>
           <p class="muted">Articles published on Asia Matters for America (East-West Center).</p>
 
           <div class="divider"></div>
 
           <div class="stack" aria-label="Publications list">
-            <article class="cardPost tintPeach">
+            <article class="cardPost soft">
               <div class="cardBody">
                 <p class="cardTitle"><strong>South Korea, Japan, &amp; Taiwan Donate to Maui</strong></p>
                 <p class="cardText">Coverage of international support and regional ties following the Maui wildfires.</p>
                 <div class="cardFooter">
                   <span class="mini">Asia Matters for America</span>
-                  <a class="btn primary" href="https://asiamattersforamerica.org/articles/south-korea-japan-taiwan-donate-to-maui" target="_blank" rel="noopener">Open ↗</a>
+                  <a class="btn" href="https://asiamattersforamerica.org/articles/south-korea-japan-taiwan-donate-to-maui" target="_blank" rel="noopener">Open ↗</a>
                 </div>
               </div>
             </article>
 
-            <article class="cardPost tintPeach">
+            <article class="cardPost soft">
               <div class="cardBody">
                 <p class="cardTitle"><strong>Eden Center Redevelopment Plan Approved</strong></p>
                 <p class="cardText">Reporting on a major community redevelopment and its local significance.</p>
                 <div class="cardFooter">
                   <span class="mini">Asia Matters for America</span>
-                  <a class="btn primary" href="https://asiamattersforamerica.org/articles/eden-center-redevelopment-plan-approved" target="_blank" rel="noopener">Open ↗</a>
+                  <a class="btn" href="https://asiamattersforamerica.org/articles/eden-center-redevelopment-plan-approved" target="_blank" rel="noopener">Open ↗</a>
                 </div>
               </div>
             </article>
 
-            <article class="cardPost tintPeach">
+            <article class="cardPost soft">
               <div class="cardBody">
                 <p class="cardTitle"><strong>Sawasdee Festival: Celebrating the 190th Anniversary of US-Thai Relations</strong></p>
                 <p class="cardText">Highlights from a cultural festival marking a milestone in U.S.–Thai relations.</p>
                 <div class="cardFooter">
                   <span class="mini">Asia Matters for America</span>
-                  <a class="btn primary" href="https://asiamattersforamerica.org/articles/sawasdee-festival-celebrating-the-190th-anniversary-of-us-thai-relations" target="_blank" rel="noopener">Open ↗</a>
+                  <a class="btn" href="https://asiamattersforamerica.org/articles/sawasdee-festival-celebrating-the-190th-anniversary-of-us-thai-relations" target="_blank" rel="noopener">Open ↗</a>
                 </div>
               </div>
             </article>
@@ -896,8 +871,8 @@
             <p class="muted">A scrollable gallery of posts (with images + summarized captions).</p>
           </div>
           <div class="btnRow">
-            <button class="btn" id="toggleCaptionsBtn" type="button">Captions (on)</button>
-            <a class="btn blue" href="https://www.linkedin.com/in/natashayotmanee" target="_blank" rel="noopener">Open LinkedIn ↗</a>
+            <button class="btn ghost" id="toggleCaptionsBtn" type="button">Captions (on)</button>
+            <a class="btn ghost" href="https://www.linkedin.com/in/natashayotmanee" target="_blank" rel="noopener">Open LinkedIn ↗</a>
           </div>
         </div>
 
@@ -917,7 +892,7 @@
                 </p>
                 <div class="cardFooter">
                   <span class="mini">LinkedIn · Natasha Yotmanee</span>
-                  <a class="btn primary" href="https://www.linkedin.com/posts/natashayotmanee_and-im-back-after-six-unforgettable-activity-7377392265792524288-ido-" target="_blank" rel="noopener">Open ↗</a>
+                  <a class="btn" href="https://www.linkedin.com/posts/natashayotmanee_and-im-back-after-six-unforgettable-activity-7377392265792524288-ido-" target="_blank" rel="noopener">Open ↗</a>
                 </div>
               </div>
             </article>
@@ -933,7 +908,7 @@
                 </p>
                 <div class="cardFooter">
                   <span class="mini">LinkedIn · Natasha Yotmanee</span>
-                  <a class="btn primary" href="https://www.linkedin.com/posts/natashayotmanee_happy-february-reflecting-on-the-past-activity-7291815029211815936-8Zhu" target="_blank" rel="noopener">Open ↗</a>
+                  <a class="btn" href="https://www.linkedin.com/posts/natashayotmanee_happy-february-reflecting-on-the-past-activity-7291815029211815936-8Zhu" target="_blank" rel="noopener">Open ↗</a>
                 </div>
               </div>
             </article>
@@ -949,7 +924,7 @@
                 </p>
                 <div class="cardFooter">
                   <span class="mini">LinkedIn · Natasha Yotmanee</span>
-                  <a class="btn primary" href="https://www.linkedin.com/posts/natashayotmanee_undp-crisisbureau-fellow-activity-7211036309379796992-m9Ke" target="_blank" rel="noopener">Open ↗</a>
+                  <a class="btn" href="https://www.linkedin.com/posts/natashayotmanee_undp-crisisbureau-fellow-activity-7211036309379796992-m9Ke" target="_blank" rel="noopener">Open ↗</a>
                 </div>
               </div>
             </article>
@@ -963,7 +938,7 @@
                 </p>
                 <div class="cardFooter">
                   <span class="mini">LinkedIn · Shared</span>
-                  <a class="btn primary" href="https://www.linkedin.com/posts/mike-tierney-694a3856_the-griffin-has-landed-in-brussels-and-ugcPost-7173641420556152832-mH67" target="_blank" rel="noopener">Open ↗</a>
+                  <a class="btn" href="https://www.linkedin.com/posts/mike-tierney-694a3856_the-griffin-has-landed-in-brussels-and-ugcPost-7173641420556152832-mH67" target="_blank" rel="noopener">Open ↗</a>
                 </div>
               </div>
             </article>
@@ -977,7 +952,7 @@
                 </p>
                 <div class="cardFooter">
                   <span class="mini">LinkedIn · Shared</span>
-                  <a class="btn primary" href="https://www.linkedin.com/posts/kaleea-korunka_my-global-scholars-cohort-and-i-recently-ugcPost-7170439711038136321-aXQt" target="_blank" rel="noopener">Open ↗</a>
+                  <a class="btn" href="https://www.linkedin.com/posts/kaleea-korunka_my-global-scholars-cohort-and-i-recently-ugcPost-7170439711038136321-aXQt" target="_blank" rel="noopener">Open ↗</a>
                 </div>
               </div>
             </article>
@@ -991,7 +966,7 @@
                 </p>
                 <div class="cardFooter">
                   <span class="mini">LinkedIn · Shared</span>
-                  <a class="btn primary" href="https://www.linkedin.com/posts/mike-tierney-694a3856_for-the-past-2-weeks-william-mary-students-ugcPost-7154577984773832704-W3qa" target="_blank" rel="noopener">Open ↗</a>
+                  <a class="btn" href="https://www.linkedin.com/posts/mike-tierney-694a3856_for-the-past-2-weeks-william-mary-students-ugcPost-7154577984773832704-W3qa" target="_blank" rel="noopener">Open ↗</a>
                 </div>
               </div>
             </article>
@@ -1005,7 +980,7 @@
                 </p>
                 <div class="cardFooter">
                   <span class="mini">LinkedIn · Shared</span>
-                  <a class="btn primary" href="https://www.linkedin.com/posts/office-of-the-under-secretary-of-war-for-policy_ms-sasha-baker-acting-under-secretary-of-ugcPost-7151776456820346880-o-_J" target="_blank" rel="noopener">Open ↗</a>
+                  <a class="btn" href="https://www.linkedin.com/posts/office-of-the-under-secretary-of-war-for-policy_ms-sasha-baker-acting-under-secretary-of-ugcPost-7151776456820346880-o-_J" target="_blank" rel="noopener">Open ↗</a>
                 </div>
               </div>
             </article>
@@ -1019,7 +994,7 @@
                 </p>
                 <div class="cardFooter">
                   <span class="mini">LinkedIn · Shared</span>
-                  <a class="btn primary" href="https://www.linkedin.com/posts/activity-7152694780970299393-M0gr" target="_blank" rel="noopener">Open ↗</a>
+                  <a class="btn" href="https://www.linkedin.com/posts/activity-7152694780970299393-M0gr" target="_blank" rel="noopener">Open ↗</a>
                 </div>
               </div>
             </article>
@@ -1070,7 +1045,7 @@
   </main>
 
   <script>
-    // Hash-router to simulate “subpages” within one file
+    // Hash-router
     const routes = ["home", "cv", "research", "posts", "contact"];
     const pages = [...document.querySelectorAll(".page")];
     const navLinks = [...document.querySelectorAll("[data-route]")];
@@ -1115,14 +1090,17 @@
       const el = document.getElementById(targetId);
       if (!el) return;
       el.scrollIntoView({behavior:"smooth", block:"start"});
-      // subtle highlight
       el.animate(
-        [{ boxShadow: "0 0 0 rgba(0,0,0,0)" }, { boxShadow: "0 0 0 6px rgba(14,165,166,0.16)" }, { boxShadow: "0 0 0 rgba(0,0,0,0)" }],
+        [
+          { boxShadow: "0 0 0 rgba(0,0,0,0)" },
+          { boxShadow: "0 0 0 6px rgba(14,165,166,0.16)" },
+          { boxShadow: "0 0 0 rgba(0,0,0,0)" }
+        ],
         { duration: 900, easing: "ease-out" }
       );
     }
 
-    // Intercept clicks that request a scroll target
+    // Intercept clicks that request a scroll target (route + scroll)
     document.querySelectorAll('a[data-scrolltarget]').forEach(a => {
       a.addEventListener("click", (e) => {
         const route = a.getAttribute("data-route");
