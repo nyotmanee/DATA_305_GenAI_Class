@@ -24,48 +24,11 @@
       --accent2: #06b6d4;  /* cyan */
       --accentSoft: rgba(37,99,235,0.10);
       --accentSoft2: rgba(6,182,212,0.10);
-    }
 
-    * { box-sizing: border-box; }
-    html, body { height: 100%; }
-    body{
-      margin: 0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
-      color: var(--text);
-      background:
-        radial-gradient(900px 600px at 10% 10%, var(--accentSoft), transparent 60%),
-        radial-gradient(850px 550px at 92% 18%, var(--accentSoft2), transparent 55%),
-        var(--bg);
-      line-height: 1.5;
-    }
-
-    a{ color: inherit; text-decoration: none; }
-    a:hover{ text-decoration: underline; }<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="description" content="Natasha Yotmanee — International Relations | Data Science | Peace & Humanitarian Focus" />
-  <title>Natasha Yotmanee</title>
-
-  <style>
-    :root{
-      /* Light theme */
-      --bg: #f6f8fb;
-      --panel: #ffffff;
-      --panel2: #f2f5fb;
-      --text: rgba(14, 23, 38, 0.92);
-      --muted: rgba(14, 23, 38, 0.72);
-      --muted2: rgba(14, 23, 38, 0.62);
-      --border: rgba(20, 34, 55, 0.12);
-      --shadow: 0 18px 40px rgba(12, 18, 28, 0.10);
-      --radius: 18px;
-      --max: 1040px;
-
-      --accent: #2563eb;   /* blue */
-      --accent2: #06b6d4;  /* cyan */
-      --accentSoft: rgba(37,99,235,0.10);
-      --accentSoft2: rgba(6,182,212,0.10);
+      --eduBg: rgba(6, 182, 212, 0.08);
+      --expBg: rgba(37, 99, 235, 0.08);
+      --eduBorder: rgba(6, 182, 212, 0.22);
+      --expBorder: rgba(37, 99, 235, 0.22);
     }
 
     * { box-sizing: border-box; }
@@ -185,6 +148,7 @@
     }
     @media (min-width: 900px){
       .grid.cols2{ grid-template-columns: 1.1fr 0.9fr; }
+      .grid.cols2equal{ grid-template-columns: 1fr 1fr; }
     }
 
     /* Typography */
@@ -228,6 +192,7 @@
       cursor: pointer;
       transition: transform .12s ease, background .12s ease, border-color .12s ease;
       user-select: none;
+      text-decoration: none;
     }
     .btn:hover{
       transform: translateY(-1px);
@@ -243,6 +208,15 @@
       background: rgba(37,99,235,0.14);
       border-color: rgba(37,99,235,0.36);
     }
+    .btn.cyan{
+      background: rgba(6,182,212,0.10);
+      border-color: rgba(6,182,212,0.28);
+    }
+    .btn.cyan:hover{
+      background: rgba(6,182,212,0.14);
+      border-color: rgba(6,182,212,0.36);
+    }
+    .btn.small{ padding: 9px 10px; border-radius: 999px; font-size: 12px; }
 
     /* Lists / timeline */
     .list{
@@ -282,7 +256,7 @@
       margin-top: 4px;
     }
 
-    /* Home profile block */
+    /* HOME profile block */
     .heroRow{
       display:flex;
       gap: 14px;
@@ -298,6 +272,38 @@
       box-shadow: 0 16px 30px rgba(12,18,28,0.12);
       background: #fff;
       object-fit: cover;
+    }
+
+    /* CV visual blocks */
+    .sectionBlock{
+      border-radius: 18px;
+      padding: 14px;
+      border: 1px solid var(--border);
+      background: #fff;
+    }
+    .sectionBlock.edu{
+      background: var(--eduBg);
+      border-color: var(--eduBorder);
+    }
+    .sectionBlock.exp{
+      background: var(--expBg);
+      border-color: var(--expBorder);
+    }
+    .sectionHeaderRow{
+      display:flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 10px;
+    }
+    .sectionBadge{
+      font-size: 12px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.75);
+      color: var(--muted2);
     }
 
     /* Post-style cards (used for articles too) */
@@ -397,6 +403,26 @@
       color: var(--muted);
       font-size: 13px;
     }
+
+    /* Horizontal posts scroller */
+    .postsScroller{
+      display:grid;
+      grid-auto-flow:column;
+      grid-auto-columns:minmax(260px, 340px);
+      gap:14px;
+      overflow-x:auto;
+      scroll-snap-type:x mandatory;
+      padding: 2px;
+    }
+    .snap{ scroll-snap-align: start; }
+
+    /* Skills as “buttons” */
+    .tagRow{
+      display:flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 10px;
+    }
   </style>
 </head>
 
@@ -479,10 +505,21 @@
 
           <div class="card pad">
             <h2>Featured experience</h2>
-            <p class="muted">
+            <p class="muted" style="margin-bottom:10px;">
               UNDP Crisis Bureau (Risk Anticipation Hub) communications fellow · Asia Policy Lab team lead · USAWC strategic studies intern
             </p>
-            <div class="btnRow">
+
+            <!-- Organization buttons that jump to the correct CV section -->
+            <div class="btnRow" aria-label="Jump to CV sections">
+              <a class="btn small cyan" href="#cv" data-route="cv" data-anchor="exp-gov">Department of Government</a>
+              <a class="btn small cyan" href="#cv" data-route="cv" data-anchor="exp-apl">Asia Policy Lab</a>
+              <a class="btn small cyan" href="#cv" data-route="cv" data-anchor="exp-undp">UNDP Crisis Bureau</a>
+              <a class="btn small cyan" href="#cv" data-route="cv" data-anchor="exp-usawc">USAWC</a>
+              <a class="btn small cyan" href="#cv" data-route="cv" data-anchor="exp-ewc">East-West Center</a>
+              <a class="btn small cyan" href="#cv" data-route="cv" data-anchor="exp-rte">Royal Thai Embassy</a>
+            </div>
+
+            <div class="btnRow" style="margin-top:10px;">
               <a class="btn primary" href="#cv" data-route="cv">View CV</a>
             </div>
           </div>
@@ -497,201 +534,223 @@
 
         <div class="divider"></div>
 
-        <h2>Education</h2>
-        <div class="timeline">
-          <div class="tItem">
-            <div class="tTop">
-              <div>
-                <h3>William &amp; Mary — Williamsburg, VA</h3>
-                <div class="tMeta">B.A. International Relations · Minor: Data Science · <strong>Expected May 2026</strong></div>
-              </div>
-              <div class="when">2022–2026</div>
-            </div>
-            <ul class="list">
-              <li><strong>Senior Capstone:</strong> “Why States Hedge Differently: Systemic Pressures &amp; Domestic Constraints in Southeast Asia.”</li>
-            </ul>
+        <!-- EDUCATION (distinct background) -->
+        <div class="sectionBlock edu" id="cv-education">
+          <div class="sectionHeaderRow">
+            <h2 style="margin:0;">Education</h2>
+            <span class="sectionBadge">Education</span>
           </div>
 
-          <div class="tItem">
-            <div class="tTop">
-              <div>
-                <h3>Tsinghua University (清华大学) — Beijing, China</h3>
-                <div class="tMeta">Exchange semester</div>
+          <div class="timeline" style="margin-top:0;">
+            <div class="tItem" style="background:rgba(255,255,255,0.75);" id="edu-wm">
+              <div class="tTop">
+                <div>
+                  <h3>William &amp; Mary — Williamsburg, VA</h3>
+                  <div class="tMeta">B.A. International Relations · Minor: Data Science · <strong>Expected May 2026</strong></div>
+                </div>
+                <div class="when">2022–2026</div>
               </div>
-              <div class="when">Feb–Jun 2025</div>
+              <ul class="list">
+                <li><strong>Senior Capstone:</strong> “Why States Hedge Differently: Systemic Pressures &amp; Domestic Constraints in Southeast Asia.”</li>
+              </ul>
+            </div>
+
+            <div class="tItem" style="background:rgba(255,255,255,0.75);" id="edu-tsinghua">
+              <div class="tTop">
+                <div>
+                  <h3>Tsinghua University (清华大学) — Beijing, China</h3>
+                  <div class="tMeta">Exchange semester</div>
+                </div>
+                <div class="when">Feb–Jun 2025</div>
+              </div>
+            </div>
+
+            <div class="tItem" style="background:rgba(255,255,255,0.75);" id="edu-blcu">
+              <div class="tTop">
+                <div>
+                  <h3>Beijing Language and Culture University (北京语言大学) — Beijing, China</h3>
+                  <div class="tMeta">Summer language program</div>
+                </div>
+                <div class="when">Jun–Aug 2025</div>
+              </div>
             </div>
           </div>
+        </div>
 
-          <div class="tItem">
-            <div class="tTop">
-              <div>
-                <h3>Beijing Language and Culture University (北京语言大学) — Beijing, China</h3>
-                <div class="tMeta">Summer language program</div>
+        <div class="divider"></div>
+
+        <!-- EXPERIENCE (distinct background) -->
+        <div class="sectionBlock exp" id="cv-experience">
+          <div class="sectionHeaderRow">
+            <h2 style="margin:0;">Professional &amp; Research Experience</h2>
+            <span class="sectionBadge">Experience</span>
+          </div>
+
+          <div class="timeline" style="margin-top:0;">
+            <div class="tItem" style="background:rgba(255,255,255,0.75);" id="exp-gov">
+              <div class="tTop">
+                <div>
+                  <h3>Research Assistant — Department of Government, William &amp; Mary</h3>
+                  <div class="tMeta"><strong>Project:</strong> Politics of Recognition and the Case of One China</div>
+                </div>
+                <div class="when">Feb 2026–Present</div>
               </div>
-              <div class="when">Jun–Aug 2025</div>
+              <ul class="list">
+                <li>Support analysis and data modeling of a cross-national dataset on diplomatic recognition patterns (1945–1991), examining conditions under which newly decolonized states recognized the PRC vs. ROC.</li>
+                <li>Assist with data preparation, review, and documentation to support comparative research.</li>
+                <li>Contribute to literature review and synthesis on recognition and institutional decision-making.</li>
+                <li>Collaborate with faculty/peers on research tasks and deliverables.</li>
+              </ul>
+            </div>
+
+            <div class="tItem" style="background:rgba(255,255,255,0.75);" id="exp-apl">
+              <div class="tTop">
+                <div>
+                  <h3>Team Leader — Asia Policy Lab, William &amp; Mary</h3>
+                  <div class="tMeta"><strong>Project:</strong> Storied States</div>
+                </div>
+                <div class="when">Aug 2025–Jan 2026</div>
+              </div>
+              <ul class="list">
+                <li>Selected as 1 of 13 undergraduates for a competitive faculty-led research program contributing to scholarly and applied projects.</li>
+                <li>Led a 3-person team coding political speeches from Taiwan and South Korea; coordinated timelines and quality control.</li>
+                <li>Designed and applied a structured coding framework for a comparative archival dataset (~500 documents); cleaned/standardized a 260-document subset of Taiwanese speeches.</li>
+                <li>Conducted sentence-level analysis of elite political discourse in Taiwan across democratization periods.</li>
+              </ul>
+            </div>
+
+            <div class="tItem" style="background:rgba(255,255,255,0.75);" id="exp-undp">
+              <div class="tTop">
+                <div>
+                  <h3>Communications Fellow — UNDP Crisis Bureau (Risk Anticipation Hub)</h3>
+                  <div class="tMeta">New York, NY</div>
+                </div>
+                <div class="when">May–Aug 2024</div>
+              </div>
+              <ul class="list">
+                <li>Supported internal communications products to improve visibility/accessibility of analytical work.</li>
+                <li>Drafted/refined proposals and content for newsletters and internal channels.</li>
+                <li>Developed standardized presentation templates for consistent messaging and branding.</li>
+              </ul>
+            </div>
+
+            <div class="tItem" style="background:rgba(255,255,255,0.75);" id="exp-usawc">
+              <div class="tTop">
+                <div>
+                  <h3>Ukraine War Study Intern — Strategic Studies Institute, U.S. Army War College</h3>
+                  <div class="tMeta">Carlisle, PA</div>
+                </div>
+                <div class="when">Jan 2023–Apr 2024</div>
+              </div>
+              <ul class="list">
+                <li>Conducted literature reviews and cataloged interview notes supporting an unclassified monograph on the war in Ukraine.</li>
+                <li>Researched security cooperation and early U.S. defense funding/assistance to support contextual and institutional analysis.</li>
+                <li>Synthesized findings into briefs and presented recommendations to internal briefing teams supporting senior officials.</li>
+              </ul>
+            </div>
+
+            <div class="tItem" style="background:rgba(255,255,255,0.75);" id="exp-ewc">
+              <div class="tTop">
+                <div>
+                  <h3>Young Professionals Program — East-West Center in Washington</h3>
+                  <div class="tMeta">Washington, D.C.</div>
+                </div>
+                <div class="when">Jun–Aug 2023</div>
+              </div>
+              <ul class="list">
+                <li>Researched U.S.-ASEAN relations and co-edited <em>ASEAN Matters for America</em>.</li>
+                <li>Authored/published three articles for the Asia Matters for America platform on U.S.-Asia relations and regional developments.</li>
+                <li>Produced internal reports on Indo-Pacific events and U.S. government priorities.</li>
+              </ul>
+            </div>
+
+            <div class="tItem" style="background:rgba(255,255,255,0.75);" id="exp-rte">
+              <div class="tTop">
+                <div>
+                  <h3>TANIP Participant — Royal Thai Embassy &amp; US-Asia Institute</h3>
+                  <div class="tMeta">Washington, D.C.</div>
+                </div>
+                <div class="when">Jun–Aug 2023</div>
+              </div>
+              <ul class="list">
+                <li>Selected as one of five participants in a competitive national program providing exposure to U.S. government institutions.</li>
+                <li>Researched and presented a cybersecurity policy memo on rising cybercrime in Thailand.</li>
+                <li>Supported public communications, including standardized materials and coordination with media partners.</li>
+              </ul>
             </div>
           </div>
         </div>
 
         <div class="divider"></div>
 
-        <h2>Professional &amp; Research Experience</h2>
-        <div class="timeline">
-          <div class="tItem">
-            <div class="tTop">
-              <div>
-                <h3>Research Assistant — Department of Government, William &amp; Mary</h3>
-                <div class="tMeta"><strong>Project:</strong> Politics of Recognition and the Case of One China</div>
-              </div>
-              <div class="when">Feb 2026–Present</div>
+        <!-- Side-by-side: Research Contributions + Programs & Awards -->
+        <div class="grid cols2equal">
+          <div class="card pad" style="box-shadow:none;background:rgba(255,255,255,0.75);">
+            <h2>Research Contributions</h2>
+            <div class="stack" style="margin-top:8px;">
+              <article class="post">
+                <div class="postBody">
+                  <p class="postTitle">ASEAN Matters for America / America Matters for ASEAN (6th ed.)</p>
+                  <p class="postText">Research contributor / co-editor · East-West Center (2023)</p>
+                  <div class="postFooter">
+                    <span class="mini">PDF</span>
+                    <a class="btn primary" href="https://asiamattersforamerica.org/uploads/publications/2023-ASEAN-Matters-for-America.pdf" target="_blank" rel="noopener">Open ↗</a>
+                  </div>
+                </div>
+              </article>
+
+              <article class="post">
+                <div class="postBody">
+                  <p class="postTitle">Crisis in the Caucasus: Invasion of Georgia, 2008–2014</p>
+                  <p class="postText">Internal study contributor · Strategic Studies Institute, USAWC (2024)</p>
+                  <div class="postFooter">
+                    <span class="mini">Internal contribution</span>
+                    <span class="btn" style="cursor:default;">No public link</span>
+                  </div>
+                </div>
+              </article>
             </div>
-            <ul class="list">
-              <li>Support analysis and data modeling of a cross-national dataset on diplomatic recognition patterns (1945–1991), examining conditions under which newly decolonized states recognized the PRC vs. ROC.</li>
-              <li>Assist with data preparation, review, and documentation to support comparative research.</li>
-              <li>Contribute to literature review and synthesis on recognition and institutional decision-making.</li>
-              <li>Collaborate with faculty/peers on research tasks and deliverables.</li>
-            </ul>
           </div>
 
-          <div class="tItem">
-            <div class="tTop">
-              <div>
-                <h3>Team Leader — Asia Policy Lab, William &amp; Mary</h3>
-                <div class="tMeta"><strong>Project:</strong> Storied States</div>
-              </div>
-              <div class="when">Aug 2025–Jan 2026</div>
-            </div>
-            <ul class="list">
-              <li>Selected as 1 of 13 undergraduates for a competitive faculty-led research program contributing to scholarly and applied projects.</li>
-              <li>Led a 3-person team coding political speeches from Taiwan and South Korea; coordinated timelines and quality control.</li>
-              <li>Designed and applied a structured coding framework for a comparative archival dataset (~500 documents); cleaned/standardized a 260-document subset of Taiwanese speeches.</li>
-              <li>Conducted sentence-level analysis of elite political discourse in Taiwan across democratization periods.</li>
-            </ul>
-          </div>
+          <div class="card pad" style="box-shadow:none;background:rgba(255,255,255,0.75);">
+            <h2>Programs &amp; Awards</h2>
+            <div class="stack" style="margin-top:8px;">
+              <article class="post">
+                <div class="postBody">
+                  <p class="postTitle">Global Scholars Program (Global Research Institute, W&amp;M)</p>
+                  <p class="postText">Selected as 1 of 18 · Aug 2023–2024</p>
+                  <div class="postFooter">
+                    <span class="mini">W&amp;M</span>
+                    <a class="btn primary" href="https://www.wm.edu/offices/dccenter/opportunities/gsp/gsp-alumni/23-24scholars/" target="_blank" rel="noopener">Open ↗</a>
+                  </div>
+                </div>
+              </article>
 
-          <div class="tItem">
-            <div class="tTop">
-              <div>
-                <h3>Communications Fellow — UNDP Crisis Bureau (Risk Anticipation Hub)</h3>
-                <div class="tMeta">New York, NY</div>
-              </div>
-              <div class="when">May–Aug 2024</div>
+              <article class="post">
+                <div class="postBody">
+                  <p class="postTitle">Gates Scholarship (Reves Center, W&amp;M)</p>
+                  <p class="postText">$7,500 study abroad award · Feb–Jun 2025</p>
+                  <div class="postFooter">
+                    <span class="mini">Study Abroad</span>
+                    <a class="btn primary" href="https://studyabroad.wm.edu/index.cfm?FuseAction=Programs.ViewProgram&Program_ID=2659" target="_blank" rel="noopener">Open ↗</a>
+                  </div>
+                </div>
+              </article>
             </div>
-            <ul class="list">
-              <li>Supported internal communications products to improve visibility/accessibility of analytical work.</li>
-              <li>Drafted/refined proposals and content for newsletters and internal channels.</li>
-              <li>Developed standardized presentation templates for consistent messaging and branding.</li>
-            </ul>
-          </div>
-
-          <div class="tItem">
-            <div class="tTop">
-              <div>
-                <h3>Ukraine War Study Intern — Strategic Studies Institute, U.S. Army War College</h3>
-                <div class="tMeta">Carlisle, PA</div>
-              </div>
-              <div class="when">Jan 2023–Apr 2024</div>
-            </div>
-            <ul class="list">
-              <li>Conducted literature reviews and cataloged interview notes supporting an unclassified monograph on the war in Ukraine.</li>
-              <li>Researched security cooperation and early U.S. defense funding/assistance to support contextual and institutional analysis.</li>
-              <li>Synthesized findings into briefs and presented recommendations to internal briefing teams supporting senior officials.</li>
-            </ul>
-          </div>
-
-          <div class="tItem">
-            <div class="tTop">
-              <div>
-                <h3>Young Professionals Program — East-West Center in Washington</h3>
-                <div class="tMeta">Washington, D.C.</div>
-              </div>
-              <div class="when">Jun–Aug 2023</div>
-            </div>
-            <ul class="list">
-              <li>Researched U.S.-ASEAN relations and co-edited <em>ASEAN Matters for America</em>.</li>
-              <li>Authored/published three articles for the Asia Matters for America platform on U.S.-Asia relations and regional developments.</li>
-              <li>Produced internal reports on Indo-Pacific events and U.S. government priorities.</li>
-            </ul>
-          </div>
-
-          <div class="tItem">
-            <div class="tTop">
-              <div>
-                <h3>TANIP Participant — Royal Thai Embassy &amp; US-Asia Institute</h3>
-                <div class="tMeta">Washington, D.C.</div>
-              </div>
-              <div class="when">Jun–Aug 2023</div>
-            </div>
-            <ul class="list">
-              <li>Selected as one of five participants in a competitive national program providing exposure to U.S. government institutions.</li>
-              <li>Researched and presented a cybersecurity policy memo on rising cybercrime in Thailand.</li>
-              <li>Supported public communications, including standardized materials and coordination with media partners.</li>
-            </ul>
           </div>
         </div>
 
         <div class="divider"></div>
 
+        <!-- Skills at bottom as “buttons” -->
         <h2>Skills</h2>
-        <div class="tItem" style="background:#fff;">
-          <ul class="list">
-            <li><strong>Software:</strong> Python (intermediate); SQL (basic, developing); R (basic).</li>
-            <li><strong>Languages:</strong> English (native), Thai (oral proficiency), Mandarin Chinese (intermediate).</li>
-          </ul>
-        </div>
-
-        <div class="divider"></div>
-
-        <h2>Research Contributions</h2>
-        <div class="stack">
-          <article class="post">
-            <div class="postBody">
-              <p class="postTitle">ASEAN Matters for America / America Matters for ASEAN (6th ed.)</p>
-              <p class="postText">Research contributor / co-editor · East-West Center (2023)</p>
-              <div class="postFooter">
-                <span class="mini">PDF</span>
-                <a class="btn primary" href="https://asiamattersforamerica.org/uploads/publications/2023-ASEAN-Matters-for-America.pdf" target="_blank" rel="noopener">Open ↗</a>
-              </div>
-            </div>
-          </article>
-
-          <article class="post">
-            <div class="postBody">
-              <p class="postTitle">Crisis in the Caucasus: Invasion of Georgia, 2008–2014</p>
-              <p class="postText">Internal study contributor · Strategic Studies Institute, USAWC (2024)</p>
-              <div class="postFooter">
-                <span class="mini">Internal contribution</span>
-                <span class="btn" style="cursor:default;">No public link</span>
-              </div>
-            </div>
-          </article>
-        </div>
-
-        <div class="divider"></div>
-
-        <h2>Programs &amp; Awards</h2>
-        <div class="stack">
-          <article class="post">
-            <div class="postBody">
-              <p class="postTitle">Global Scholars Program (Global Research Institute, W&amp;M)</p>
-              <p class="postText">Selected as 1 of 18 · Aug 2023–2024</p>
-              <div class="postFooter">
-                <span class="mini">W&amp;M</span>
-                <a class="btn primary" href="https://www.wm.edu/offices/dccenter/opportunities/gsp/gsp-alumni/23-24scholars/" target="_blank" rel="noopener">Open ↗</a>
-              </div>
-            </div>
-          </article>
-
-          <article class="post">
-            <div class="postBody">
-              <p class="postTitle">Gates Scholarship (Reves Center, W&amp;M)</p>
-              <p class="postText">$7,500 study abroad award · Feb–Jun 2025</p>
-              <div class="postFooter">
-                <span class="mini">Study Abroad</span>
-                <a class="btn primary" href="https://studyabroad.wm.edu/index.cfm?FuseAction=Programs.ViewProgram&Program_ID=2659" target="_blank" rel="noopener">Open ↗</a>
-              </div>
-            </div>
-          </article>
+        <div class="tagRow" aria-label="Skills">
+          <span class="btn small" style="cursor:default;">Python (intermediate)</span>
+          <span class="btn small" style="cursor:default;">SQL (basic, developing)</span>
+          <span class="btn small" style="cursor:default;">R (basic)</span>
+          <span class="btn small" style="cursor:default;">English (native)</span>
+          <span class="btn small" style="cursor:default;">Thai (oral proficiency)</span>
+          <span class="btn small" style="cursor:default;">Mandarin Chinese (intermediate)</span>
         </div>
       </div>
     </section>
@@ -744,6 +803,7 @@
             <h2>Selected publications</h2>
             <p class="muted">Writing and reporting on U.S.–Asia relations and regional developments.</p>
 
+            <!-- Vertical stacked “post-style” articles -->
             <div class="stack">
               <article class="post">
                 <div class="postBody">
@@ -798,132 +858,118 @@
 
         <div class="divider"></div>
 
-        <div class="postsWrap" aria-label="LinkedIn post gallery (horizontal scroll)">
-          <div class="posts" id="postsGrid" style="display:grid;grid-auto-flow:column;grid-auto-columns:minmax(260px, 340px);gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;padding:2px;">
-            <!-- Post cards (same as before) -->
-            <article class="post" style="scroll-snap-align:start;min-height:360px;">
-              <div class="postMedia" aria-hidden="true"></div>
-              <div class="postBody">
-                <p class="postTitle">And I’m back!</p>
-                <p class="postText caption">
-                  And I’m back! After six unforgettable months studying abroad in Beijing, I’m finally back in the US! I spent four months as an exchange student at Tsinghua University and when I realized my language skills weren’t improving as much as I wanted, I decided to stay longer and spend the summer studying Mandarin Chinese at Beijing Language and Culture University.<br><br>
-                  During my time in China, I traveled to about 15 cities where I tried regional cuisines, stood in centuries-old temples, and experienced the mix of ancient history with rapid modern development in each place I traveled to. But what truly made this study abroad journey so special were the people: classmates who made the classroom so much more enjoyable and friends I shared countless memories with.<br><br>
-                  From late-night sweet treat runs to Mixue, to discovering new restaurants, and exploring Beijing and beyond, you all made my time in China truly unforgettable. Two years ago, a mentor told me not to hold myself back because of “what ifs” and that advice is what ultimately pushed me to go to China in the first place. It reminded me to take risks now, while I still can, and to create the stories I’ll be telling for years to come.<br><br>
-                  Stories of the adventures, friendships, and unexpected moments that made this chapter of my life so much more meaningful. While my Beijing chapter has come to a close, I’m so excited to see what’s next as I enter my final year of university! So until next time, Beijing. 再见北京，谢谢你带给我的一切! And for the song I heard more times in China these past six months than I ever had before: it feels good to be back home, to the place where I belong, Virginia (not West Virginia lol).
-                </p>
-                <div class="postFooter">
-                  <span class="mini">LinkedIn · Natasha Yotmanee</span>
-                  <a class="btn primary" href="https://www.linkedin.com/posts/natashayotmanee_and-im-back-after-six-unforgettable-activity-7377392265792524288-ido-?utm_source=share&utm_medium=member_desktop&rcm=ACoAAC_3cMEBJmeZzCb0Cy3e5WIgP7KIHPNgeKw" target="_blank" rel="noopener">Open ↗</a>
-                </div>
+        <div class="postsScroller" aria-label="LinkedIn post gallery (horizontal scroll)">
+          <article class="post snap" style="min-height:360px;">
+            <div class="postMedia" aria-hidden="true"></div>
+            <div class="postBody">
+              <p class="postTitle">And I’m back!</p>
+              <p class="postText caption">
+                A reflection on six months studying abroad in Beijing—an exchange at Tsinghua, an extended summer at BLCU to improve Mandarin, and travel across ~15 cities. Highlights include the friendships, the everyday moments that made the experience meaningful, and the decision to take risks and say “yes” to the opportunity.
+              </p>
+              <div class="postFooter">
+                <span class="mini">LinkedIn · Natasha Yotmanee</span>
+                <a class="btn primary" href="https://www.linkedin.com/posts/natashayotmanee_and-im-back-after-six-unforgettable-activity-7377392265792524288-ido-?utm_source=share&utm_medium=member_desktop&rcm=ACoAAC_3cMEBJmeZzCb0Cy3e5WIgP7KIHPNgeKw" target="_blank" rel="noopener">Open ↗</a>
               </div>
-            </article>
+            </div>
+          </article>
 
-            <article class="post" style="scroll-snap-align:start;min-height:360px;">
-              <div class="postMedia" aria-hidden="true"></div>
-              <div class="postBody">
-                <p class="postTitle">Happy February!</p>
-                <p class="postText caption">
-                  Happy February! Reflecting on the past year, I am incredibly grateful for the experiences, friendships, and mentorships that have shaped my journey. Through the Global Scholars Program, I had the opportunity to study and visit key sites in Washington D.C., Brussels, and Paris, gaining invaluable insights along the way. I am especially thankful for the mentors who guided me throughout this program (Gay Hee Lee &amp; Jimmy Z. Z.) and for the unwavering support from the William &amp; Mary Global Research Institute and the W&amp;M Washington Center — with a special thanks to Mike Tierney, David Trichler, Erin Battle, Kira Allmann, Ph.D., and our TA, Katelyn Oxer.<br><br>
-                  This program was truly a transformative experience, shaping both my academic and professional journey! I was also honored to conclude the program with a fellowship at the UNDP Risk Anticipation Hub, where I had the opportunity to gain hands-on experience and collaborate with inspiring individuals. A heartfelt thank you to everyone on the RAH Team and at the Crisis Bureau who made this experience so meaningful! ✨ Additionally, this past spring, I completed my internship with Michael E. Lynch, PhD, contributing to a study on the Ukraine war. I am deeply grateful for his guidance, mentorship, and invaluable advice throughout the internship and beyond.<br><br>
-                  What’s next for me? I’m beyond excited to share that I have been accepted as an exchange student at Tsinghua University in Beijing, China! ✈️ I am also deeply honored to be a recipient of the prestigious Gates Scholarship. My heartfelt gratitude goes to The Honorable Robert M. Gates and Becky Gates for their generosity and unwavering commitment to supporting students in their academic pursuits. As I step into this next chapter, I look forward to learning, growing, and embracing new challenges. And if anyone happens to be in Beijing, please feel free to reach out, as I’d love to grab a meal and chat! :) Wishing everyone a fantastic year ahead!
-                </p>
-                <div class="postFooter">
-                  <span class="mini">LinkedIn · Natasha Yotmanee</span>
-                  <a class="btn primary" href="https://www.linkedin.com/posts/natashayotmanee_happy-february-reflecting-on-the-past-activity-7291815029211815936-8Zhu?utm_source=share&utm_medium=member_desktop&rcm=ACoAAC_3cMEBJmeZzCb0Cy3e5WIgP7KIHPNgeKw" target="_blank" rel="noopener">Open ↗</a>
-                </div>
+          <article class="post snap" style="min-height:360px;">
+            <div class="postMedia" aria-hidden="true"></div>
+            <div class="postBody">
+              <p class="postTitle">Happy February!</p>
+              <p class="postText caption">
+                A gratitude-filled update reflecting on mentorship and major experiences through the Global Scholars Program (DC, Brussels, Paris), plus a summer fellowship with UNDP’s Risk Anticipation Hub and a Ukraine war study internship. Also shares excitement about being accepted as an exchange student at Tsinghua and receiving the Gates Scholarship.
+              </p>
+              <div class="postFooter">
+                <span class="mini">LinkedIn · Natasha Yotmanee</span>
+                <a class="btn primary" href="https://www.linkedin.com/posts/natashayotmanee_happy-february-reflecting-on-the-past-activity-7291815029211815936-8Zhu?utm_source=share&utm_medium=member_desktop&rcm=ACoAAC_3cMEBJmeZzCb0Cy3e5WIgP7KIHPNgeKw" target="_blank" rel="noopener">Open ↗</a>
               </div>
-            </article>
+            </div>
+          </article>
 
-            <article class="post" style="scroll-snap-align:start;min-height:360px;">
-              <div class="postMedia" aria-hidden="true"></div>
-              <div class="postBody">
-                <p class="postTitle">International Day of Women in Diplomacy</p>
-                <p class="postText caption">
-                  As we celebrate International Day of Women in Diplomacy, I am excited to share that I have begun my fellowship with UNDP Crisis Bureau’s Risk Anticipation Hub in NYC. I would like to thank Erin Battle, Corrado Scognamillo, and everyone involved in my hiring process for giving me this opportunity! Looking forward to making the most out of this summer! #UNDP #CrisisBureau #Fellow
-                </p>
-                <div class="postFooter">
-                  <span class="mini">LinkedIn · Natasha Yotmanee</span>
-                  <a class="btn primary" href="https://www.linkedin.com/posts/natashayotmanee_undp-crisisbureau-fellow-activity-7211036309379796992-m9Ke?utm_source=share&utm_medium=member_desktop&rcm=ACoAAC_3cMEBJmeZzCb0Cy3e5WIgP7KIHPNgeKw" target="_blank" rel="noopener">Open ↗</a>
-                </div>
+          <article class="post snap" style="min-height:360px;">
+            <div class="postMedia" aria-hidden="true"></div>
+            <div class="postBody">
+              <p class="postTitle">International Day of Women in Diplomacy</p>
+              <p class="postText caption">
+                Announces the start of a fellowship with UNDP Crisis Bureau’s Risk Anticipation Hub in NYC, with thanks to mentors and the hiring team, and excitement to learn and contribute over the summer.
+              </p>
+              <div class="postFooter">
+                <span class="mini">LinkedIn · Natasha Yotmanee</span>
+                <a class="btn primary" href="https://www.linkedin.com/posts/natashayotmanee_undp-crisisbureau-fellow-activity-7211036309379796992-m9Ke?utm_source=share&utm_medium=member_desktop&rcm=ACoAAC_3cMEBJmeZzCb0Cy3e5WIgP7KIHPNgeKw" target="_blank" rel="noopener">Open ↗</a>
               </div>
-            </article>
+            </div>
+          </article>
 
-            <article class="post" style="scroll-snap-align:start;min-height:360px;">
-              <div class="postMedia" aria-hidden="true"></div>
-              <div class="postBody">
-                <p class="postTitle">The Griffin has Landed (in Brussels)</p>
-                <p class="postText caption">
-                  The Griffin has Landed (in Brussels) and taken off again (to Paris). Students in William &amp; Mary's Global Scholars Program have spent four days in Brussels eating waffles, and mussels, and visiting the European Union, Ukraine's Ambassador to the EU, Vsevolod Chentsov, Kelly Adams-Smith at the U.S. Mission to the EU, and visiting NATO HQ on the day that Sweden's flag was raised as a new member.<br><br>
-                  We met dozens of experts on AI/Tech Policy, space policy, the war in Ukraine, and the impact of regulations on private companies and consumers. We are all grateful for the work of Alexandre Pouille for helping to organize an alumni reception so students could meet folks working in Europe. A real highlight was visiting Sarah A. Cramsey who put our contemporary conversations into historical perspective all while opening her home to 20 starving students, and showing that some alums still remember all the words to the Alma Mater! CC Speakers: Trevor H. Rudolph, Michael Koplovsky, Elisabeth Laird, Michelle Hermes, Shanley Pinchotti, Caroline Bollars, Kira Allmann, Ph.D. Next: The City of Lights.<br><br>
-                  If you are in Paris tonight, join us for a reception at 6pm.
-                </p>
-                <div class="postFooter">
-                  <span class="mini">LinkedIn · Shared</span>
-                  <a class="btn primary" href="https://www.linkedin.com/posts/mike-tierney-694a3856_the-griffin-has-landed-in-brussels-and-ugcPost-7173641420556152832-mH67?utm_source=share&utm_medium=member_desktop&rcm=ACoAAC_3cMEBJmeZzCb0Cy3e5WIgP7KIHPNgeKw" target="_blank" rel="noopener">Open ↗</a>
-                </div>
+          <article class="post snap" style="min-height:360px;">
+            <div class="postMedia" aria-hidden="true"></div>
+            <div class="postBody">
+              <p class="postTitle">The Griffin has Landed (in Brussels)</p>
+              <p class="postText caption">
+                A trip recap from the Global Scholars Program in Brussels and Paris, including visits to EU and NATO institutions and conversations with experts on tech policy, space policy, the war in Ukraine, and regulation—plus an alumni reception and community highlights.
+              </p>
+              <div class="postFooter">
+                <span class="mini">LinkedIn · Shared</span>
+                <a class="btn primary" href="https://www.linkedin.com/posts/mike-tierney-694a3856_the-griffin-has-landed-in-brussels-and-ugcPost-7173641420556152832-mH67?utm_source=share&utm_medium=member_desktop&rcm=ACoAAC_3cMEBJmeZzCb0Cy3e5WIgP7KIHPNgeKw" target="_blank" rel="noopener">Open ↗</a>
               </div>
-            </article>
+            </div>
+          </article>
 
-            <article class="post" style="scroll-snap-align:start;min-height:360px;">
-              <div class="postMedia" aria-hidden="true"></div>
-              <div class="postBody">
-                <p class="postTitle">Visited Norfolk Naval Base</p>
-                <p class="postText caption">
-                  My Global Scholars Cohort and I recently visited Norfolk Naval Base to meet with the flight instructors for the Naval Air Force Atlantic Base and NATO Allied Command. Talking with everyone was interesting and delightful. I cannot wait to continue learning about NATO and other international organizations with my fellow GSP students in Paris and Brussels.
-                </p>
-                <div class="postFooter">
-                  <span class="mini">LinkedIn · Shared</span>
-                  <a class="btn primary" href="https://www.linkedin.com/posts/kaleea-korunka_my-global-scholars-cohort-and-i-recently-ugcPost-7170439711038136321-aXQt?utm_source=share&utm_medium=member_desktop&rcm=ACoAAC_3cMEBJmeZzCb0Cy3e5WIgP7KIHPNgeKw" target="_blank" rel="noopener">Open ↗</a>
-                </div>
+          <article class="post snap" style="min-height:360px;">
+            <div class="postMedia" aria-hidden="true"></div>
+            <div class="postBody">
+              <p class="postTitle">Visited Norfolk Naval Base</p>
+              <p class="postText caption">
+                Shares a visit with the Global Scholars cohort to Norfolk Naval Base to meet with instructors and learn more about the Naval Air Force Atlantic and NATO Allied Command—plus excitement to continue learning about NATO and international organizations.
+              </p>
+              <div class="postFooter">
+                <span class="mini">LinkedIn · Shared</span>
+                <a class="btn primary" href="https://www.linkedin.com/posts/kaleea-korunka_my-global-scholars-cohort-and-i-recently-ugcPost-7170439711038136321-aXQt?utm_source=share&utm_medium=member_desktop&rcm=ACoAAC_3cMEBJmeZzCb0Cy3e5WIgP7KIHPNgeKw" target="_blank" rel="noopener">Open ↗</a>
               </div>
-            </article>
+            </div>
+          </article>
 
-            <article class="post" style="scroll-snap-align:start;min-height:360px;">
-              <div class="postMedia" aria-hidden="true"></div>
-              <div class="postBody">
-                <p class="postTitle">Global Scholars Program in DC</p>
-                <p class="postText caption">
-                  For the past 2 weeks, William &amp; Mary students in our Global Scholars Program have been in DC exploring ideas learned in the classroom. This program is an integrated part of a liberal arts education with a strong side order of professional development. I was there for two days covering the intersection of U.S. foreign policy and international organizations. Hard to keep up with these students.<br><br>
-                  We visited United States Senate Committee on Foreign Relations, The World Bank, BASF, and The White House. Thanks to the W&amp;M Washington Center, William and Mary Alumni Association, and all the practitioners who met with our class. Can't wait for Spring Break when we take the show on the road to Brussels and Paris.
-                </p>
-                <div class="postFooter">
-                  <span class="mini">LinkedIn · Shared</span>
-                  <a class="btn primary" href="https://www.linkedin.com/posts/mike-tierney-694a3856_for-the-past-2-weeks-william-mary-students-ugcPost-7154577984773832704-W3qa?utm_source=share&utm_medium=member_desktop&rcm=ACoAAC_3cMEBJmeZzCb0Cy3e5WIgP7KIHPNgeKw" target="_blank" rel="noopener">Open ↗</a>
-                </div>
+          <article class="post snap" style="min-height:360px;">
+            <div class="postMedia" aria-hidden="true"></div>
+            <div class="postBody">
+              <p class="postTitle">Global Scholars Program in DC</p>
+              <p class="postText caption">
+                Highlights two weeks of DC site visits and practitioner meetings as part of the Global Scholars Program—covering U.S. foreign policy and international organizations—with stops including Congress, the World Bank, and the White House, plus anticipation for the Brussels/Paris trip.
+              </p>
+              <div class="postFooter">
+                <span class="mini">LinkedIn · Shared</span>
+                <a class="btn primary" href="https://www.linkedin.com/posts/mike-tierney-694a3856_for-the-past-2-weeks-william-mary-students-ugcPost-7154577984773832704-W3qa?utm_source=share&utm_medium=member_desktop&rcm=ACoAAC_3cMEBJmeZzCb0Cy3e5WIgP7KIHPNgeKw" target="_blank" rel="noopener">Open ↗</a>
               </div>
-            </article>
+            </div>
+          </article>
 
-            <article class="post" style="scroll-snap-align:start;min-height:360px;">
-              <div class="postMedia" aria-hidden="true"></div>
-              <div class="postBody">
-                <p class="postTitle">Sasha Baker spoke with Global Scholars</p>
-                <p class="postText caption">
-                  Ms. Sasha Baker, Acting Under Secretary of Defense for Policy spoke with students from William &amp; Mary’s Global Scholars Program, sharing her insights on national security, global challenges and opportunities, and how we’re working across the whole-of-government and with allies and partners to implement the National Defense Strategy. We thank the scholars for the rich exchange and are fortunate to have had the opportunity to engage with future leaders in foreign policy and national security.<br><br>
-                  United States Department of Defense · Katherine Rowe
-                </p>
-                <div class="postFooter">
-                  <span class="mini">LinkedIn · Shared</span>
-                  <a class="btn primary" href="https://www.linkedin.com/posts/office-of-the-under-secretary-of-war-for-policy_ms-sasha-baker-acting-under-secretary-of-ugcPost-7151776456820346880-o-_J?utm_source=share&utm_medium=member_desktop&rcm=ACoAAC_3cMEBJmeZzCb0Cy3e5WIgP7KIHPNgeKw" target="_blank" rel="noopener">Open ↗</a>
-                </div>
+          <article class="post snap" style="min-height:360px;">
+            <div class="postMedia" aria-hidden="true"></div>
+            <div class="postBody">
+              <p class="postTitle">Sasha Baker spoke with Global Scholars</p>
+              <p class="postText caption">
+                Recaps a discussion with Acting Under Secretary of Defense for Policy Sasha Baker on national security priorities, global challenges, and implementation of the National Defense Strategy, plus appreciation for the exchange with students in the Global Scholars Program.
+              </p>
+              <div class="postFooter">
+                <span class="mini">LinkedIn · Shared</span>
+                <a class="btn primary" href="https://www.linkedin.com/posts/office-of-the-under-secretary-of-war-for-policy_ms-sasha-baker-acting-under-secretary-of-ugcPost-7151776456820346880-o-_J?utm_source=share&utm_medium=member_desktop&rcm=ACoAAC_3cMEBJmeZzCb0Cy3e5WIgP7KIHPNgeKw" target="_blank" rel="noopener">Open ↗</a>
               </div>
-            </article>
+            </div>
+          </article>
 
-            <article class="post" style="scroll-snap-align:start;min-height:360px;">
-              <div class="postMedia" aria-hidden="true"></div>
-              <div class="postBody">
-                <p class="postTitle">Week one of Global Scholars Program</p>
-                <p class="postText caption">
-                  Week one of William &amp; Mary's Global Scholar Program. Great site visits at State, USAID, Pentagon, and EOB, with guest speakers from across the interagency. A special thanks to Thomas Shannon, Troy Thomas, Katie Sell Garcia, Anne Coleman-Honn, Anushree Banerjee, Matt Cordova, Phoebe Benich, Sasha Baker, Jason M. Chung for helping to organize the visits, and for twenty W&amp;M alums who joined us for a writing and career session on Saturday. Students are hard at work on policy memos, early morning monument runs, and policy briefings as they prepare for week 2 with my colleagues Mike Tierney and Ryan A. Musto, Ph.D. and course TA Katelyn Oxer.<br><br>
-                  And, if you're looking for great future interns, here's the student list! Alena Jones, Eileen Ackley, Carson Belmear, Elizabeth Brady, Owen Dyer, Gabriella Flores, Brennan Greeves, Ella MacLean, Madeleine Riggs, Patrick Hoover, Emilia Hughes, Kate Carline, Daniel Kalish, Emma King, Kaleea Korunka, Aiden Sanders, Leo Sereni, and Natasha Yotmanee.
-                </p>
-                <div class="postFooter">
-                  <span class="mini">LinkedIn · Shared</span>
-                  <a class="btn primary" href="https://www.linkedin.com/posts/activity-7152694780970299393-M0gr?utm_source=share&utm_medium=member_desktop&rcm=ACoAAC_3cMEBJmeZzCb0Cy3e5WIgP7KIHPNgeKw" target="_blank" rel="noopener">Open ↗</a>
-                </div>
+          <article class="post snap" style="min-height:360px;">
+            <div class="postMedia" aria-hidden="true"></div>
+            <div class="postBody">
+              <p class="postTitle">Week one of Global Scholars Program</p>
+              <p class="postText caption">
+                A week-one update from William &amp; Mary’s Global Scholars Program featuring site visits (State, USAID, Pentagon, and EOB), guest speakers and alumni support, and students working on policy memos and briefings—plus a shoutout list of participating students.
+              </p>
+              <div class="postFooter">
+                <span class="mini">LinkedIn · Shared</span>
+                <a class="btn primary" href="https://www.linkedin.com/posts/activity-7152694780970299393-M0gr?utm_source=share&utm_medium=member_desktop&rcm=ACoAAC_3cMEBJmeZzCb0Cy3e5WIgP7KIHPNgeKw" target="_blank" rel="noopener">Open ↗</a>
               </div>
-            </article>
-
-          </div>
+            </div>
+          </article>
         </div>
       </div>
     </section>
@@ -970,6 +1016,8 @@
     const pages = Array.from(document.querySelectorAll(".page"));
     const navLinks = Array.from(document.querySelectorAll("[data-route]"));
 
+    let pendingAnchorId = null;
+
     function setActiveRoute(route){
       const safe = routes.includes(route) ? route : "home";
 
@@ -984,6 +1032,18 @@
         heading.focus({ preventScroll: true });
         heading.removeAttribute("tabindex");
       }
+
+      // If we have a pending anchor (e.g., clicking org buttons on Home), scroll after route renders
+      if (safe === "cv" && pendingAnchorId) {
+        const el = document.getElementById(pendingAnchorId);
+        if (el) {
+          // slight delay to ensure layout is ready
+          setTimeout(() => {
+            el.scrollIntoView({ behavior: "smooth", block: "start" });
+          }, 50);
+        }
+        pendingAnchorId = null;
+      }
     }
 
     function onHashChange(){
@@ -992,6 +1052,21 @@
     }
 
     window.addEventListener("hashchange", onHashChange);
+
+    // Intercept clicks for route+anchor jumps
+    document.addEventListener("click", (e) => {
+      const a = e.target.closest("a[data-route]");
+      if (!a) return;
+
+      const route = a.getAttribute("data-route");
+      const anchor = a.getAttribute("data-anchor");
+
+      if (anchor) {
+        pendingAnchorId = anchor;
+      }
+      // Allow hash change navigation to proceed normally
+      // (no preventDefault needed)
+    });
 
     // Initialize route on load
     onHashChange();
