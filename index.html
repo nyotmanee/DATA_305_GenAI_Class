@@ -51,6 +51,24 @@
       --loveBlueBg: rgba(37,99,235,0.06);
       --loveBlueBd: rgba(37,99,235,0.18);
 
+      /* Open Post button alternating colors — matched to "Some Things I Love" cards */
+      /* Purple  (Food 🍲) */
+      --opBtn1Bg: rgba(99,102,241,0.12);
+      --opBtn1Bd: rgba(99,102,241,0.30);
+      --opBtn1Tx: #3730a3;
+      /* Blue  (Travel 🌎) */
+      --opBtn2Bg: rgba(37,99,235,0.10);
+      --opBtn2Bd: rgba(37,99,235,0.28);
+      --opBtn2Tx: #1e3a8a;
+      /* Green  (Books 📚) */
+      --opBtn3Bg: rgba(14,165,166,0.10);
+      --opBtn3Bd: rgba(14,165,166,0.28);
+      --opBtn3Tx: #064e4e;
+      /* Teal  (Bucket List) */
+      --opBtn4Bg: rgba(14,165,166,0.06);
+      --opBtn4Bd: rgba(14,165,166,0.20);
+      --opBtn4Tx: #065f5f;
+
       --researchCardBg: rgba(99,102,241,0.06);
       --researchCardBd: rgba(99,102,241,0.18);
 
@@ -275,6 +293,16 @@
       border-color: rgba(99,102,241,0.44);
     }
 
+    /* Alternating "Open Post" button colors — cycle of 4 */
+    .btn.op1{ background: var(--opBtn1Bg); border-color: var(--opBtn1Bd); color: var(--opBtn1Tx); }
+    .btn.op1:hover{ background: rgba(99,102,241,0.20); border-color: rgba(99,102,241,0.44); text-decoration:none; }
+    .btn.op2{ background: var(--opBtn2Bg); border-color: var(--opBtn2Bd); color: var(--opBtn2Tx); }
+    .btn.op2:hover{ background: rgba(37,99,235,0.18); border-color: rgba(37,99,235,0.44); text-decoration:none; }
+    .btn.op3{ background: var(--opBtn3Bg); border-color: var(--opBtn3Bd); color: var(--opBtn3Tx); }
+    .btn.op3:hover{ background: rgba(14,165,166,0.20); border-color: rgba(14,165,166,0.44); text-decoration:none; }
+    .btn.op4{ background: var(--opBtn4Bg); border-color: var(--opBtn4Bd); color: var(--opBtn4Tx); }
+    .btn.op4:hover{ background: rgba(14,165,166,0.14); border-color: rgba(14,165,166,0.36); text-decoration:none; }
+
     .list{ margin: 0; padding-left: 18px; color: var(--muted); }
     .list li{ margin: 6px 0; }
 
@@ -311,8 +339,8 @@
       margin-bottom: 10px;
     }
     .heroPic{
-      width: 88px; height: 88px;
-      border-radius: 22px;
+      width: 140px; height: 140px;
+      border-radius: 28px;
       border: 1px solid var(--border);
       overflow:hidden;
       box-shadow: var(--shadow2);
@@ -964,7 +992,7 @@
                 </p>
                 <div class="cardFooter">
                   <span class="mini">LinkedIn · Natasha Yotmanee</span>
-                  <a class="btn" href="https://www.linkedin.com/posts/natashayotmanee_and-im-back-after-six-unforgettable-activity-7377392265792524288-ido-" target="_blank" rel="noopener">Open Post ↗</a>
+                  <a class="btn op1" href="https://www.linkedin.com/posts/natashayotmanee_and-im-back-after-six-unforgettable-activity-7377392265792524288-ido-" target="_blank" rel="noopener">Open Post ↗</a>
                 </div>
               </div>
             </article>
@@ -981,7 +1009,7 @@
                 </p>
                 <div class="cardFooter">
                   <span class="mini">LinkedIn · Natasha Yotmanee</span>
-                  <a class="btn" href="https://www.linkedin.com/posts/natashayotmanee_happy-february-reflecting-on-the-past-activity-7291815029211815936-8Zhu" target="_blank" rel="noopener">Open Post ↗</a>
+                  <a class="btn op2" href="https://www.linkedin.com/posts/natashayotmanee_happy-february-reflecting-on-the-past-activity-7291815029211815936-8Zhu" target="_blank" rel="noopener">Open Post ↗</a>
                 </div>
               </div>
             </article>
@@ -998,7 +1026,7 @@
                 </p>
                 <div class="cardFooter">
                   <span class="mini">LinkedIn · Natasha Yotmanee</span>
-                  <a class="btn" href="https://www.linkedin.com/posts/natashayotmanee_undp-crisisbureau-fellow-activity-7211036309379796992-m9Ke" target="_blank" rel="noopener">Open Post ↗</a>
+                  <a class="btn op3" href="https://www.linkedin.com/posts/natashayotmanee_undp-crisisbureau-fellow-activity-7211036309379796992-m9Ke" target="_blank" rel="noopener">Open Post ↗</a>
                 </div>
               </div>
             </article>
@@ -1015,7 +1043,7 @@
                 </p>
                 <div class="cardFooter">
                   <span class="mini">LinkedIn · Shared</span>
-                  <a class="btn" href="https://www.linkedin.com/posts/mike-tierney-694a3856_the-griffin-has-landed-in-brussels-and-ugcPost-7173641420556152832-mH67" target="_blank" rel="noopener">Open Post ↗</a>
+                  <a class="btn op4" href="https://www.linkedin.com/posts/mike-tierney-694a3856_the-griffin-has-landed-in-brussels-and-ugcPost-7173641420556152832-mH67" target="_blank" rel="noopener">Open Post ↗</a>
                 </div>
               </div>
             </article>
@@ -1032,7 +1060,7 @@
                 </p>
                 <div class="cardFooter">
                   <span class="mini">LinkedIn · Shared</span>
-                  <a class="btn" href="https://www.linkedin.com/posts/kaleea-korunka_my-global-scholars-cohort-and-i-recently-ugcPost-7170439711038136321-aXQt" target="_blank" rel="noopener">Open Post ↗</a>
+                  <a class="btn op1" href="https://www.linkedin.com/posts/kaleea-korunka_my-global-scholars-cohort-and-i-recently-ugcPost-7170439711038136321-aXQt" target="_blank" rel="noopener">Open Post ↗</a>
                 </div>
               </div>
             </article>
@@ -1049,7 +1077,7 @@
                 </p>
                 <div class="cardFooter">
                   <span class="mini">LinkedIn · Shared</span>
-                  <a class="btn" href="https://www.linkedin.com/posts/mike-tierney-694a3856_for-the-past-2-weeks-william-mary-students-ugcPost-7154577984773832704-W3qa" target="_blank" rel="noopener">Open Post ↗</a>
+                  <a class="btn op2" href="https://www.linkedin.com/posts/mike-tierney-694a3856_for-the-past-2-weeks-william-mary-students-ugcPost-7154577984773832704-W3qa" target="_blank" rel="noopener">Open Post ↗</a>
                 </div>
               </div>
             </article>
@@ -1066,7 +1094,7 @@
                 </p>
                 <div class="cardFooter">
                   <span class="mini">LinkedIn · Shared</span>
-                  <a class="btn" href="https://www.linkedin.com/posts/office-of-the-under-secretary-of-war-for-policy_ms-sasha-baker-acting-under-secretary-of-ugcPost-7151776456820346880-o-_J" target="_blank" rel="noopener">Open Post ↗</a>
+                  <a class="btn op3" href="https://www.linkedin.com/posts/office-of-the-under-secretary-of-war-for-policy_ms-sasha-baker-acting-under-secretary-of-ugcPost-7151776456820346880-o-_J" target="_blank" rel="noopener">Open Post ↗</a>
                 </div>
               </div>
             </article>
@@ -1083,7 +1111,7 @@
                 </p>
                 <div class="cardFooter">
                   <span class="mini">LinkedIn · Natasha Yotmanee</span>
-                  <a class="btn" href="https://www.linkedin.com/posts/natashayotmanee_it-was-a-great-day-to-be-back-in-dc-this-activity-7128453792643104768-4s38" target="_blank" rel="noopener">Open Post ↗</a>
+                  <a class="btn op4" href="https://www.linkedin.com/posts/natashayotmanee_it-was-a-great-day-to-be-back-in-dc-this-activity-7128453792643104768-4s38" target="_blank" rel="noopener">Open Post ↗</a>
                 </div>
               </div>
             </article>
@@ -1100,7 +1128,7 @@
                 </p>
                 <div class="cardFooter">
                   <span class="mini">LinkedIn · Natasha Yotmanee</span>
-                  <a class="btn" href="https://www.linkedin.com/posts/natashayotmanee_tanip-thailand-internship-activity-7104977345261801472-KV7_" target="_blank" rel="noopener">Open Post ↗</a>
+                  <a class="btn op1" href="https://www.linkedin.com/posts/natashayotmanee_tanip-thailand-internship-activity-7104977345261801472-KV7_" target="_blank" rel="noopener">Open Post ↗</a>
                 </div>
               </div>
             </article>
@@ -1117,7 +1145,7 @@
                 </p>
                 <div class="cardFooter">
                   <span class="mini">LinkedIn · Natasha Yotmanee</span>
-                  <a class="btn" href="https://www.linkedin.com/posts/natashayotmanee_internship-eastwestcenter-indopacific-activity-7102723056388775936-LlzE" target="_blank" rel="noopener">Open Post ↗</a>
+                  <a class="btn op2" href="https://www.linkedin.com/posts/natashayotmanee_internship-eastwestcenter-indopacific-activity-7102723056388775936-LlzE" target="_blank" rel="noopener">Open Post ↗</a>
                 </div>
               </div>
             </article>
@@ -1134,7 +1162,7 @@
                 </p>
                 <div class="cardFooter">
                   <span class="mini">LinkedIn · Shared</span>
-                  <a class="btn" href="https://www.linkedin.com/feed/update/urn:li:activity:7093308407557836801" target="_blank" rel="noopener">Open Post ↗</a>
+                  <a class="btn op3" href="https://www.linkedin.com/feed/update/urn:li:activity:7093308407557836801" target="_blank" rel="noopener">Open Post ↗</a>
                 </div>
               </div>
             </article>
@@ -1151,7 +1179,7 @@
                 </p>
                 <div class="cardFooter">
                   <span class="mini">LinkedIn · Natasha Yotmanee</span>
-                  <a class="btn" href="https://www.linkedin.com/posts/natashayotmanee_tanip-thailand-internship-activity-7087160356317384704-cZwi" target="_blank" rel="noopener">Open Post ↗</a>
+                  <a class="btn op4" href="https://www.linkedin.com/posts/natashayotmanee_tanip-thailand-internship-activity-7087160356317384704-cZwi" target="_blank" rel="noopener">Open Post ↗</a>
                 </div>
               </div>
             </article>
@@ -1168,7 +1196,7 @@
                 </p>
                 <div class="cardFooter">
                   <span class="mini">LinkedIn · Natasha Yotmanee</span>
-                  <a class="btn" href="https://www.linkedin.com/posts/natashayotmanee_internship-activity-7080029375097683968-xW76" target="_blank" rel="noopener">Open Post ↗</a>
+                  <a class="btn op1" href="https://www.linkedin.com/posts/natashayotmanee_internship-activity-7080029375097683968-xW76" target="_blank" rel="noopener">Open Post ↗</a>
                 </div>
               </div>
             </article>
@@ -1190,7 +1218,7 @@
           <div class="card pad contactBoxGreen" style="box-shadow:none;">
             <h3>Email</h3>
             <p class="muted" style="margin:0;">
-              <a href="mailto:nyotmanee@gmail.com">nyotmanee@gmail.com</a>
+              <a href="/cdn-cgi/l/email-protection#4c22352338212d2229290c2b212d2520622f2321"><span class="__cf_email__" data-cfemail="036d7a6c776e626d666643646e626a6f2d606c6e">[email&#160;protected]</span></a>
             </p>
           </div>
 
@@ -1218,7 +1246,7 @@
     </section>
   </main>
 
-  <script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     const routes = ["home","cv","research","posts","contact"];
     const pages = [...document.querySelectorAll(".page")];
     const navLinks = [...document.querySelectorAll("[data-route]")];
@@ -1275,16 +1303,4 @@
       a.addEventListener("click", (e) => {
         const route = a.getAttribute("data-route");
         const targetId = a.getAttribute("data-scrolltarget");
-        if (!route || !targetId) return;
-
-        location.hash = "#" + route;
-        setTimeout(() => {
-          requestAnimationFrame(() => scrollToTargetId(targetId));
-        }, 0);
-
-        e.preventDefault();
-      });
-    });
-  </script>
-</body>
-</html>
+        if (!route |
