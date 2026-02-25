@@ -62,10 +62,10 @@
       --pubCardBg: rgba(14,165,166,0.06);
       --pubCardBd: rgba(14,165,166,0.18);
 
-      /* Pale pink active nav */
-      --activePinkBg: rgba(236, 72, 153, 0.10);
-      --activePinkBd: rgba(236, 72, 153, 0.22);
-      --activePinkTx: #9d174d;
+      /* UPDATED active nav: darker blue-purple (between purple & blue, slightly darker) */
+      --activeTabBg: rgba(67, 56, 202, 0.14);   /* indigo-700-ish w/ opacity */
+      --activeTabBd: rgba(67, 56, 202, 0.30);
+      --activeTabTx: #312e81;
 
       /* Research "View in CV" buttons should match the research card background */
       --rcBtnBg: rgba(99,102,241,0.12);
@@ -178,9 +178,9 @@
       text-decoration: none;
     }
     .pill.active{
-      color: var(--activePinkTx);
-      background: var(--activePinkBg);
-      border-color: var(--activePinkBd);
+      color: var(--activeTabTx);
+      background: var(--activeTabBg);
+      border-color: var(--activeTabBd);
     }
 
     .page{ display: none; padding-top: 20px; }
@@ -445,7 +445,6 @@
       border-color: var(--pubCardBd);
     }
 
-    /* Contact styles to match backgrounds + text */
     .contactBoxGreen{
       background: var(--contactGreenBg) !important;
       border-color: var(--contactGreenBd) !important;
@@ -951,7 +950,8 @@
             <h1>LinkedIn Posts</h1>
           </div>
           <div class="btnRow">
-            <button class="btn ghost" id="toggleCaptionsBtn" type="button">Captions (on)</button>
+            <!-- UPDATED button label -->
+            <button class="btn ghost" id="toggleCaptionsBtn" type="button">Mini Summary (on)</button>
             <a class="btn ghost" href="https://www.linkedin.com/in/natashayotmanee" target="_blank" rel="noopener">LinkedIn Profile ↗</a>
           </div>
         </div>
@@ -1103,7 +1103,8 @@
           <div class="card pad contactBoxBlue" style="box-shadow:none;">
             <h3>LinkedIn</h3>
             <p class="muted" style="margin:0;">
-              <a href="https://www.linkedin.com/in/natashayotmanee" target="_blank" rel="noopener">www.linkedin.com/in/natashayotmanee ↗</a>
+              <!-- UPDATED: removed arrow -->
+              <a href="https://www.linkedin.com/in/natashayotmanee" target="_blank" rel="noopener">www.linkedin.com/in/natashayotmanee</a>
             </p>
           </div>
         </div>
@@ -1125,7 +1126,7 @@
   </main>
 
   <script>
-    const routes = ["home", "cv", "research", "posts", "contact"];
+    const routes = ["home","cv","research","posts","contact"];
     const pages = [...document.querySelectorAll(".page")];
     const navLinks = [...document.querySelectorAll("[data-route]")];
 
@@ -1150,7 +1151,7 @@
 
     function updateCaptionBtn(){
       if (!toggleBtn) return;
-      toggleBtn.textContent = captionsOn ? "Captions (on)" : "Captions (off)";
+      toggleBtn.textContent = captionsOn ? "Mini Summary (on)" : "Mini Summary (off)";
     }
     updateCaptionBtn();
 
