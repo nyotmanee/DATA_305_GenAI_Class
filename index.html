@@ -28,6 +28,8 @@
 
       --accent: #0ea5a6;
       --accent2:#2563eb;
+      --purple: #6366f1;
+
       --link: #0b6b6b;
       --focus: rgba(37,99,235,0.18);
 
@@ -38,6 +40,21 @@
       --chipBg: rgba(14,165,166,0.12);
       --chipBd: rgba(14,165,166,0.32);
       --chipTx: #064e4e;
+
+      /* Featured experience button (purple) */
+      --fxBg: rgba(99,102,241,0.12);
+      --fxBd: rgba(99,102,241,0.34);
+      --fxTx: #3730a3;
+
+      /* Some Things I Love cards */
+      --lovePurpleBg: rgba(99,102,241,0.08);
+      --lovePurpleBd: rgba(99,102,241,0.22);
+
+      --loveGreenBg: rgba(14,165,166,0.08);
+      --loveGreenBd: rgba(14,165,166,0.22);
+
+      --loveBlueBg: rgba(37,99,235,0.06);
+      --loveBlueBd: rgba(37,99,235,0.18);
     }
 
     * { box-sizing: border-box; }
@@ -49,7 +66,7 @@
       background:
         radial-gradient(1100px 720px at 12% 12%, rgba(14,165,166,0.10), transparent 60%),
         radial-gradient(1000px 680px at 90% 16%, rgba(37,99,235,0.10), transparent 55%),
-        radial-gradient(820px 560px at 55% 92%, rgba(16,185,129,0.08), transparent 60%),
+        radial-gradient(820px 560px at 55% 92%, rgba(99,102,241,0.08), transparent 60%),
         linear-gradient(180deg, var(--bg2), var(--bg));
       line-height: 1.55;
     }
@@ -224,6 +241,17 @@
       border-color: rgba(15,23,42,0.14);
     }
 
+    /* Purple featured experience buttons */
+    .btn.fx{
+      background: var(--fxBg);
+      border-color: var(--fxBd);
+      color: var(--fxTx);
+    }
+    .btn.fx:hover{
+      background: rgba(99,102,241,0.18);
+      border-color: rgba(99,102,241,0.44);
+    }
+
     .list{ margin: 0; padding-left: 18px; color: var(--muted); }
     .list li{ margin: 6px 0; }
 
@@ -373,6 +401,11 @@
       outline-offset: 2px;
       border-radius: 10px;
     }
+
+    /* Some Things I Love themed backgrounds */
+    .lovePurple{ background: var(--lovePurpleBg) !important; border-color: var(--lovePurpleBd) !important; }
+    .loveGreen{ background: var(--loveGreenBg) !important; border-color: var(--loveGreenBd) !important; }
+    .loveBlue{ background: var(--loveBlueBg) !important; border-color: var(--loveBlueBd) !important; }
   </style>
 </head>
 
@@ -403,7 +436,7 @@
     <!-- HOME -->
     <section class="page active" id="page-home" data-page="home">
       <div class="grid cols2">
-        <!-- LEFT SIDE: intro + current direction + quick facts + featured experience -->
+        <!-- LEFT SIDE -->
         <div class="grid">
           <div class="card pad">
             <div class="heroRow">
@@ -411,8 +444,8 @@
                 <img alt="Natasha Yotmanee" src="https://media.licdn.com/dms/image/v2/D4E03AQHGI9a5MyIa3A/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1730209655021?e=2147483647&t=HgT-tlrRoORyL3Ceta22UAp6S2l_dSJabJzMwwcDqoM&v=beta" />
               </div>
               <div>
-                <div class="kicker">International affairs · Peacebuilding · Data-informed policy</div>
-                <h1>Hi - I’m Natasha Yotmanee <span class="muted">(she/her)</span>.</h1>
+                <div class="kicker">International Relations · Data Science · Asia-Pacific</div>
+                <h1>Hi! I’m Natasha Yotmanee <span>(she/her)</span>.</h1>
               </div>
             </div>
 
@@ -451,34 +484,36 @@
               A few organizations I’ve worked with and learned from. Click to jump to the related section on my CV.
             </p>
             <div class="btnRow">
-              <a class="btn" href="#cv" data-route="cv" data-scrolltarget="cv-deptgov">W&amp;M - Department of Government</a>
-              <a class="btn" href="#cv" data-route="cv" data-scrolltarget="cv-asiapolicylab">W&amp;M - Asia Policy Lab</a>
-              <a class="btn" href="#cv" data-route="cv" data-scrolltarget="cv-undp">UNDP - Crisis Bureau</a>
-              <a class="btn" href="#cv" data-route="cv" data-scrolltarget="cv-usawc">USAWC - Strategic Studies Institute</a>
-              <a class="btn" href="#cv" data-route="cv" data-scrolltarget="cv-ewc">East-West Center in Washington</a>
-              <a class="btn" href="#cv" data-route="cv" data-scrolltarget="cv-rte">Royal Thai Embassy &amp; US-Asia Institute</a>
+              <a class="btn fx" href="#cv" data-route="cv" data-scrolltarget="cv-deptgov">W&amp;M - Department of Government</a>
+              <a class="btn fx" href="#cv" data-route="cv" data-scrolltarget="cv-asiapolicylab">W&amp;M - Asia Policy Lab</a>
+              <a class="btn fx" href="#cv" data-route="cv" data-scrolltarget="cv-undp">UNDP - Crisis Bureau</a>
+              <a class="btn fx" href="#cv" data-route="cv" data-scrolltarget="cv-usawc">USAWC - Strategic Studies Institute</a>
+              <a class="btn fx" href="#cv" data-route="cv" data-scrolltarget="cv-ewc">East-West Center in Washington</a>
+              <a class="btn fx" href="#cv" data-route="cv" data-scrolltarget="cv-rte">Royal Thai Embassy &amp; US-Asia Institute</a>
             </div>
           </div>
         </div>
 
-        <!-- RIGHT SIDE: some things I love -->
+        <!-- RIGHT SIDE -->
         <aside class="card pad">
           <h2>Some Things I Love:</h2>
 
           <div class="divider"></div>
 
           <div class="stack">
-            <div class="card pad soft" style="box-shadow:none;border-color:rgba(14,165,166,0.22);">
+            <!-- Food should be purple -->
+            <div class="card pad lovePurple" style="box-shadow:none;">
               <h3>Food 🍲</h3>
               <p class="muted" style="margin-bottom:8px;">I’m a foodie who loves trying new places.</p>
               <p class="muted" style="margin-bottom:6px;"><strong>Current goals before graduation:</strong></p>
               <ul class="list">
-                <li>Try all the Thai restaurants in Williamsburg</li>
-                <li>Try as many breakfast spots in the "Pancake Capital of the World" as I can</li>
+                <li>Try all the Thai restaurants in Williamsburg!</li>
+                <li>Try as many breakfast spots in the "Pancake Capital of the World" as I can!</li>
               </ul>
             </div>
 
-            <div class="card pad soft2" style="box-shadow:none;border-color:rgba(37,99,235,0.22);">
+            <!-- Travel can stay blue -->
+            <div class="card pad loveBlue" style="box-shadow:none;">
               <h3>Travel 🌎</h3>
               <p class="muted" style="margin-bottom:8px;">
                 I love traveling to see new places, experience culture, and learn from how people live.
@@ -489,7 +524,8 @@
               </ul>
             </div>
 
-            <div class="card pad soft3" style="box-shadow:none;border-color:rgba(99,102,241,0.22);">
+            <!-- Books & Movies should be green -->
+            <div class="card pad loveGreen" style="box-shadow:none;">
               <h3>Books 📚</h3>
               <p class="muted" style="margin-bottom:8px;">Who doesn’t like to read??</p>
               <ul class="list" style="margin-bottom:12px;">
@@ -500,13 +536,13 @@
 
               <h3>Movies 🎬</h3>
               <p class="muted" style="margin-bottom:10px;">
-                The Movie Night Suggestion Box 🎬: We’re tired of watching trailers for two hours and then going to bed. Pitch us your favorite films, hidden gems, or "so-bad-it's-good" masterpieces!
+                We (me &amp; my roomie) are tired of watching trailers for two hours and then watching mediocre movies before going to bed on our Movie Nights. Pitch us your favorite films, hidden gems, or the "so-bad-it's-good" masterpieces!
               </p>
               <p class="muted" style="margin-bottom:10px;">
-                Drop a movie below! If we pick yours, you get the satisfaction of knowing you have superior taste. 🍿✨
+                The link below is our Movie Night Suggestion Box! Thanks for the recs, and just know that if we pick yours, that means you have superior movie taste. 🍿✨
               </p>
               <div class="btnRow">
-                <a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLSfqTbmzsW8QrHWum-mOJPvJSRIqS1NR0V_7xLdNfvRu9swF_w/viewform?usp=header" target="_blank" rel="noopener">Open Suggestion Box ↗</a>
+                <a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLSfqTbmzsW8QrHWum-mOJPvJSRIqS1NR0V_7xLdNfvRu9swF_w/viewform?usp=header" target="_blank" rel="noopener">Suggestion Box ↗</a>
               </div>
             </div>
 
@@ -1082,7 +1118,7 @@
       el.animate(
         [
           { boxShadow: "0 0 0 rgba(0,0,0,0)" },
-          { boxShadow: "0 0 0 6px rgba(14,165,166,0.16)" },
+          { boxShadow: "0 0 0 6px rgba(99,102,241,0.18)" },
           { boxShadow: "0 0 0 rgba(0,0,0,0)" }
         ],
         { duration: 900, easing: "ease-out" }
