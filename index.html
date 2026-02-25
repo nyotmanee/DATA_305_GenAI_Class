@@ -3,19 +3,18 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="description" content="Natasha Yotmanee — International Relations | Data Science | Peace & Humanitarian Focus" />
+  <meta name="description" content="Natasha Yotmanee - International Relations | Data Science | Peace & Humanitarian Focus" />
   <title>Natasha Yotmanee</title>
 
   <style>
     :root{
-      /* Light theme (no yellow blocks) */
       --bg: #ffffff;
       --bg2: #f6fbfa;
 
       --panel: #ffffff;
-      --panelSoft: rgba(14,165,166,0.06);     /* subtle teal tint */
-      --panelSoft2: rgba(37,99,235,0.06);     /* subtle blue tint */
-      --panelSoft3: rgba(99,102,241,0.06);    /* subtle indigo tint */
+      --panelSoft: rgba(14,165,166,0.06);
+      --panelSoft2: rgba(37,99,235,0.06);
+      --panelSoft3: rgba(99,102,241,0.06);
 
       --text: #0f172a;
       --muted:#475569;
@@ -27,17 +26,15 @@
       --radius: 18px;
       --max: 1040px;
 
-      --accent: #0ea5a6;     /* teal */
-      --accent2:#2563eb;     /* blue */
+      --accent: #0ea5a6;
+      --accent2:#2563eb;
       --link: #0b6b6b;
       --focus: rgba(37,99,235,0.18);
 
-      /* “Last code” button vibe */
       --btnBg: rgba(14,165,166,0.10);
       --btnBd: rgba(14,165,166,0.28);
       --btnTx: #064e4e;
 
-      /* Skills chip color (ALL same) */
       --chipBg: rgba(14,165,166,0.12);
       --chipBd: rgba(14,165,166,0.32);
       --chipTx: #064e4e;
@@ -67,7 +64,6 @@
       padding: 18px 18px 72px;
     }
 
-    /* Top bar */
     .topbar{
       position: sticky;
       top: 0;
@@ -145,11 +141,9 @@
       border-color: rgba(14,165,166,0.32);
     }
 
-    /* Pages */
     .page{ display: none; padding-top: 20px; }
     .page.active{ display: block; }
 
-    /* Cards */
     .card{
       background: var(--panel);
       border: 1px solid var(--border);
@@ -167,7 +161,6 @@
       .grid.cols2even{ grid-template-columns: 1fr 1fr; }
     }
 
-    /* Typography */
     h1{
       margin: 0 0 8px;
       font-size: 30px;
@@ -197,7 +190,6 @@
       margin: 14px 0;
     }
 
-    /* Buttons (keep “last code” vibe) */
     .btnRow{ display:flex; gap:10px; flex-wrap:wrap; margin-top: 10px; }
     .btn{
       display: inline-flex;
@@ -232,11 +224,9 @@
       border-color: rgba(15,23,42,0.14);
     }
 
-    /* Lists */
     .list{ margin: 0; padding-left: 18px; color: var(--muted); }
     .list li{ margin: 6px 0; }
 
-    /* Timeline blocks */
     .timeline{ display: grid; gap: 12px; margin-top: 10px; }
     .tItem{
       border-radius: 16px;
@@ -262,7 +252,6 @@
     }
     .tMeta{ color: var(--muted2); font-size: 13px; margin-top: 4px; }
 
-    /* Home hero profile */
     .heroRow{
       display:flex;
       gap: 14px;
@@ -285,7 +274,6 @@
       display:block;
     }
 
-    /* “Posts-like” cards (vertical stack) */
     .stack{ display: grid; gap: 14px; }
     .cardPost{
       border-radius: 18px;
@@ -343,7 +331,6 @@
     }
     .mini{ font-size: 12px; color: var(--muted2); }
 
-    /* Skills as same-color buttons */
     .chips{
       display:flex;
       flex-wrap:wrap;
@@ -360,7 +347,6 @@
       box-shadow: 0 6px 14px rgba(15,23,42,0.06);
     }
 
-    /* Section heading row */
     .sectionHead{
       display:flex;
       align-items:flex-end;
@@ -370,7 +356,6 @@
       margin-bottom: 10px;
     }
 
-    /* Footer */
     footer{
       margin-top: 22px;
       padding-top: 18px;
@@ -383,7 +368,6 @@
       flex-wrap: wrap;
     }
 
-    /* Focus */
     :focus-visible{
       outline: 3px solid var(--focus);
       outline-offset: 2px;
@@ -419,83 +403,35 @@
     <!-- HOME -->
     <section class="page active" id="page-home" data-page="home">
       <div class="grid cols2">
-        <div class="card pad">
-          <div class="heroRow">
-            <div class="heroPic" aria-hidden="true">
-              <img alt="Natasha Yotmanee" src="https://media.licdn.com/dms/image/v2/D4E03AQHGI9a5MyIa3A/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1730209655021?e=2147483647&t=HgT-tlrRoORyL3Ceta22UAp6S2l_dSJabJzMwwcDqoM&v=beta" />
+        <!-- LEFT SIDE: intro + current direction + quick facts + featured experience -->
+        <div class="grid">
+          <div class="card pad">
+            <div class="heroRow">
+              <div class="heroPic" aria-hidden="true">
+                <img alt="Natasha Yotmanee" src="https://media.licdn.com/dms/image/v2/D4E03AQHGI9a5MyIa3A/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1730209655021?e=2147483647&t=HgT-tlrRoORyL3Ceta22UAp6S2l_dSJabJzMwwcDqoM&v=beta" />
+              </div>
+              <div>
+                <div class="kicker">International affairs · Peacebuilding · Data-informed policy</div>
+                <h1>Hi - I’m Natasha Yotmanee <span class="muted">(she/her)</span>.</h1>
+              </div>
             </div>
-            <div>
-              <div class="kicker">International affairs · Peacebuilding · Data-informed policy</div>
-              <h1>Hi — I’m Natasha Yotmanee <span class="muted">(she/her)</span>.</h1>
-            </div>
+
+            <p>
+              I’m a senior at William &amp; Mary graduating in <strong>May 2026</strong>, majoring in <strong>International Relations</strong>
+              and minoring in <strong>Data Science</strong>.
+            </p>
+            <p>
+              I am driven to build a career dedicated to <strong>peacekeeping</strong>, <strong>conflict prevention</strong>, and
+              <strong>humanitarian aid</strong>, focusing on promoting resilience and sustainable peace in fragile regions. Committed to advancing
+              peace, security, and development across the <strong>Asia-Pacific</strong>, I aim to bridge technology and diplomacy, using data-driven
+              insights and strategic thinking to make meaningful contributions within the region and beyond.
+            </p>
           </div>
 
-          <p>
-            I’m a senior at William &amp; Mary graduating in <strong>May 2026</strong>, majoring in <strong>International Relations</strong>
-            and minoring in <strong>Data Science</strong>.
-          </p>
-          <p>
-            I am driven to build a career dedicated to <strong>peacekeeping</strong>, <strong>conflict prevention</strong>, and
-            <strong>humanitarian aid</strong>, focusing on promoting resilience and sustainable peace in fragile regions. Committed to advancing
-            peace, security, and development across the <strong>Asia-Pacific</strong>, I aim to bridge technology and diplomacy, using data-driven
-            insights and strategic thinking to make meaningful contributions within the region and beyond.
-          </p>
-
-          <div class="divider"></div>
-
-          <h2>Some Things I Love:</h2>
-
-          <div class="grid" style="margin-top:12px;">
-            <div class="card pad soft" style="box-shadow:none;border-color:rgba(14,165,166,0.22);">
-              <h3>Food 🍲</h3>
-              <p class="muted" style="margin-bottom:8px;">
-                I’m a foodie who loves trying new places—connect with me and share your food recommendations!
-              </p>
-              <ul class="list">
-                <li>Current goal: try all the Thai restaurants in Williamsburg before I graduate.</li>
-                <li>Also: try as many pancake houses and breakfast spots in the “nation’s capital of it” (Williamsburg!) as I can before I graduate.</li>
-              </ul>
-            </div>
-
-            <div class="card pad soft2" style="box-shadow:none;border-color:rgba(37,99,235,0.22);">
-              <h3>Travel 🌎</h3>
-              <p class="muted" style="margin-bottom:8px;">
-                I love traveling to see new places, experience culture, and learn from how people live—travel recs? Connect with me and I’d love to hear about your travels!
-              </p>
-              <ul class="list">
-                <li>Recently traveled to 15 different cities in China.</li>
-                <li>Have been to countries across Europe, Africa, Asia, and North America.</li>
-              </ul>
-            </div>
-
-            <div class="card pad soft3" style="box-shadow:none;border-color:rgba(99,102,241,0.22);">
-              <h3>Books 📚</h3>
-              <p class="muted" style="margin-bottom:0;">
-                Who doesn’t like to read?? I’m currently reading <em>A Thousand Splendid Suns</em> by Khaled Hosseini—got book recommendations? Share them with me!
-              </p>
-            </div>
-
-            <div class="card pad" style="box-shadow:none;background:rgba(14,165,166,0.04);border-color:rgba(14,165,166,0.18);">
-              <h3>Senior Year Bucket List</h3>
-              <p class="muted" style="margin-bottom:8px;">
-                Time is ticking—here are some things I’m looking forward to:
-              </p>
-              <ul class="list">
-                <li>W&amp;M zip line (I didn’t even know we had one)</li>
-                <li>Natasha Bedingfield &amp; B.o.B concert!</li>
-                <li>Visit Muscarelle Museum and W&amp;M Archives/Special Collections</li>
-                <li>Explore W&amp;M underground tunnels and crypt??</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        <aside class="grid">
-          <!-- Current Direction should be white -->
           <div class="card pad">
             <h2>Current Direction</h2>
             <p>
-              Seeking opportunities that blend real-world impact with analysis — especially roles connected to peacebuilding,
+              Seeking opportunities that blend real-world impact with analysis, especially roles connected to peacebuilding,
               humanitarian operations, and evidence-based policy.
             </p>
           </div>
@@ -512,7 +448,7 @@
           <div class="card pad">
             <h2>Featured Experience</h2>
             <p class="muted">
-              A few organizations I’ve worked with and learned from (click to jump to the related section on my CV).
+              A few organizations I’ve worked with and learned from. Click to jump to the related section on my CV.
             </p>
             <div class="btnRow">
               <a class="btn" href="#cv" data-route="cv" data-scrolltarget="cv-deptgov">W&amp;M - Department of Government</a>
@@ -521,6 +457,68 @@
               <a class="btn" href="#cv" data-route="cv" data-scrolltarget="cv-usawc">USAWC - Strategic Studies Institute</a>
               <a class="btn" href="#cv" data-route="cv" data-scrolltarget="cv-ewc">East-West Center in Washington</a>
               <a class="btn" href="#cv" data-route="cv" data-scrolltarget="cv-rte">Royal Thai Embassy &amp; US-Asia Institute</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT SIDE: some things I love -->
+        <aside class="card pad">
+          <h2>Some Things I Love:</h2>
+
+          <div class="divider"></div>
+
+          <div class="stack">
+            <div class="card pad soft" style="box-shadow:none;border-color:rgba(14,165,166,0.22);">
+              <h3>Food 🍲</h3>
+              <p class="muted" style="margin-bottom:8px;">I’m a foodie who loves trying new places.</p>
+              <p class="muted" style="margin-bottom:6px;"><strong>Current goals before graduation:</strong></p>
+              <ul class="list">
+                <li>Try all the Thai restaurants in Williamsburg</li>
+                <li>Try as many breakfast spots in the "Pancake Capital of the World" as I can</li>
+              </ul>
+            </div>
+
+            <div class="card pad soft2" style="box-shadow:none;border-color:rgba(37,99,235,0.22);">
+              <h3>Travel 🌎</h3>
+              <p class="muted" style="margin-bottom:8px;">
+                I love traveling to see new places, experience culture, and learn from how people live.
+              </p>
+              <ul class="list">
+                <li>Recently traveled to 15 different cities in China!</li>
+                <li>Have been to countries across Europe, Africa, Asia, and North America!</li>
+              </ul>
+            </div>
+
+            <div class="card pad soft3" style="box-shadow:none;border-color:rgba(99,102,241,0.22);">
+              <h3>Books 📚</h3>
+              <p class="muted" style="margin-bottom:8px;">Who doesn’t like to read??</p>
+              <ul class="list" style="margin-bottom:12px;">
+                <li><strong>I’m currently reading:</strong> <em>A Thousand Splendid Suns</em> by Khaled Hosseini</li>
+              </ul>
+
+              <div class="divider" style="margin:12px 0;"></div>
+
+              <h3>Movies 🎬</h3>
+              <p class="muted" style="margin-bottom:10px;">
+                The Movie Night Suggestion Box 🎬: We’re tired of watching trailers for two hours and then going to bed. Pitch us your favorite films, hidden gems, or "so-bad-it's-good" masterpieces!
+              </p>
+              <p class="muted" style="margin-bottom:10px;">
+                Drop a movie below! If we pick yours, you get the satisfaction of knowing you have superior taste. 🍿✨
+              </p>
+              <div class="btnRow">
+                <a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLSfqTbmzsW8QrHWum-mOJPvJSRIqS1NR0V_7xLdNfvRu9swF_w/viewform?usp=header" target="_blank" rel="noopener">Open Suggestion Box ↗</a>
+              </div>
+            </div>
+
+            <div class="card pad" style="box-shadow:none;background:rgba(14,165,166,0.04);border-color:rgba(14,165,166,0.18);">
+              <h3>Senior Year Bucket List</h3>
+              <p class="muted" style="margin-bottom:8px;">Time is ticking. Here are some things I’m looking forward to:</p>
+              <ul class="list">
+                <li>W&amp;M zip line (I didn’t even know we had one)</li>
+                <li>Natasha Bedingfield &amp; B.o.B concert!</li>
+                <li>Visit Muscarelle Museum and W&amp;M Archives/Special Collections</li>
+                <li>Explore W&amp;M underground tunnels and crypt??</li>
+              </ul>
             </div>
           </div>
         </aside>
@@ -542,7 +540,6 @@
 
         <div class="divider"></div>
 
-        <!-- EDUCATION -->
         <section id="cv-education">
           <div class="card pad soft" style="box-shadow:none;">
             <h2>Education</h2>
@@ -550,7 +547,7 @@
               <div class="tItem">
                 <div class="tTop">
                   <div>
-                    <h3>William &amp; Mary — Williamsburg, VA</h3>
+                    <h3>William &amp; Mary - Williamsburg, VA</h3>
                     <div class="tMeta">B.A. International Relations · Minor: Data Science · <strong>Expected May 2026</strong></div>
                   </div>
                   <div class="when">2022–2026</div>
@@ -563,7 +560,7 @@
               <div class="tItem">
                 <div class="tTop">
                   <div>
-                    <h3>Tsinghua University (清华大学) — Beijing, China</h3>
+                    <h3>Tsinghua University (清华大学) - Beijing, China</h3>
                     <div class="tMeta">Exchange semester</div>
                   </div>
                   <div class="when">Feb–Jun 2025</div>
@@ -573,7 +570,7 @@
               <div class="tItem">
                 <div class="tTop">
                   <div>
-                    <h3>Beijing Language and Culture University (北京语言大学) — Beijing, China</h3>
+                    <h3>Beijing Language and Culture University (北京语言大学) - Beijing, China</h3>
                     <div class="tMeta">Summer language program</div>
                   </div>
                   <div class="when">Jun–Aug 2025</div>
@@ -585,7 +582,6 @@
 
         <div class="divider"></div>
 
-        <!-- EXPERIENCE -->
         <section id="cv-experience">
           <div class="card pad soft2" style="box-shadow:none;">
             <h2>Professional &amp; Research Experience</h2>
@@ -594,7 +590,7 @@
               <div class="tItem" id="cv-deptgov">
                 <div class="tTop">
                   <div>
-                    <h3>Research Assistant — Department of Government, William &amp; Mary</h3>
+                    <h3>Research Assistant - Department of Government, William &amp; Mary</h3>
                     <div class="tMeta"><strong>Project:</strong> Politics of Recognition and the Case of One China</div>
                   </div>
                   <div class="when">Feb 2026–Present</div>
@@ -610,7 +606,7 @@
               <div class="tItem" id="cv-asiapolicylab">
                 <div class="tTop">
                   <div>
-                    <h3>Team Leader — Asia Policy Lab, William &amp; Mary</h3>
+                    <h3>Team Leader - Asia Policy Lab, William &amp; Mary</h3>
                     <div class="tMeta"><strong>Project:</strong> Storied States</div>
                   </div>
                   <div class="when">Aug 2025–Jan 2026</div>
@@ -626,7 +622,7 @@
               <div class="tItem" id="cv-undp">
                 <div class="tTop">
                   <div>
-                    <h3>Communications Fellow — UNDP Crisis Bureau (Risk Anticipation Hub)</h3>
+                    <h3>Communications Fellow - UNDP Crisis Bureau (Risk Anticipation Hub)</h3>
                     <div class="tMeta">New York, NY</div>
                   </div>
                   <div class="when">May–Aug 2024</div>
@@ -641,7 +637,7 @@
               <div class="tItem" id="cv-usawc">
                 <div class="tTop">
                   <div>
-                    <h3>Ukraine War Study Intern — Strategic Studies Institute, U.S. Army War College</h3>
+                    <h3>Ukraine War Study Intern - Strategic Studies Institute, U.S. Army War College</h3>
                     <div class="tMeta">Carlisle, PA</div>
                   </div>
                   <div class="when">Jan 2023–Apr 2024</div>
@@ -656,7 +652,7 @@
               <div class="tItem" id="cv-ewc">
                 <div class="tTop">
                   <div>
-                    <h3>Young Professionals Program — East-West Center in Washington</h3>
+                    <h3>Young Professionals Program - East-West Center in Washington</h3>
                     <div class="tMeta">Washington, D.C.</div>
                   </div>
                   <div class="when">Jun–Aug 2023</div>
@@ -671,7 +667,7 @@
               <div class="tItem" id="cv-rte">
                 <div class="tTop">
                   <div>
-                    <h3>TANIP Participant — Royal Thai Embassy &amp; US-Asia Institute</h3>
+                    <h3>TANIP Participant - Royal Thai Embassy &amp; US-Asia Institute</h3>
                     <div class="tMeta">Washington, D.C.</div>
                   </div>
                   <div class="when">Jun–Aug 2023</div>
@@ -689,7 +685,6 @@
 
         <div class="divider"></div>
 
-        <!-- CONTRIBUTIONS + AWARDS (buttons at bottom) -->
         <section id="cv-contrib-awards">
           <div class="grid cols2even">
             <div class="card pad soft" style="box-shadow:none;">
@@ -714,7 +709,7 @@
                   A case study on the Russo–Georgian war and its aftermath, focusing on escalation dynamics, regional security, and strategic implications.
                 </p>
                 <p class="muted" style="margin:0 0 10px;">
-                  <strong>Internal study contributor:</strong> “Crisis in the Caucasus: Invasion of Georgia, 2008–2014.” Strategic Studies Institute, USAWC (2024) — prepared for a forthcoming monograph on partner capacity in Ukraine.
+                  <strong>Internal study contributor:</strong> “Crisis in the Caucasus: Invasion of Georgia, 2008–2014.” Strategic Studies Institute, USAWC (2024) - prepared for a forthcoming monograph on partner capacity in Ukraine.
                 </p>
               </div>
             </div>
@@ -728,7 +723,7 @@
                   An intensive cohort program combining policy-focused learning with professional development through site visits and practitioner engagement.
                 </p>
                 <p class="muted" style="margin:0 0 10px;">
-                  <strong>Global Scholars Program:</strong> Global Research Institute, W&amp;M (Aug 2023–2024) — selected as 1 of 18.
+                  <strong>Global Scholars Program:</strong> Global Research Institute, W&amp;M (Aug 2023–2024) - selected as 1 of 18.
                 </p>
                 <div class="btnRow">
                   <a class="btn" href="https://www.wm.edu/offices/dccenter/opportunities/gsp/gsp-alumni/23-24scholars/" target="_blank" rel="noopener">Open ↗</a>
@@ -741,7 +736,7 @@
                   A study-abroad scholarship supporting global learning and academic immersion through the Reves Center for International Studies.
                 </p>
                 <p class="muted" style="margin:0 0 10px;">
-                  <strong>Gates Scholarship:</strong> Reves Center for International Studies, W&amp;M (Feb–Jun 2025) — $7,500 study abroad award.
+                  <strong>Gates Scholarship:</strong> Reves Center for International Studies, W&amp;M (Feb–Jun 2025) - $7,500 study abroad award.
                 </p>
                 <div class="btnRow">
                   <a class="btn" href="https://studyabroad.wm.edu/index.cfm?FuseAction=Programs.ViewProgram&Program_ID=2659" target="_blank" rel="noopener">Open ↗</a>
@@ -753,7 +748,6 @@
 
         <div class="divider"></div>
 
-        <!-- SKILLS -->
         <section id="cv-skills">
           <h2>Skills (Languages)</h2>
           <p class="muted" style="margin-bottom:8px;">
@@ -775,7 +769,6 @@
     <!-- RESEARCH & PUBLICATIONS -->
     <section class="page" id="page-research" data-page="research">
       <div class="grid cols2">
-        <!-- Keep the research side using the same “last code” palette (no yellow) -->
         <div class="card pad soft3" style="box-shadow:none;">
           <div class="sectionHead">
             <div>
@@ -817,7 +810,6 @@
           </div>
         </div>
 
-        <!-- Publications side: same shadow + subtle teal/blue tint like before (no yellow) -->
         <aside class="card pad soft" style="box-shadow:none;">
           <h2>Selected Publications</h2>
           <p class="muted">Articles published on Asia Matters for America (East-West Center).</p>
@@ -888,7 +880,7 @@
               <div class="cardBody">
                 <p class="cardTitle">And I’m back!</p>
                 <p class="cardText caption">
-                  A reflection on six months in Beijing: studying at Tsinghua, continuing Mandarin at BLCU, traveling to ~15 cities, and the friendships and risks that made the experience unforgettable.
+                  A reflection on six months in Beijing: studying at Tsinghua, continuing Mandarin at BLCU, traveling to about 15 cities, and the friendships and risks that made the experience unforgettable.
                 </p>
                 <div class="cardFooter">
                   <span class="mini">LinkedIn · Natasha Yotmanee</span>
@@ -904,7 +896,7 @@
               <div class="cardBody">
                 <p class="cardTitle">Happy February!</p>
                 <p class="cardText caption">
-                  Gratitude for a year of mentorship and growth through the Global Scholars Program, an UNDP Risk Anticipation Hub fellowship, and Ukraine-war research—plus excitement for an exchange at Tsinghua and receiving the Gates Scholarship.
+                  Gratitude for a year of mentorship and growth through the Global Scholars Program, an UNDP Risk Anticipation Hub fellowship, and Ukraine-war research, plus excitement for an exchange at Tsinghua and receiving the Gates Scholarship.
                 </p>
                 <div class="cardFooter">
                   <span class="mini">LinkedIn · Natasha Yotmanee</span>
@@ -934,7 +926,7 @@
               <div class="cardBody">
                 <p class="cardTitle">The Griffin has Landed (in Brussels)</p>
                 <p class="cardText caption">
-                  A Global Scholars Program update from Brussels: meetings across EU/NATO policy topics, conversations with experts, and a quick stop before heading onward to Paris.
+                  A Global Scholars Program update from Brussels: meetings across EU and NATO policy topics, conversations with experts, and a quick stop before heading onward to Paris.
                 </p>
                 <div class="cardFooter">
                   <span class="mini">LinkedIn · Shared</span>
@@ -1045,7 +1037,6 @@
   </main>
 
   <script>
-    // Hash-router
     const routes = ["home", "cv", "research", "posts", "contact"];
     const pages = [...document.querySelectorAll(".page")];
     const navLinks = [...document.querySelectorAll("[data-route]")];
@@ -1064,12 +1055,11 @@
     window.addEventListener("hashchange", onHashChange);
     onHashChange();
 
-    // Footer year
     document.getElementById("year").textContent = new Date().getFullYear();
 
-    // Captions toggle
     const toggleBtn = document.getElementById("toggleCaptionsBtn");
     let captionsOn = true;
+
     function updateCaptionBtn(){
       if (!toggleBtn) return;
       toggleBtn.textContent = captionsOn ? "Captions (on)" : "Captions (off)";
@@ -1084,7 +1074,6 @@
       updateCaptionBtn();
     });
 
-    // Jump-to-anchor on CV after routing
     function scrollToTargetId(targetId){
       if (!targetId) return;
       const el = document.getElementById(targetId);
@@ -1100,7 +1089,6 @@
       );
     }
 
-    // Intercept clicks that request a scroll target (route + scroll)
     document.querySelectorAll('a[data-scrolltarget]').forEach(a => {
       a.addEventListener("click", (e) => {
         const route = a.getAttribute("data-route");
