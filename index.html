@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="description" content="Natasha Yotmanee - International Relations | Data Science | Peace & Humanitarian Focus" />
+  <meta name="description" content="Natasha Yotmanee - International Relations | Data Science | Asia-Pacific" />
   <title>Natasha Yotmanee</title>
 
   <style>
@@ -34,12 +34,12 @@
       --btnBd: rgba(14,165,166,0.28);
       --btnTx: #064e4e;
 
-      /* Featured experience button (purple) */
+      /* Featured experience buttons (purple) */
       --fxBg: rgba(99,102,241,0.12);
       --fxBd: rgba(99,102,241,0.34);
       --fxTx: #3730a3;
 
-      /* CV skill chips should match experience section (blue/purple vibe) */
+      /* CV skill chips */
       --skillBg: rgba(37,99,235,0.10);
       --skillBd: rgba(37,99,235,0.26);
       --skillTx: #1e3a8a;
@@ -58,9 +58,28 @@
       --researchCardBg: rgba(99,102,241,0.06);
       --researchCardBd: rgba(99,102,241,0.18);
 
-      /* Publication cards */
+      /* Publications cards */
       --pubCardBg: rgba(14,165,166,0.06);
       --pubCardBd: rgba(14,165,166,0.18);
+
+      /* Pale pink active nav */
+      --activePinkBg: rgba(236, 72, 153, 0.10);
+      --activePinkBd: rgba(236, 72, 153, 0.22);
+      --activePinkTx: #9d174d;
+
+      /* Research "View in CV" buttons should match the research card background */
+      --rcBtnBg: rgba(99,102,241,0.12);
+      --rcBtnBd: rgba(99,102,241,0.34);
+      --rcBtnTx: #3730a3;
+
+      /* Contact blocks and link styling */
+      --contactGreenBg: rgba(14,165,166,0.10);
+      --contactGreenBd: rgba(14,165,166,0.26);
+      --contactGreenTx: #064e4e;
+
+      --contactBlueBg: rgba(37,99,235,0.10);
+      --contactBlueBd: rgba(37,99,235,0.24);
+      --contactBlueTx: #1e3a8a;
     }
 
     * { box-sizing: border-box; }
@@ -159,9 +178,9 @@
       text-decoration: none;
     }
     .pill.active{
-      color: var(--text);
-      background: rgba(14,165,166,0.12);
-      border-color: rgba(14,165,166,0.32);
+      color: var(--activePinkTx);
+      background: var(--activePinkBg);
+      border-color: var(--activePinkBd);
     }
 
     .page{ display: none; padding-top: 20px; }
@@ -250,6 +269,16 @@
       color: #3730a3;
     }
     .btn.fx:hover{
+      background: rgba(99,102,241,0.18);
+      border-color: rgba(99,102,241,0.44);
+    }
+
+    .btn.rc{
+      background: var(--rcBtnBg);
+      border-color: var(--rcBtnBd);
+      color: var(--rcBtnTx);
+    }
+    .btn.rc:hover{
       background: rgba(99,102,241,0.18);
       border-color: rgba(99,102,241,0.44);
     }
@@ -406,7 +435,6 @@
     .loveGreen{ background: var(--loveGreenBg) !important; border-color: var(--loveGreenBd) !important; }
     .loveBlue{ background: var(--loveBlueBg) !important; border-color: var(--loveBlueBd) !important; }
 
-    /* Research and publication section layout requirements */
     .whiteSection{ background: #ffffff; box-shadow: var(--shadow); }
     .researchCard{
       background: var(--researchCardBg);
@@ -416,6 +444,29 @@
       background: var(--pubCardBg);
       border-color: var(--pubCardBd);
     }
+
+    /* Contact styles to match backgrounds + text */
+    .contactBoxGreen{
+      background: var(--contactGreenBg) !important;
+      border-color: var(--contactGreenBd) !important;
+    }
+    .contactBoxGreen a{
+      color: var(--contactGreenTx) !important;
+      font-weight: 600;
+      text-decoration: none;
+    }
+    .contactBoxGreen a:hover{ text-decoration: underline; }
+
+    .contactBoxBlue{
+      background: var(--contactBlueBg) !important;
+      border-color: var(--contactBlueBd) !important;
+    }
+    .contactBoxBlue a{
+      color: var(--contactBlueTx) !important;
+      font-weight: 600;
+      text-decoration: none;
+    }
+    .contactBoxBlue a:hover{ text-decoration: underline; }
   </style>
 </head>
 
@@ -473,8 +524,7 @@
           <div class="card pad">
             <h2>Current Direction</h2>
             <p>
-              Seeking opportunities that blend real-world impact with analysis, especially roles connected to peacebuilding,
-              humanitarian operations, and evidence-based policy.
+              Seeking opportunities that will allow me to apply my skills in real-world settings, build meaningful connections, and prepare for a career dedicated to advancing peace and humanitarian efforts!
             </p>
           </div>
 
@@ -493,12 +543,12 @@
               A few organizations I’ve worked with and learned from. Click to jump to the related section on my CV.
             </p>
             <div class="btnRow">
-              <a class="btn fx" href="#cv" data-route="cv" data-scrolltarget="cv-deptgov">W&amp;M - Department of Government</a>
-              <a class="btn fx" href="#cv" data-route="cv" data-scrolltarget="cv-asiapolicylab">W&amp;M - Asia Policy Lab</a>
-              <a class="btn fx" href="#cv" data-route="cv" data-scrolltarget="cv-undp">UNDP - Crisis Bureau</a>
-              <a class="btn fx" href="#cv" data-route="cv" data-scrolltarget="cv-usawc">USAWC - Strategic Studies Institute</a>
-              <a class="btn fx" href="#cv" data-route="cv" data-scrolltarget="cv-ewc">East-West Center in Washington</a>
-              <a class="btn fx" href="#cv" data-route="cv" data-scrolltarget="cv-rte">Royal Thai Embassy &amp; US-Asia Institute</a>
+              <a class="btn fx" href="#cv" data-route="cv" data-scrolltarget="cv-deptgov">W&amp;M - Department of Government ↗</a>
+              <a class="btn fx" href="#cv" data-route="cv" data-scrolltarget="cv-asiapolicylab">W&amp;M - Asia Policy Lab ↗</a>
+              <a class="btn fx" href="#cv" data-route="cv" data-scrolltarget="cv-undp">UNDP - Crisis Bureau ↗</a>
+              <a class="btn fx" href="#cv" data-route="cv" data-scrolltarget="cv-usawc">USAWC - Strategic Studies Institute ↗</a>
+              <a class="btn fx" href="#cv" data-route="cv" data-scrolltarget="cv-ewc">East-West Center in Washington ↗</a>
+              <a class="btn fx" href="#cv" data-route="cv" data-scrolltarget="cv-rte">Royal Thai Embassy &amp; US-Asia Institute ↗</a>
             </div>
           </div>
         </div>
@@ -791,9 +841,7 @@
 
         <section id="cv-skills">
           <h2>Skills (Languages)</h2>
-          <p class="muted" style="margin-bottom:8px;">
-            Software and languages I use for research, analysis, and communication.
-          </p>
+          <p class="muted" style="margin-bottom:8px;">Software and languages I use for research, analysis, and communication.</p>
 
           <div class="chips" aria-label="Skills">
             <span class="chip">Python (intermediate)</span>
@@ -810,7 +858,6 @@
     <!-- RESEARCH & PUBLICATIONS -->
     <section class="page" id="page-research" data-page="research">
       <div class="grid cols2">
-        <!-- Current research section background white, cards colored -->
         <div class="card pad whiteSection">
           <div class="sectionHead">
             <div>
@@ -832,7 +879,7 @@
                 </p>
                 <div class="cardFooter">
                   <span class="mini">William &amp; Mary · Department of Government</span>
-                  <a class="btn" href="#cv" data-route="cv" data-scrolltarget="cv-deptgov">View in CV ↗</a>
+                  <a class="btn rc" href="#cv" data-route="cv" data-scrolltarget="cv-deptgov">View in CV ↗</a>
                 </div>
               </div>
             </article>
@@ -845,14 +892,13 @@
                 </p>
                 <div class="cardFooter">
                   <span class="mini">William &amp; Mary · Asia Policy Lab</span>
-                  <a class="btn" href="#cv" data-route="cv" data-scrolltarget="cv-asiapolicylab">View in CV ↗</a>
+                  <a class="btn rc" href="#cv" data-route="cv" data-scrolltarget="cv-asiapolicylab">View in CV ↗</a>
                 </div>
               </div>
             </article>
           </div>
         </div>
 
-        <!-- Selected publications section background white, cards colored -->
         <aside class="card pad whiteSection">
           <h2>Selected Publications</h2>
           <p class="muted">Articles published on Asia Matters for America (East-West Center).</p>
@@ -938,7 +984,7 @@
               <div class="cardBody">
                 <p class="cardTitle">Happy February!</p>
                 <p class="cardText caption">
-                  Gratitude for a year of mentorship and growth through the Global Scholars Program, an UNDP Risk Anticipation Hub fellowship, and Ukraine-war research, plus excitement for an exchange at Tsinghua and receiving the Gates Scholarship.
+                  Gratitude for mentorship and growth through the Global Scholars Program, an UNDP fellowship, and Ukraine-war research, plus excitement for studying at Tsinghua and receiving the Gates Scholarship.
                 </p>
                 <div class="cardFooter">
                   <span class="mini">LinkedIn · Natasha Yotmanee</span>
@@ -954,7 +1000,7 @@
               <div class="cardBody">
                 <p class="cardTitle">International Day of Women in Diplomacy</p>
                 <p class="cardText caption">
-                  Announcing the start of a fellowship with UNDP’s Crisis Bureau Risk Anticipation Hub in NYC, and thanking mentors and the team supporting the role.
+                  Announcing the start of a fellowship with UNDP’s Crisis Bureau Risk Anticipation Hub in NYC, with thanks to the team and mentors supporting the role.
                 </p>
                 <div class="cardFooter">
                   <span class="mini">LinkedIn · Natasha Yotmanee</span>
@@ -968,7 +1014,7 @@
               <div class="cardBody">
                 <p class="cardTitle">The Griffin has Landed (in Brussels)</p>
                 <p class="cardText caption">
-                  A Global Scholars Program update from Brussels: meetings across EU and NATO policy topics, conversations with experts, and a quick stop before heading onward to Paris.
+                  A Global Scholars Program update from Brussels: site visits and conversations across EU and NATO policy topics, followed by a quick departure to Paris.
                 </p>
                 <div class="cardFooter">
                   <span class="mini">LinkedIn · Shared</span>
@@ -982,7 +1028,7 @@
               <div class="cardBody">
                 <p class="cardTitle">Visited Norfolk Naval Base</p>
                 <p class="cardText caption">
-                  A cohort visit to Norfolk Naval Base to learn from instructors and NATO Allied Command, and to continue building knowledge about NATO and international organizations.
+                  A cohort visit to Norfolk Naval Base to learn from instructors and NATO Allied Command, and to keep building knowledge about NATO and international organizations.
                 </p>
                 <div class="cardFooter">
                   <span class="mini">LinkedIn · Shared</span>
@@ -996,7 +1042,7 @@
               <div class="cardBody">
                 <p class="cardTitle">Global Scholars Program in DC</p>
                 <p class="cardText caption">
-                  A snapshot of two weeks in Washington, D.C.: site visits (State, World Bank, Senate, White House) and discussions about U.S. foreign policy and international organizations.
+                  Two weeks in Washington, D.C.: major site visits and practitioner conversations as students connect classroom learning to U.S. foreign policy and international organizations.
                 </p>
                 <div class="cardFooter">
                   <span class="mini">LinkedIn · Shared</span>
@@ -1010,7 +1056,7 @@
               <div class="cardBody">
                 <p class="cardTitle">Sasha Baker spoke with Global Scholars</p>
                 <p class="cardText caption">
-                  A visit with the Acting Under Secretary of Defense for Policy on national security priorities and whole-of-government coordination with allies and partners.
+                  Students heard from the Acting Under Secretary of Defense for Policy on national security priorities and coordination with allies and partners.
                 </p>
                 <div class="cardFooter">
                   <span class="mini">LinkedIn · Shared</span>
@@ -1024,7 +1070,7 @@
               <div class="cardBody">
                 <p class="cardTitle">Week one of Global Scholars Program</p>
                 <p class="cardText caption">
-                  Week one highlights from the Global Scholars Program: major site visits (State, USAID, Pentagon, EOB), interagency guest speakers, and students preparing policy memos and briefings for week two.
+                  Week one highlights: site visits across the interagency, guest speakers, and students drafting policy memos and briefings as they prepare for week two.
                 </p>
                 <div class="cardFooter">
                   <span class="mini">LinkedIn · Shared</span>
@@ -1047,14 +1093,14 @@
         <div class="divider"></div>
 
         <div class="grid cols2even">
-          <div class="card pad" style="box-shadow:none;background:rgba(14,165,166,0.06);border-color:rgba(14,165,166,0.22);">
+          <div class="card pad contactBoxGreen" style="box-shadow:none;">
             <h3>Email</h3>
             <p class="muted" style="margin:0;">
               <a href="mailto:nyotmanee@gmail.com">nyotmanee@gmail.com</a>
             </p>
           </div>
 
-          <div class="card pad" style="box-shadow:none;background:rgba(37,99,235,0.06);border-color:rgba(37,99,235,0.22);">
+          <div class="card pad contactBoxBlue" style="box-shadow:none;">
             <h3>LinkedIn</h3>
             <p class="muted" style="margin:0;">
               <a href="https://www.linkedin.com/in/natashayotmanee" target="_blank" rel="noopener">www.linkedin.com/in/natashayotmanee ↗</a>
