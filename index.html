@@ -12,9 +12,6 @@
       --bg2: #f6fbfa;
 
       --panel: #ffffff;
-      --panelSoft: rgba(14,165,166,0.06);
-      --panelSoft2: rgba(37,99,235,0.06);
-      --panelSoft3: rgba(99,102,241,0.06);
 
       --text: #0f172a;
       --muted:#475569;
@@ -37,14 +34,15 @@
       --btnBd: rgba(14,165,166,0.28);
       --btnTx: #064e4e;
 
-      --chipBg: rgba(14,165,166,0.12);
-      --chipBd: rgba(14,165,166,0.32);
-      --chipTx: #064e4e;
-
       /* Featured experience button (purple) */
       --fxBg: rgba(99,102,241,0.12);
       --fxBd: rgba(99,102,241,0.34);
       --fxTx: #3730a3;
+
+      /* CV skill chips should match experience section (blue/purple vibe) */
+      --skillBg: rgba(37,99,235,0.10);
+      --skillBd: rgba(37,99,235,0.26);
+      --skillTx: #1e3a8a;
 
       /* Some Things I Love cards */
       --lovePurpleBg: rgba(99,102,241,0.08);
@@ -55,6 +53,14 @@
 
       --loveBlueBg: rgba(37,99,235,0.06);
       --loveBlueBd: rgba(37,99,235,0.18);
+
+      /* Research cards */
+      --researchCardBg: rgba(99,102,241,0.06);
+      --researchCardBd: rgba(99,102,241,0.18);
+
+      /* Publication cards */
+      --pubCardBg: rgba(14,165,166,0.06);
+      --pubCardBd: rgba(14,165,166,0.18);
     }
 
     * { box-sizing: border-box; }
@@ -168,9 +174,6 @@
       box-shadow: var(--shadow);
     }
     .card.pad{ padding: 18px; }
-    .soft{ background: var(--panelSoft); }
-    .soft2{ background: var(--panelSoft2); }
-    .soft3{ background: var(--panelSoft3); }
 
     .grid{ display: grid; gap: 16px; }
     @media (min-width: 900px){
@@ -241,11 +244,10 @@
       border-color: rgba(15,23,42,0.14);
     }
 
-    /* Purple featured experience buttons */
     .btn.fx{
-      background: var(--fxBg);
-      border-color: var(--fxBd);
-      color: var(--fxTx);
+      background: rgba(99,102,241,0.12);
+      border-color: rgba(99,102,241,0.34);
+      color: #3730a3;
     }
     .btn.fx:hover{
       background: rgba(99,102,241,0.18);
@@ -303,6 +305,7 @@
     }
 
     .stack{ display: grid; gap: 14px; }
+
     .cardPost{
       border-radius: 18px;
       border: 1px solid var(--border);
@@ -312,9 +315,6 @@
       display:flex;
       flex-direction: column;
     }
-    .cardPost.soft{ background: rgba(14,165,166,0.06); }
-    .cardPost.soft2{ background: rgba(37,99,235,0.06); }
-    .cardPost.soft3{ background: rgba(99,102,241,0.06); }
 
     .cardMedia{
       height: 190px;
@@ -369,9 +369,9 @@
       font-size: 12px;
       padding: 8px 10px;
       border-radius: 999px;
-      background: var(--chipBg);
-      border: 1px solid var(--chipBd);
-      color: var(--chipTx);
+      border: 1px solid var(--skillBd);
+      background: var(--skillBg);
+      color: var(--skillTx);
       box-shadow: 0 6px 14px rgba(15,23,42,0.06);
     }
 
@@ -402,10 +402,20 @@
       border-radius: 10px;
     }
 
-    /* Some Things I Love themed backgrounds */
     .lovePurple{ background: var(--lovePurpleBg) !important; border-color: var(--lovePurpleBd) !important; }
     .loveGreen{ background: var(--loveGreenBg) !important; border-color: var(--loveGreenBd) !important; }
     .loveBlue{ background: var(--loveBlueBg) !important; border-color: var(--loveBlueBd) !important; }
+
+    /* Research and publication section layout requirements */
+    .whiteSection{ background: #ffffff; box-shadow: var(--shadow); }
+    .researchCard{
+      background: var(--researchCardBg);
+      border-color: var(--researchCardBd);
+    }
+    .pubCard{
+      background: var(--pubCardBg);
+      border-color: var(--pubCardBd);
+    }
   </style>
 </head>
 
@@ -436,7 +446,6 @@
     <!-- HOME -->
     <section class="page active" id="page-home" data-page="home">
       <div class="grid cols2">
-        <!-- LEFT SIDE -->
         <div class="grid">
           <div class="card pad">
             <div class="heroRow">
@@ -494,14 +503,12 @@
           </div>
         </div>
 
-        <!-- RIGHT SIDE -->
         <aside class="card pad">
           <h2>Some Things I Love:</h2>
 
           <div class="divider"></div>
 
           <div class="stack">
-            <!-- Food should be purple -->
             <div class="card pad lovePurple" style="box-shadow:none;">
               <h3>Food 🍲</h3>
               <p class="muted" style="margin-bottom:8px;">I’m a foodie who loves trying new places.</p>
@@ -512,7 +519,6 @@
               </ul>
             </div>
 
-            <!-- Travel can stay blue -->
             <div class="card pad loveBlue" style="box-shadow:none;">
               <h3>Travel 🌎</h3>
               <p class="muted" style="margin-bottom:8px;">
@@ -524,7 +530,6 @@
               </ul>
             </div>
 
-            <!-- Books & Movies should be green -->
             <div class="card pad loveGreen" style="box-shadow:none;">
               <h3>Books 📚</h3>
               <p class="muted" style="margin-bottom:8px;">Who doesn’t like to read??</p>
@@ -570,14 +575,14 @@
             <p class="muted">Education, experience, research contributions, programs &amp; awards, and skills.</p>
           </div>
           <div class="btnRow">
-            <a class="btn ghost" href="https://www.linkedin.com/in/natashayotmanee" target="_blank" rel="noopener">LinkedIn ↗</a>
+            <a class="btn ghost" href="https://www.linkedin.com/in/natashayotmanee" target="_blank" rel="noopener">LinkedIn Profile ↗</a>
           </div>
         </div>
 
         <div class="divider"></div>
 
         <section id="cv-education">
-          <div class="card pad soft" style="box-shadow:none;">
+          <div class="card pad" style="box-shadow:none;background:rgba(14,165,166,0.06);border-color:rgba(14,165,166,0.20);">
             <h2>Education</h2>
             <div class="timeline">
               <div class="tItem">
@@ -619,7 +624,7 @@
         <div class="divider"></div>
 
         <section id="cv-experience">
-          <div class="card pad soft2" style="box-shadow:none;">
+          <div class="card pad" style="box-shadow:none;background:rgba(37,99,235,0.06);border-color:rgba(37,99,235,0.20);">
             <h2>Professional &amp; Research Experience</h2>
             <div class="timeline">
 
@@ -723,7 +728,7 @@
 
         <section id="cv-contrib-awards">
           <div class="grid cols2even">
-            <div class="card pad soft" style="box-shadow:none;">
+            <div class="card pad" style="box-shadow:none;background:rgba(14,165,166,0.06);border-color:rgba(14,165,166,0.20);">
               <h2>Research Contributions</h2>
 
               <div class="tItem" style="box-shadow:none;">
@@ -735,7 +740,7 @@
                   <strong>Research contributor/co-editor:</strong> <em>ASEAN Matters for America / America Matters for ASEAN</em> (6th ed.), East-West Center (2023).
                 </p>
                 <div class="btnRow">
-                  <a class="btn" href="https://asiamattersforamerica.org/uploads/publications/2023-ASEAN-Matters-for-America.pdf" target="_blank" rel="noopener">Open PDF ↗</a>
+                  <a class="btn" href="https://asiamattersforamerica.org/uploads/publications/2023-ASEAN-Matters-for-America.pdf" target="_blank" rel="noopener">ASEAN PDF ↗</a>
                 </div>
               </div>
 
@@ -750,7 +755,7 @@
               </div>
             </div>
 
-            <div class="card pad soft" style="box-shadow:none;">
+            <div class="card pad" style="box-shadow:none;background:rgba(14,165,166,0.06);border-color:rgba(14,165,166,0.20);">
               <h2>Programs &amp; Awards</h2>
 
               <div class="tItem" style="box-shadow:none;">
@@ -762,7 +767,7 @@
                   <strong>Global Scholars Program:</strong> Global Research Institute, W&amp;M (Aug 2023–2024) - selected as 1 of 18.
                 </p>
                 <div class="btnRow">
-                  <a class="btn" href="https://www.wm.edu/offices/dccenter/opportunities/gsp/gsp-alumni/23-24scholars/" target="_blank" rel="noopener">Open ↗</a>
+                  <a class="btn" href="https://www.wm.edu/offices/dccenter/opportunities/gsp/gsp-alumni/23-24scholars/" target="_blank" rel="noopener">GSP Page ↗</a>
                 </div>
               </div>
 
@@ -775,7 +780,7 @@
                   <strong>Gates Scholarship:</strong> Reves Center for International Studies, W&amp;M (Feb–Jun 2025) - $7,500 study abroad award.
                 </p>
                 <div class="btnRow">
-                  <a class="btn" href="https://studyabroad.wm.edu/index.cfm?FuseAction=Programs.ViewProgram&Program_ID=2659" target="_blank" rel="noopener">Open ↗</a>
+                  <a class="btn" href="https://studyabroad.wm.edu/index.cfm?FuseAction=Programs.ViewProgram&Program_ID=2659" target="_blank" rel="noopener">Program Page ↗</a>
                 </div>
               </div>
             </div>
@@ -805,7 +810,8 @@
     <!-- RESEARCH & PUBLICATIONS -->
     <section class="page" id="page-research" data-page="research">
       <div class="grid cols2">
-        <div class="card pad soft3" style="box-shadow:none;">
+        <!-- Current research section background white, cards colored -->
+        <div class="card pad whiteSection">
           <div class="sectionHead">
             <div>
               <h1>Research &amp; Publications</h1>
@@ -818,7 +824,7 @@
           <h2>Current Research</h2>
 
           <div class="stack">
-            <article class="cardPost soft3">
+            <article class="cardPost researchCard">
               <div class="cardBody">
                 <p class="cardTitle">Politics of Recognition and the Case of One China</p>
                 <p class="cardText">
@@ -826,12 +832,12 @@
                 </p>
                 <div class="cardFooter">
                   <span class="mini">William &amp; Mary · Department of Government</span>
-                  <a class="btn" href="#cv" data-route="cv" data-scrolltarget="cv-deptgov">Open in CV ↗</a>
+                  <a class="btn" href="#cv" data-route="cv" data-scrolltarget="cv-deptgov">View in CV ↗</a>
                 </div>
               </div>
             </article>
 
-            <article class="cardPost soft3">
+            <article class="cardPost researchCard">
               <div class="cardBody">
                 <p class="cardTitle">Storied States (Asia Policy Lab)</p>
                 <p class="cardText">
@@ -839,49 +845,50 @@
                 </p>
                 <div class="cardFooter">
                   <span class="mini">William &amp; Mary · Asia Policy Lab</span>
-                  <a class="btn" href="#cv" data-route="cv" data-scrolltarget="cv-asiapolicylab">Open in CV ↗</a>
+                  <a class="btn" href="#cv" data-route="cv" data-scrolltarget="cv-asiapolicylab">View in CV ↗</a>
                 </div>
               </div>
             </article>
           </div>
         </div>
 
-        <aside class="card pad soft" style="box-shadow:none;">
+        <!-- Selected publications section background white, cards colored -->
+        <aside class="card pad whiteSection">
           <h2>Selected Publications</h2>
           <p class="muted">Articles published on Asia Matters for America (East-West Center).</p>
 
           <div class="divider"></div>
 
           <div class="stack" aria-label="Publications list">
-            <article class="cardPost soft">
+            <article class="cardPost pubCard">
               <div class="cardBody">
                 <p class="cardTitle"><strong>South Korea, Japan, &amp; Taiwan Donate to Maui</strong></p>
                 <p class="cardText">Coverage of international support and regional ties following the Maui wildfires.</p>
                 <div class="cardFooter">
                   <span class="mini">Asia Matters for America</span>
-                  <a class="btn" href="https://asiamattersforamerica.org/articles/south-korea-japan-taiwan-donate-to-maui" target="_blank" rel="noopener">Open ↗</a>
+                  <a class="btn" href="https://asiamattersforamerica.org/articles/south-korea-japan-taiwan-donate-to-maui" target="_blank" rel="noopener">Open Article ↗</a>
                 </div>
               </div>
             </article>
 
-            <article class="cardPost soft">
+            <article class="cardPost pubCard">
               <div class="cardBody">
                 <p class="cardTitle"><strong>Eden Center Redevelopment Plan Approved</strong></p>
                 <p class="cardText">Reporting on a major community redevelopment and its local significance.</p>
                 <div class="cardFooter">
                   <span class="mini">Asia Matters for America</span>
-                  <a class="btn" href="https://asiamattersforamerica.org/articles/eden-center-redevelopment-plan-approved" target="_blank" rel="noopener">Open ↗</a>
+                  <a class="btn" href="https://asiamattersforamerica.org/articles/eden-center-redevelopment-plan-approved" target="_blank" rel="noopener">Open Article ↗</a>
                 </div>
               </div>
             </article>
 
-            <article class="cardPost soft">
+            <article class="cardPost pubCard">
               <div class="cardBody">
                 <p class="cardTitle"><strong>Sawasdee Festival: Celebrating the 190th Anniversary of US-Thai Relations</strong></p>
                 <p class="cardText">Highlights from a cultural festival marking a milestone in U.S.–Thai relations.</p>
                 <div class="cardFooter">
                   <span class="mini">Asia Matters for America</span>
-                  <a class="btn" href="https://asiamattersforamerica.org/articles/sawasdee-festival-celebrating-the-190th-anniversary-of-us-thai-relations" target="_blank" rel="noopener">Open ↗</a>
+                  <a class="btn" href="https://asiamattersforamerica.org/articles/sawasdee-festival-celebrating-the-190th-anniversary-of-us-thai-relations" target="_blank" rel="noopener">Open Article ↗</a>
                 </div>
               </div>
             </article>
@@ -896,11 +903,10 @@
         <div class="sectionHead">
           <div>
             <h1>LinkedIn Posts</h1>
-            <p class="muted">A scrollable gallery of posts (with images + summarized captions).</p>
           </div>
           <div class="btnRow">
             <button class="btn ghost" id="toggleCaptionsBtn" type="button">Captions (on)</button>
-            <a class="btn ghost" href="https://www.linkedin.com/in/natashayotmanee" target="_blank" rel="noopener">Open LinkedIn ↗</a>
+            <a class="btn ghost" href="https://www.linkedin.com/in/natashayotmanee" target="_blank" rel="noopener">LinkedIn Profile ↗</a>
           </div>
         </div>
 
@@ -920,7 +926,7 @@
                 </p>
                 <div class="cardFooter">
                   <span class="mini">LinkedIn · Natasha Yotmanee</span>
-                  <a class="btn" href="https://www.linkedin.com/posts/natashayotmanee_and-im-back-after-six-unforgettable-activity-7377392265792524288-ido-" target="_blank" rel="noopener">Open ↗</a>
+                  <a class="btn" href="https://www.linkedin.com/posts/natashayotmanee_and-im-back-after-six-unforgettable-activity-7377392265792524288-ido-" target="_blank" rel="noopener">Open Post ↗</a>
                 </div>
               </div>
             </article>
@@ -936,7 +942,7 @@
                 </p>
                 <div class="cardFooter">
                   <span class="mini">LinkedIn · Natasha Yotmanee</span>
-                  <a class="btn" href="https://www.linkedin.com/posts/natashayotmanee_happy-february-reflecting-on-the-past-activity-7291815029211815936-8Zhu" target="_blank" rel="noopener">Open ↗</a>
+                  <a class="btn" href="https://www.linkedin.com/posts/natashayotmanee_happy-february-reflecting-on-the-past-activity-7291815029211815936-8Zhu" target="_blank" rel="noopener">Open Post ↗</a>
                 </div>
               </div>
             </article>
@@ -952,7 +958,7 @@
                 </p>
                 <div class="cardFooter">
                   <span class="mini">LinkedIn · Natasha Yotmanee</span>
-                  <a class="btn" href="https://www.linkedin.com/posts/natashayotmanee_undp-crisisbureau-fellow-activity-7211036309379796992-m9Ke" target="_blank" rel="noopener">Open ↗</a>
+                  <a class="btn" href="https://www.linkedin.com/posts/natashayotmanee_undp-crisisbureau-fellow-activity-7211036309379796992-m9Ke" target="_blank" rel="noopener">Open Post ↗</a>
                 </div>
               </div>
             </article>
@@ -966,7 +972,7 @@
                 </p>
                 <div class="cardFooter">
                   <span class="mini">LinkedIn · Shared</span>
-                  <a class="btn" href="https://www.linkedin.com/posts/mike-tierney-694a3856_the-griffin-has-landed-in-brussels-and-ugcPost-7173641420556152832-mH67" target="_blank" rel="noopener">Open ↗</a>
+                  <a class="btn" href="https://www.linkedin.com/posts/mike-tierney-694a3856_the-griffin-has-landed-in-brussels-and-ugcPost-7173641420556152832-mH67" target="_blank" rel="noopener">Open Post ↗</a>
                 </div>
               </div>
             </article>
@@ -980,7 +986,7 @@
                 </p>
                 <div class="cardFooter">
                   <span class="mini">LinkedIn · Shared</span>
-                  <a class="btn" href="https://www.linkedin.com/posts/kaleea-korunka_my-global-scholars-cohort-and-i-recently-ugcPost-7170439711038136321-aXQt" target="_blank" rel="noopener">Open ↗</a>
+                  <a class="btn" href="https://www.linkedin.com/posts/kaleea-korunka_my-global-scholars-cohort-and-i-recently-ugcPost-7170439711038136321-aXQt" target="_blank" rel="noopener">Open Post ↗</a>
                 </div>
               </div>
             </article>
@@ -994,7 +1000,7 @@
                 </p>
                 <div class="cardFooter">
                   <span class="mini">LinkedIn · Shared</span>
-                  <a class="btn" href="https://www.linkedin.com/posts/mike-tierney-694a3856_for-the-past-2-weeks-william-mary-students-ugcPost-7154577984773832704-W3qa" target="_blank" rel="noopener">Open ↗</a>
+                  <a class="btn" href="https://www.linkedin.com/posts/mike-tierney-694a3856_for-the-past-2-weeks-william-mary-students-ugcPost-7154577984773832704-W3qa" target="_blank" rel="noopener">Open Post ↗</a>
                 </div>
               </div>
             </article>
@@ -1008,7 +1014,7 @@
                 </p>
                 <div class="cardFooter">
                   <span class="mini">LinkedIn · Shared</span>
-                  <a class="btn" href="https://www.linkedin.com/posts/office-of-the-under-secretary-of-war-for-policy_ms-sasha-baker-acting-under-secretary-of-ugcPost-7151776456820346880-o-_J" target="_blank" rel="noopener">Open ↗</a>
+                  <a class="btn" href="https://www.linkedin.com/posts/office-of-the-under-secretary-of-war-for-policy_ms-sasha-baker-acting-under-secretary-of-ugcPost-7151776456820346880-o-_J" target="_blank" rel="noopener">Open Post ↗</a>
                 </div>
               </div>
             </article>
@@ -1022,7 +1028,7 @@
                 </p>
                 <div class="cardFooter">
                   <span class="mini">LinkedIn · Shared</span>
-                  <a class="btn" href="https://www.linkedin.com/posts/activity-7152694780970299393-M0gr" target="_blank" rel="noopener">Open ↗</a>
+                  <a class="btn" href="https://www.linkedin.com/posts/activity-7152694780970299393-M0gr" target="_blank" rel="noopener">Open Post ↗</a>
                 </div>
               </div>
             </article>
