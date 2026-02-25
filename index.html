@@ -1366,7 +1366,7 @@
     </section>
   </main>
 
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  <script>
     const routes = ["home","cv","research","posts","contact"];
     const pages = [...document.querySelectorAll(".page")];
     const navLinks = [...document.querySelectorAll("[data-route]")];
@@ -1452,4 +1452,16 @@
       a.addEventListener("click", (e) => {
         const route = a.getAttribute("data-route");
         const targetId = a.getAttribute("data-scrolltarget");
-        if (!route
+        if (!route || !targetId) return;
+
+        location.hash = "#" + route;
+        setTimeout(() => {
+          requestAnimationFrame(() => scrollToTargetId(targetId));
+        }, 0);
+
+        e.preventDefault();
+      });
+    });
+  </script>
+</body>
+</html>
