@@ -1305,4 +1305,16 @@
       a.addEventListener("click", (e) => {
         const route = a.getAttribute("data-route");
         const targetId = a.getAttribute("data-scrolltarget");
-        if (!route |
+        if (!route || !targetId) return;
+
+        location.hash = "#" + route;
+        setTimeout(() => {
+          requestAnimationFrame(() => scrollToTargetId(targetId));
+        }, 0);
+
+        e.preventDefault();
+      });
+    });
+  </script>
+</body>
+</html>
