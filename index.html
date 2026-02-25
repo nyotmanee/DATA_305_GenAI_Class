@@ -305,6 +305,50 @@
     .btn.op4{ background: var(--opBtn4Bg); border-color: var(--opBtn4Bd); color: var(--opBtn4Tx); }
     .btn.op4:hover{ background: rgba(14,165,166,0.14); border-color: rgba(14,165,166,0.36); text-decoration:none; }
 
+    /* Posts carousel wrapper */
+    .postsCarouselWrap{
+      position: relative;
+    }
+    .scrollBtn{
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 10;
+      width: 38px; height: 38px;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.95);
+      box-shadow: 0 4px 12px rgba(15,23,42,0.12);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      color: var(--text);
+      transition: background .12s, box-shadow .12s, opacity .18s;
+      user-select: none;
+    }
+    .scrollBtn:hover{
+      background: rgba(255,255,255,1);
+      box-shadow: 0 6px 18px rgba(15,23,42,0.16);
+    }
+    .scrollBtn.left{ left: -14px; }
+    .scrollBtn.right{ right: -14px; }
+    .scrollBtn.hidden{ opacity: 0; pointer-events: none; }
+
+    /* Shared footer nav across all pages */
+    .pageFooter{
+      margin-top: 22px;
+      padding-top: 18px;
+      color: var(--muted2);
+      font-size: 12px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
     .list{ margin: 0; padding-left: 18px; color: var(--muted); }
     .list li{ margin: 6px 0; }
 
@@ -387,6 +431,7 @@
       display:flex;
       flex-direction: column;
       gap: 8px;
+      flex: 1;
     }
     .cardTitle{
       font-size: 14px;
@@ -399,14 +444,15 @@
       font-size: 13px;
       color: var(--muted);
       margin: 0;
+      flex: 1;
     }
     .cardFooter{
-      margin-top: 6px;
+      margin-top: auto;
+      padding-top: 10px;
       display:flex;
-      justify-content: space-between;
+      flex-direction: column;
       align-items: center;
-      gap: 10px;
-      flex-wrap: wrap;
+      gap: 8px;
     }
     .mini{ font-size: 12px; color: var(--muted2); }
 
@@ -446,7 +492,6 @@
       gap: 10px;
       flex-wrap: wrap;
     }
-
     :focus-visible{
       outline: 3px solid var(--focus);
       outline-offset: 2px;
@@ -623,7 +668,7 @@
             </div>
 
             <div class="card pad" style="box-shadow:none;background:rgba(14,165,166,0.04);border-color:rgba(14,165,166,0.18);">
-              <h3>Senior Year Bucket List</h3>
+              <h3>Senior Year - Bucket List 🎓</h3>
               <p class="muted" style="margin-bottom:8px;">Time is ticking. Here are some things I'm looking forward to:</p>
               <ul class="list">
                 <li>W&amp;M zip line (I didn't even know we had one)</li>
@@ -635,6 +680,20 @@
           </div>
         </aside>
       </div>
+      <footer>
+        <div>© <span class="footerYear"></span> Natasha Yotmanee</div>
+        <div>
+          <a href="#home" data-route="home">Home</a>
+          <span class="muted2"> · </span>
+          <a href="#cv" data-route="cv">CV</a>
+          <span class="muted2"> · </span>
+          <a href="#research" data-route="research">Research &amp; Publications</a>
+          <span class="muted2"> · </span>
+          <a href="#posts" data-route="posts">Posts</a>
+          <span class="muted2"> · </span>
+          <a href="#contact" data-route="contact">Contact</a>
+        </div>
+      </footer>
     </section>
 
     <!-- CV -->
@@ -874,6 +933,20 @@
           </div>
         </section>
       </div>
+      <footer>
+        <div>© <span class="footerYear"></span> Natasha Yotmanee</div>
+        <div>
+          <a href="#home" data-route="home">Home</a>
+          <span class="muted2"> · </span>
+          <a href="#cv" data-route="cv">CV</a>
+          <span class="muted2"> · </span>
+          <a href="#research" data-route="research">Research &amp; Publications</a>
+          <span class="muted2"> · </span>
+          <a href="#posts" data-route="posts">Posts</a>
+          <span class="muted2"> · </span>
+          <a href="#contact" data-route="contact">Contact</a>
+        </div>
+      </footer>
     </section>
 
     <!-- RESEARCH & PUBLICATIONS -->
@@ -962,6 +1035,20 @@
           </div>
         </aside>
       </div>
+      <footer>
+        <div>© <span class="footerYear"></span> Natasha Yotmanee</div>
+        <div>
+          <a href="#home" data-route="home">Home</a>
+          <span class="muted2"> · </span>
+          <a href="#cv" data-route="cv">CV</a>
+          <span class="muted2"> · </span>
+          <a href="#research" data-route="research">Research &amp; Publications</a>
+          <span class="muted2"> · </span>
+          <a href="#posts" data-route="posts">Posts</a>
+          <span class="muted2"> · </span>
+          <a href="#contact" data-route="contact">Contact</a>
+        </div>
+      </footer>
     </section>
 
     <!-- POSTS — only this section was changed -->
@@ -979,7 +1066,10 @@
 
         <div class="divider"></div>
 
-        <div style="overflow-x:auto; padding-bottom: 6px; scroll-snap-type:x mandatory;">
+        <div class="postsCarouselWrap">
+          <button class="scrollBtn left hidden" id="scrollLeft" aria-label="Scroll left">&#8249;</button>
+          <button class="scrollBtn right" id="scrollRight" aria-label="Scroll right">&#8250;</button>
+          <div style="overflow-x:auto; padding-bottom: 6px; scroll-snap-type:x mandatory;" id="postsScroller">
           <div style="display:grid; grid-auto-flow:column; grid-auto-columns:minmax(260px, 320px); gap:14px; padding:2px;" id="postsGrid">
 
             <!-- POST 1 -->
@@ -1204,8 +1294,23 @@
             </article>
 
           </div>
+          </div>
         </div>
       </div>
+      <footer>
+        <div>© <span class="footerYear"></span> Natasha Yotmanee</div>
+        <div>
+          <a href="#home" data-route="home">Home</a>
+          <span class="muted2"> · </span>
+          <a href="#cv" data-route="cv">CV</a>
+          <span class="muted2"> · </span>
+          <a href="#research" data-route="research">Research &amp; Publications</a>
+          <span class="muted2"> · </span>
+          <a href="#posts" data-route="posts">Posts</a>
+          <span class="muted2"> · </span>
+          <a href="#contact" data-route="contact">Contact</a>
+        </div>
+      </footer>
     </section>
 
     <!-- CONTACT -->
@@ -1233,7 +1338,7 @@
         </div>
 
         <footer>
-          <div>© <span id="year"></span> Natasha Yotmanee</div>
+          <div>© <span class="footerYear"></span> Natasha Yotmanee</div>
           <div>
             <a href="#home" data-route="home">Home</a>
             <span class="muted2"> · </span>
@@ -1242,6 +1347,8 @@
             <a href="#research" data-route="research">Research &amp; Publications</a>
             <span class="muted2"> · </span>
             <a href="#posts" data-route="posts">Posts</a>
+            <span class="muted2"> · </span>
+            <a href="#contact" data-route="contact">Contact</a>
           </div>
         </footer>
       </div>
@@ -1267,7 +1374,9 @@
     window.addEventListener("hashchange", onHashChange);
     onHashChange();
 
-    document.getElementById("year").textContent = new Date().getFullYear();
+    // Fill all footer year spans
+    const yr = new Date().getFullYear();
+    document.querySelectorAll(".footerYear, #year").forEach(el => el.textContent = yr);
 
     const toggleBtn = document.getElementById("toggleCaptionsBtn");
     let captionsOn = true;
@@ -1285,6 +1394,31 @@
       });
       updateCaptionBtn();
     });
+
+    // Scroll buttons for posts carousel
+    const scroller = document.getElementById("postsScroller");
+    const btnLeft  = document.getElementById("scrollLeft");
+    const btnRight = document.getElementById("scrollRight");
+
+    function updateScrollBtns(){
+      if (!scroller) return;
+      const atStart = scroller.scrollLeft <= 4;
+      const atEnd   = scroller.scrollLeft + scroller.clientWidth >= scroller.scrollWidth - 4;
+      btnLeft.classList.toggle("hidden", atStart);
+      btnRight.classList.toggle("hidden", atEnd);
+    }
+
+    if (scroller){
+      scroller.addEventListener("scroll", updateScrollBtns, { passive: true });
+      updateScrollBtns();
+
+      btnLeft.addEventListener("click", () => {
+        scroller.scrollBy({ left: -320, behavior: "smooth" });
+      });
+      btnRight.addEventListener("click", () => {
+        scroller.scrollBy({ left: 320, behavior: "smooth" });
+      });
+    }
 
     function scrollToTargetId(targetId){
       if (!targetId) return;
