@@ -29,6 +29,14 @@
       --expBg: rgba(37, 99, 235, 0.08);
       --eduBorder: rgba(6, 182, 212, 0.22);
       --expBorder: rgba(37, 99, 235, 0.22);
+
+      --blockBgA: rgba(6, 182, 212, 0.06);
+      --blockBgB: rgba(37, 99, 235, 0.06);
+      --blockBorderA: rgba(6, 182, 212, 0.22);
+      --blockBorderB: rgba(37, 99, 235, 0.22);
+
+      --skillBg: rgba(37,99,235,0.10);
+      --skillBorder: rgba(37,99,235,0.24);
     }
 
     * { box-sizing: border-box; }
@@ -361,6 +369,16 @@
       line-height: 1.25;
       margin: 0;
     }
+    .postTitle strong{
+      color: rgba(14,23,38,0.95);
+      font-weight: 800;
+    }
+    .postTitle.highlight strong{
+      background: rgba(6,182,212,0.14);
+      padding: 1px 6px;
+      border-radius: 8px;
+      border: 1px solid rgba(6,182,212,0.18);
+    }
     .postText{
       font-size: 13px;
       color: var(--muted);
@@ -378,6 +396,23 @@
     .mini{
       font-size: 12px;
       color: var(--muted2);
+    }
+
+    /* Colored blocks for the two CV side-by-side sections */
+    .subBlock{
+      border-radius: 18px;
+      padding: 16px;
+      border: 1px solid var(--border);
+      background: #fff;
+      box-shadow: none;
+    }
+    .subBlock.a{
+      background: var(--blockBgA);
+      border-color: var(--blockBorderA);
+    }
+    .subBlock.b{
+      background: var(--blockBgB);
+      border-color: var(--blockBorderB);
     }
 
     /* Footer */
@@ -422,6 +457,16 @@
       flex-wrap: wrap;
       gap: 10px;
       margin-top: 10px;
+    }
+    .skillBtn{
+      cursor: default !important;
+      background: var(--skillBg) !important;
+      border-color: var(--skillBorder) !important;
+    }
+    .skillBtn:hover{
+      transform: none !important;
+      background: var(--skillBg) !important;
+      border-color: var(--skillBorder) !important;
     }
   </style>
 </head>
@@ -487,7 +532,7 @@
 
         <aside class="grid">
           <div class="card pad">
-            <h2>Current direction</h2>
+            <h2>Current Direction</h2>
             <p>
               Seeking opportunities that let me apply my skills in real-world settings, build meaningful connections,
               and prepare for a career dedicated to advancing peace and humanitarian efforts.
@@ -495,7 +540,7 @@
           </div>
 
           <div class="card pad">
-            <h2>Quick facts</h2>
+            <h2>Quick Facts</h2>
             <ul class="list">
               <li><strong>School:</strong> William &amp; Mary (BA, International Relations; minor in Data Science)</li>
               <li><strong>Languages:</strong> English (native), Thai (oral proficiency), Mandarin Chinese (intermediate)</li>
@@ -504,23 +549,20 @@
           </div>
 
           <div class="card pad">
-            <h2>Featured experience</h2>
+            <h2>Featured Experience</h2>
             <p class="muted" style="margin-bottom:10px;">
-              UNDP Crisis Bureau (Risk Anticipation Hub) communications fellow · Asia Policy Lab team lead · USAWC strategic studies intern
+              A snapshot of organizations and programs I’ve contributed to across research, policy, communications, and strategic studies.
+              Click any organization to jump to the related entry in my CV.
             </p>
 
             <!-- Organization buttons that jump to the correct CV section -->
             <div class="btnRow" aria-label="Jump to CV sections">
-              <a class="btn small cyan" href="#cv" data-route="cv" data-anchor="exp-gov">Department of Government</a>
-              <a class="btn small cyan" href="#cv" data-route="cv" data-anchor="exp-apl">Asia Policy Lab</a>
-              <a class="btn small cyan" href="#cv" data-route="cv" data-anchor="exp-undp">UNDP Crisis Bureau</a>
-              <a class="btn small cyan" href="#cv" data-route="cv" data-anchor="exp-usawc">USAWC</a>
-              <a class="btn small cyan" href="#cv" data-route="cv" data-anchor="exp-ewc">East-West Center</a>
-              <a class="btn small cyan" href="#cv" data-route="cv" data-anchor="exp-rte">Royal Thai Embassy</a>
-            </div>
-
-            <div class="btnRow" style="margin-top:10px;">
-              <a class="btn primary" href="#cv" data-route="cv">View CV</a>
+              <a class="btn small cyan" href="#cv" data-route="cv" data-anchor="exp-gov">W&amp;M - Department of Government</a>
+              <a class="btn small cyan" href="#cv" data-route="cv" data-anchor="exp-apl">W&amp;M - Asia Policy Lab</a>
+              <a class="btn small cyan" href="#cv" data-route="cv" data-anchor="exp-undp">UNDP - Crisis Bureau</a>
+              <a class="btn small cyan" href="#cv" data-route="cv" data-anchor="exp-usawc">USAWC - Strategic Studies Institute</a>
+              <a class="btn small cyan" href="#cv" data-route="cv" data-anchor="exp-ewc">East-West Center in Washington</a>
+              <a class="btn small cyan" href="#cv" data-route="cv" data-anchor="exp-rte">Royal Thai Embassy &amp; US-Asia Institute</a>
             </div>
           </div>
         </aside>
@@ -685,13 +727,14 @@
 
         <!-- Side-by-side: Research Contributions + Programs & Awards -->
         <div class="grid cols2equal">
-          <div class="card pad" style="box-shadow:none;background:rgba(255,255,255,0.75);">
+          <div class="subBlock a">
             <h2>Research Contributions</h2>
             <div class="stack" style="margin-top:8px;">
               <article class="post">
                 <div class="postBody">
-                  <p class="postTitle">ASEAN Matters for America / America Matters for ASEAN (6th ed.)</p>
-                  <p class="postText">Research contributor / co-editor · East-West Center (2023)</p>
+                  <p class="postTitle"><strong>ASEAN Matters for America / America Matters for ASEAN (6th ed.)</strong></p>
+                  <p class="postText">A regional overview of ASEAN–U.S. relationships, covering diplomatic, economic, and security trends shaping cooperation.</p>
+                  <p class="postText muted">Research contributor / co-editor · East-West Center (2023)</p>
                   <div class="postFooter">
                     <span class="mini">PDF</span>
                     <a class="btn primary" href="https://asiamattersforamerica.org/uploads/publications/2023-ASEAN-Matters-for-America.pdf" target="_blank" rel="noopener">Open ↗</a>
@@ -701,8 +744,9 @@
 
               <article class="post">
                 <div class="postBody">
-                  <p class="postTitle">Crisis in the Caucasus: Invasion of Georgia, 2008–2014</p>
-                  <p class="postText">Internal study contributor · Strategic Studies Institute, USAWC (2024)</p>
+                  <p class="postTitle"><strong>Crisis in the Caucasus: Invasion of Georgia, 2008–2014</strong></p>
+                  <p class="postText">A case study of the Russo–Georgian conflict and its aftermath, examining escalation, territorial disputes, and regional security implications.</p>
+                  <p class="postText muted">Internal study contributor · Strategic Studies Institute, USAWC (2024)</p>
                   <div class="postFooter">
                     <span class="mini">Internal contribution</span>
                     <span class="btn" style="cursor:default;">No public link</span>
@@ -712,13 +756,14 @@
             </div>
           </div>
 
-          <div class="card pad" style="box-shadow:none;background:rgba(255,255,255,0.75);">
+          <div class="subBlock b">
             <h2>Programs &amp; Awards</h2>
             <div class="stack" style="margin-top:8px;">
               <article class="post">
                 <div class="postBody">
-                  <p class="postTitle">Global Scholars Program (Global Research Institute, W&amp;M)</p>
-                  <p class="postText">Selected as 1 of 18 · Aug 2023–2024</p>
+                  <p class="postTitle"><strong>Global Scholars Program (Global Research Institute, W&amp;M)</strong></p>
+                  <p class="postText">A cohort-based program combining academic inquiry with site visits and practitioner engagement on global policy challenges.</p>
+                  <p class="postText muted">Selected as 1 of 18 · Aug 2023–2024</p>
                   <div class="postFooter">
                     <span class="mini">W&amp;M</span>
                     <a class="btn primary" href="https://www.wm.edu/offices/dccenter/opportunities/gsp/gsp-alumni/23-24scholars/" target="_blank" rel="noopener">Open ↗</a>
@@ -728,8 +773,9 @@
 
               <article class="post">
                 <div class="postBody">
-                  <p class="postTitle">Gates Scholarship (Reves Center, W&amp;M)</p>
-                  <p class="postText">$7,500 study abroad award · Feb–Jun 2025</p>
+                  <p class="postTitle"><strong>Gates Scholarship (Reves Center, W&amp;M)</strong></p>
+                  <p class="postText">A competitive award supporting international study and academic engagement abroad through the Reves Center.</p>
+                  <p class="postText muted">$7,500 study abroad award · Feb–Jun 2025</p>
                   <div class="postFooter">
                     <span class="mini">Study Abroad</span>
                     <a class="btn primary" href="https://studyabroad.wm.edu/index.cfm?FuseAction=Programs.ViewProgram&Program_ID=2659" target="_blank" rel="noopener">Open ↗</a>
@@ -743,14 +789,14 @@
         <div class="divider"></div>
 
         <!-- Skills at bottom as “buttons” -->
-        <h2>Skills</h2>
+        <h2>Skills (Languages)</h2>
         <div class="tagRow" aria-label="Skills">
-          <span class="btn small" style="cursor:default;">Python (intermediate)</span>
-          <span class="btn small" style="cursor:default;">SQL (basic, developing)</span>
-          <span class="btn small" style="cursor:default;">R (basic)</span>
-          <span class="btn small" style="cursor:default;">English (native)</span>
-          <span class="btn small" style="cursor:default;">Thai (oral proficiency)</span>
-          <span class="btn small" style="cursor:default;">Mandarin Chinese (intermediate)</span>
+          <span class="btn small skillBtn">Python (intermediate)</span>
+          <span class="btn small skillBtn">SQL (basic, developing)</span>
+          <span class="btn small skillBtn">R (basic)</span>
+          <span class="btn small skillBtn">English (native)</span>
+          <span class="btn small skillBtn">Thai (oral proficiency)</span>
+          <span class="btn small skillBtn">Mandarin Chinese (intermediate)</span>
         </div>
       </div>
     </section>
@@ -764,7 +810,7 @@
 
           <div class="divider"></div>
 
-          <h2>Current research</h2>
+          <h2>Current Research</h2>
           <div class="timeline">
             <div class="tItem">
               <div class="tTop">
@@ -800,14 +846,14 @@
 
         <aside class="grid">
           <div class="card pad">
-            <h2>Selected publications</h2>
+            <h2>Selected Publications</h2>
             <p class="muted">Writing and reporting on U.S.–Asia relations and regional developments.</p>
 
             <!-- Vertical stacked “post-style” articles -->
             <div class="stack">
               <article class="post">
                 <div class="postBody">
-                  <p class="postTitle">South Korea, Japan, &amp; Taiwan Donate to Maui</p>
+                  <p class="postTitle highlight"><strong>South Korea, Japan, &amp; Taiwan Donate to Maui</strong></p>
                   <p class="postText">Asia Matters for America (2023) — regional reporting on U.S.–Asia connections and current events.</p>
                   <div class="postFooter">
                     <span class="mini">Asia Matters for America</span>
@@ -818,7 +864,7 @@
 
               <article class="post">
                 <div class="postBody">
-                  <p class="postTitle">Eden Center Redevelopment Plan Approved</p>
+                  <p class="postTitle highlight"><strong>Eden Center Redevelopment Plan Approved</strong></p>
                   <p class="postText">Asia Matters for America (2023) — community and regional development coverage.</p>
                   <div class="postFooter">
                     <span class="mini">Asia Matters for America</span>
@@ -829,7 +875,7 @@
 
               <article class="post">
                 <div class="postBody">
-                  <p class="postTitle">Sawasdee Festival: Celebrating the 190th Anniversary of US-Thai Relations</p>
+                  <p class="postTitle highlight"><strong>Sawasdee Festival: Celebrating the 190th Anniversary of US-Thai Relations</strong></p>
                   <p class="postText">Asia Matters for America (2023) — highlighting cultural diplomacy and U.S.–Thailand ties.</p>
                   <div class="postFooter">
                     <span class="mini">Asia Matters for America</span>
@@ -864,7 +910,7 @@
             <div class="postBody">
               <p class="postTitle">And I’m back!</p>
               <p class="postText caption">
-                A reflection on six months studying abroad in Beijing—an exchange at Tsinghua, an extended summer at BLCU to improve Mandarin, and travel across ~15 cities. Highlights include the friendships, the everyday moments that made the experience meaningful, and the decision to take risks and say “yes” to the opportunity.
+                A reflection on six months studying abroad in Beijing—an exchange at Tsinghua, an extended summer at BLCU to improve Mandarin, and travel across ~15 cities—highlighting friendships, everyday moments, and the value of taking risks.
               </p>
               <div class="postFooter">
                 <span class="mini">LinkedIn · Natasha Yotmanee</span>
@@ -878,7 +924,7 @@
             <div class="postBody">
               <p class="postTitle">Happy February!</p>
               <p class="postText caption">
-                A gratitude-filled update reflecting on mentorship and major experiences through the Global Scholars Program (DC, Brussels, Paris), plus a summer fellowship with UNDP’s Risk Anticipation Hub and a Ukraine war study internship. Also shares excitement about being accepted as an exchange student at Tsinghua and receiving the Gates Scholarship.
+                A gratitude-filled update on mentorship and major experiences through Global Scholars (DC/Brussels/Paris), UNDP Risk Anticipation Hub, and a Ukraine war study internship, plus excitement about Tsinghua and receiving the Gates Scholarship.
               </p>
               <div class="postFooter">
                 <span class="mini">LinkedIn · Natasha Yotmanee</span>
@@ -892,7 +938,7 @@
             <div class="postBody">
               <p class="postTitle">International Day of Women in Diplomacy</p>
               <p class="postText caption">
-                Announces the start of a fellowship with UNDP Crisis Bureau’s Risk Anticipation Hub in NYC, with thanks to mentors and the hiring team, and excitement to learn and contribute over the summer.
+                Shares the start of a fellowship with UNDP Crisis Bureau’s Risk Anticipation Hub in NYC, with thanks to mentors and excitement to learn and contribute.
               </p>
               <div class="postFooter">
                 <span class="mini">LinkedIn · Natasha Yotmanee</span>
@@ -904,9 +950,9 @@
           <article class="post snap" style="min-height:360px;">
             <div class="postMedia" aria-hidden="true"></div>
             <div class="postBody">
-              <p class="postTitle">The Griffin has Landed (in Brussels)</p>
+              <p class="postTitle">The Griffin Has Landed (In Brussels)</p>
               <p class="postText caption">
-                A trip recap from the Global Scholars Program in Brussels and Paris, including visits to EU and NATO institutions and conversations with experts on tech policy, space policy, the war in Ukraine, and regulation—plus an alumni reception and community highlights.
+                A recap of the Global Scholars trip through Brussels and Paris, including visits to EU/NATO institutions, conversations with policy experts, and community-building with alumni and hosts.
               </p>
               <div class="postFooter">
                 <span class="mini">LinkedIn · Shared</span>
@@ -920,7 +966,7 @@
             <div class="postBody">
               <p class="postTitle">Visited Norfolk Naval Base</p>
               <p class="postText caption">
-                Shares a visit with the Global Scholars cohort to Norfolk Naval Base to meet with instructors and learn more about the Naval Air Force Atlantic and NATO Allied Command—plus excitement to continue learning about NATO and international organizations.
+                Highlights a Global Scholars cohort visit to Norfolk Naval Base to learn from instructors and discuss NATO-related work, with anticipation for continued learning in Europe.
               </p>
               <div class="postFooter">
                 <span class="mini">LinkedIn · Shared</span>
@@ -932,9 +978,9 @@
           <article class="post snap" style="min-height:360px;">
             <div class="postMedia" aria-hidden="true"></div>
             <div class="postBody">
-              <p class="postTitle">Global Scholars Program in DC</p>
+              <p class="postTitle">Global Scholars Program In DC</p>
               <p class="postText caption">
-                Highlights two weeks of DC site visits and practitioner meetings as part of the Global Scholars Program—covering U.S. foreign policy and international organizations—with stops including Congress, the World Bank, and the White House, plus anticipation for the Brussels/Paris trip.
+                Summarizes two weeks of DC site visits and practitioner conversations in the Global Scholars Program—covering U.S. foreign policy and international organizations—before heading to Brussels and Paris.
               </p>
               <div class="postFooter">
                 <span class="mini">LinkedIn · Shared</span>
@@ -946,9 +992,9 @@
           <article class="post snap" style="min-height:360px;">
             <div class="postMedia" aria-hidden="true"></div>
             <div class="postBody">
-              <p class="postTitle">Sasha Baker spoke with Global Scholars</p>
+              <p class="postTitle">Sasha Baker Spoke With Global Scholars</p>
               <p class="postText caption">
-                Recaps a discussion with Acting Under Secretary of Defense for Policy Sasha Baker on national security priorities, global challenges, and implementation of the National Defense Strategy, plus appreciation for the exchange with students in the Global Scholars Program.
+                Recaps a conversation with Acting Under Secretary of Defense for Policy Sasha Baker on national security priorities, global challenges, and implementing the National Defense Strategy, with appreciation for student engagement.
               </p>
               <div class="postFooter">
                 <span class="mini">LinkedIn · Shared</span>
@@ -960,9 +1006,9 @@
           <article class="post snap" style="min-height:360px;">
             <div class="postMedia" aria-hidden="true"></div>
             <div class="postBody">
-              <p class="postTitle">Week one of Global Scholars Program</p>
+              <p class="postTitle">Week One Of Global Scholars Program</p>
               <p class="postText caption">
-                A week-one update from William &amp; Mary’s Global Scholars Program featuring site visits (State, USAID, Pentagon, and EOB), guest speakers and alumni support, and students working on policy memos and briefings—plus a shoutout list of participating students.
+                A week-one update featuring site visits (State/USAID/Pentagon/EOB), guest speakers and alumni support, and students working on policy memos and briefings—plus recognition of the full student cohort.
               </p>
               <div class="postFooter">
                 <span class="mini">LinkedIn · Shared</span>
@@ -1033,14 +1079,13 @@
         heading.removeAttribute("tabindex");
       }
 
-      // If we have a pending anchor (e.g., clicking org buttons on Home), scroll after route renders
+      // Scroll to anchor after CV is active
       if (safe === "cv" && pendingAnchorId) {
         const el = document.getElementById(pendingAnchorId);
         if (el) {
-          // slight delay to ensure layout is ready
           setTimeout(() => {
             el.scrollIntoView({ behavior: "smooth", block: "start" });
-          }, 50);
+          }, 80);
         }
         pendingAnchorId = null;
       }
@@ -1061,11 +1106,10 @@
       const route = a.getAttribute("data-route");
       const anchor = a.getAttribute("data-anchor");
 
-      if (anchor) {
+      if (route === "cv" && anchor) {
+        // Ensure anchor survives the route change
         pendingAnchorId = anchor;
       }
-      // Allow hash change navigation to proceed normally
-      // (no preventDefault needed)
     });
 
     // Initialize route on load
