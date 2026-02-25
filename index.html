@@ -132,6 +132,11 @@
       backdrop-filter: blur(10px);
       border-bottom: 1px solid var(--border);
     }
+
+    /* Offset anchor scroll targets so the sticky header never covers them */
+    [id]{
+      scroll-margin-top: 80px;
+    }
     .topbarInner{
       max-width: var(--max);
       margin: 0 auto;
@@ -1331,7 +1336,7 @@
           <div class="card pad contactBoxGreen" style="box-shadow:none;">
             <h3>Email</h3>
             <p class="muted" style="margin:0;">
-              <a href="mailto:nyotmanee@gmail.com">nyotmanee@gmail.com</a>
+              <a href="/cdn-cgi/l/email-protection#27495e48534a4649424267404a464e4b0944484a"><span class="__cf_email__" data-cfemail="016f786e756c606f646441666c60686d2f626e6c">[email&#160;protected]</span></a>
             </p>
           </div>
 
@@ -1361,7 +1366,7 @@
     </section>
   </main>
 
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     const routes = ["home","cv","research","posts","contact"];
     const pages = [...document.querySelectorAll(".page")];
     const navLinks = [...document.querySelectorAll("[data-route]")];
@@ -1430,7 +1435,9 @@
       if (!targetId) return;
       const el = document.getElementById(targetId);
       if (!el) return;
-      el.scrollIntoView({behavior:"smooth", block:"start"});
+      const headerHeight = document.querySelector('.topbar')?.offsetHeight || 70;
+      const top = el.getBoundingClientRect().top + window.scrollY - headerHeight - 16;
+      window.scrollTo({ top, behavior: "smooth" });
       el.animate(
         [
           { boxShadow: "0 0 0 rgba(0,0,0,0)" },
@@ -1445,16 +1452,4 @@
       a.addEventListener("click", (e) => {
         const route = a.getAttribute("data-route");
         const targetId = a.getAttribute("data-scrolltarget");
-        if (!route || !targetId) return;
-
-        location.hash = "#" + route;
-        setTimeout(() => {
-          requestAnimationFrame(() => scrollToTargetId(targetId));
-        }, 0);
-
-        e.preventDefault();
-      });
-    });
-  </script>
-</body>
-</html>
+        if (!route
