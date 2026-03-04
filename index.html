@@ -544,6 +544,74 @@
       text-decoration: none;
     }
     .contactBoxBlue a:hover{ text-decoration: underline; }
+
+    /* CV Sidebar Styles */
+    .cvContainer {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+      position: relative;
+    }
+
+    @media (min-width: 1200px) {
+      .cvContainer {
+        grid-template-columns: 240px 1fr;
+      }
+    }
+
+    .cvSidebar {
+      display: none;
+      position: sticky;
+      top: 80px;
+      height: fit-content;
+      padding: 16px;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    @media (min-width: 1200px) {
+      .cvSidebar {
+        display: block;
+      }
+    }
+
+    .cvSidebar h3 {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--muted2);
+      margin: 0 0 12px 0;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .cvSidebarLink {
+      display: block;
+      padding: 10px 12px;
+      margin: 4px 0;
+      border-radius: 8px;
+      color: var(--muted);
+      font-size: 13px;
+      transition: background .12s ease, color .12s ease;
+      text-decoration: none;
+      border-left: 3px solid transparent;
+    }
+
+    .cvSidebarLink:hover {
+      background: rgba(99, 102, 241, 0.08);
+      color: var(--text);
+      border-left-color: var(--purple);
+      text-decoration: none;
+    }
+
+    .cvSidebarLink.active {
+      background: rgba(99, 102, 241, 0.12);
+      color: var(--purple);
+      border-left-color: var(--purple);
+      font-weight: 600;
+    }
   </style>
 </head>
 
@@ -709,7 +777,16 @@
 
     <!-- CV -->
     <section class="page" id="page-cv" data-page="cv">
-      <div class="card pad">
+      <div class="cvContainer">
+        <aside class="cvSidebar">
+          <h3>Sections</h3>
+          <a class="cvSidebarLink active" href="#cv-education" data-section="cv-education">Education</a>
+          <a class="cvSidebarLink" href="#cv-experience" data-section="cv-experience">Experience</a>
+          <a class="cvSidebarLink" href="#cv-contrib-awards" data-section="cv-contrib-awards">Research &amp; Awards</a>
+          <a class="cvSidebarLink" href="#cv-skills" data-section="cv-skills">Skills</a>
+        </aside>
+
+        <div>
         <div class="sectionHead">
           <div>
             <h1>Curriculum Vitae</h1>
@@ -934,14 +1011,9 @@
           <h2>Skills (Languages)</h2>
           <p class="muted" style="margin-bottom:8px;">Software and languages I use for research, analysis, and communication.</p>
 
-          <div class="chips" aria-label="Skills">
-            <span class="chip">Python (intermediate)</span>
-            <span class="chip">SQL (basic, developing)</span>
-            <span class="chip">R (basic)</span>
-            <span class="chip">English (native)</span>
-            <span class="chip">Thai (oral proficiency)</span>
-            <span class="chip">Mandarin Chinese (intermediate)</span>
-          </div>
+          <p style="font-size:14px; color: var(--skillTx); margin:0;">
+            <strong>Python (intermediate)</strong> | <strong>SQL (basic, developing)</strong> | <strong>R (basic)</strong> | <strong>English (native)</strong> | <strong>Thai (oral proficiency)</strong> | <strong>Mandarin Chinese (intermediate)</strong>
+          </p>
         </section>
       </div>
       <footer>
@@ -1256,7 +1328,7 @@
             <!-- POST 11 -->
             <article class="cardPost" style="min-height: 360px; scroll-snap-align:start;">
               <div class="cardMedia">
-                <img alt="LinkedIn post image" src="https://media.licdn.com/dms/image/v2/D4E10AQEuPaT9tnuneA/image-shrink_1280/image-shrink_1280/0/1691176504896?e=1772607600&v=beta&t=fA6YC677PtlfypZsMkWRv4edNExSfWUkWJ5JKUydLIo" referrerpolicy="no-referrer" loading="lazy" onerror="this.style.display='none';" />
+                <img alt="LinkedIn post image" src="https://media.licdn.com/dms/image/v2/D4E10AQEuPaT9tnuneA/image-shrink_1280/image-shrink_1280/0/1691176504896?e=1773255600&v=beta&t=sSnbcC6xZGbTx1AmOmH0b9wqP2wrWIIU1RZKdsSHXok" referrerpolicy="no-referrer" loading="lazy" onerror="this.style.display='none';" />
               </div>
               <div class="cardBody">
                 <p class="cardTitle">TANIP &amp; IMPACT! Graduation</p>
@@ -1308,7 +1380,7 @@
           </div>
         </div>
       </div>
-      <footer>
+      <div class="card pad">
         <div>© <span class="footerYear"></span> Natasha Yotmanee</div>
         <div>
           <a href="#home" data-route="home">Home</a>
@@ -1336,11 +1408,11 @@
           <div class="card pad contactBoxGreen" style="box-shadow:none;">
             <h3>Personal Email</h3>
             <p class="muted" style="margin:0 0 14px 0;">
-              <a href="mailto:nyotmanee@gmail.com">nyotmanee@gmail.com</a>
+              <a href="/cdn-cgi/l/email-protection#cda3b4a2b9a0aca3a8a88daaa0aca4a1e3aea2a0"><span class="__cf_email__" data-cfemail="bfd1c6d0cbd2ded1dadaffd8d2ded6d391dcd0d2">[email&#160;protected]</span></a>
             </p>
             <h3>School Email</h3>
             <p class="muted" style="margin:0;">
-              <a href="mailto:nsyotmanee@wm.edu">nsyotmanee@wm.edu</a>
+              <a href="/cdn-cgi/l/email-protection#721c010b1d061f131c171732051f5c171607"><span class="__cf_email__" data-cfemail="09677a70667d6468676c6c497e64276c6d7c">[email&#160;protected]</span></a>
             </p>
           </div>
 
@@ -1370,7 +1442,7 @@
     </section>
   </main>
 
-  <script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     const routes = ["home","cv","research","posts","contact"];
     const pages = [...document.querySelectorAll(".page")];
     const navLinks = [...document.querySelectorAll("[data-route]")];
@@ -1454,7 +1526,7 @@
 
     document.querySelectorAll('a[data-scrolltarget]').forEach(a => {
       a.addEventListener("click", (e) => {
-        const route = a.getAttribute("data-route");
+          const route = a.getAttribute("data-route");
         const targetId = a.getAttribute("data-scrolltarget");
         if (!route || !targetId) return;
 
@@ -1466,6 +1538,46 @@
         e.preventDefault();
       });
     });
+
+    // CV Sidebar Link Active State and Autoscroll
+    const cvSidebarLinks = document.querySelectorAll('.cvSidebarLink');
+    
+    function updateActiveSidebarLink() {
+      const scrollPosition = window.scrollY + 120;
+      const sections = ['cv-education', 'cv-experience', 'cv-contrib-awards', 'cv-skills'];
+      let activeSection = sections[0];
+
+      for (let section of sections) {
+        const element = document.getElementById(section);
+        if (element && element.offsetTop <= scrollPosition) {
+          activeSection = section;
+        }
+      }
+
+      cvSidebarLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('data-section') === activeSection) {
+          link.classList.add('active');
+        }
+      });
+    }
+
+    cvSidebarLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const sectionId = link.getAttribute('data-section');
+        const element = document.getElementById(sectionId);
+        if (element) {
+          const headerHeight = document.querySelector('.topbar')?.offsetHeight || 80;
+          const top = element.offsetTop - headerHeight - 20;
+          window.scrollTo({ top, behavior: 'smooth' });
+          setTimeout(() => updateActiveSidebarLink(), 100);
+        }
+      });
+    });
+
+    window.addEventListener('scroll', updateActiveSidebarLink, { passive: true });
+    updateActiveSidebarLink();
   </script>
 </body>
 </html>
