@@ -133,6 +133,62 @@
       border-bottom: 1px solid var(--border);
     }
 
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 8px;
+    }
+
+    .hamburger span {
+      width: 24px;
+      height: 2px;
+      background: var(--text);
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+
+    .hamburger.active span:nth-child(1) {
+      transform: rotate(45deg) translate(8px, 8px);
+    }
+
+    .hamburger.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(7px, -7px);
+    }
+
+    @media (max-width: 768px) {
+      .hamburger {
+        display: flex;
+      }
+
+      .nav {
+        position: absolute;
+        top: 70px;
+        left: 0;
+        right: 0;
+        background: rgba(255,255,255,0.95);
+        backdrop-filter: blur(10px);
+        flex-direction: column;
+        gap: 4px;
+        padding: 12px;
+        border-bottom: 1px solid var(--border);
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+      }
+
+      .nav.active {
+        max-height: 500px;
+      }
+    }
+
     /* Offset anchor scroll targets so the sticky header never covers them */
     [id]{
       scroll-margin-top: 80px;
@@ -618,6 +674,11 @@
 <body>
   <header class="topbar">
     <div class="topbarInner">
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
       <div class="brand" role="banner">
         <div class="avatar" aria-hidden="true">
           <img alt="Natasha Yotmanee" src="https://media.licdn.com/dms/image/v2/D4E03AQHGI9a5MyIa3A/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1730209655021?e=2147483647&t=HgT-tlrRoORyL3Ceta22UAp6S2l_dSJabJzMwwcDqoM&v=beta" />
@@ -628,7 +689,7 @@
         </div>
       </div>
 
-      <nav class="nav" aria-label="Primary">
+      <nav class="nav" aria-label="Primary" id="nav">
         <a class="pill active" href="#home" data-route="home">Home</a>
         <a class="pill" href="#cv" data-route="cv">CV</a>
         <a class="pill" href="#research" data-route="research">Research &amp; Publications</a>
@@ -705,11 +766,11 @@
           <div class="divider"></div>
 
           <div class="btnRow" style="flex-direction: column; gap: 12px;">
-            <a class="btn fx" href="#things" data-route="things" data-scrolltarget="things-bucketlist">Senior Year - Bucket List 🎓</a>
-            <a class="btn fx" href="#things" data-route="things" data-scrolltarget="things-food">Food 🍲</a>
-            <a class="btn fx" href="#things" data-route="things" data-scrolltarget="things-travel">Travel 🌎</a>
-            <a class="btn fx" href="#things" data-route="things" data-scrolltarget="things-books">Books 📚</a>
-            <a class="btn fx" href="#things" data-route="things" data-scrolltarget="things-movies">Movies 🎬</a>
+            <a class="btn" style="background: rgba(14,165,166,0.10); border-color: rgba(14,165,166,0.28); color: #064e4e;" href="#things" data-route="things" data-scrolltarget="things-bucketlist">Senior Year - Bucket List 🎓</a>
+            <a class="btn" style="background: rgba(37,99,235,0.10); border-color: rgba(37,99,235,0.28); color: #1e3a8a;" href="#things" data-route="things" data-scrolltarget="things-food">Food 🍲</a>
+            <a class="btn" style="background: rgba(14,165,166,0.10); border-color: rgba(14,165,166,0.28); color: #064e4e;" href="#things" data-route="things" data-scrolltarget="things-travel">Travel 🌎</a>
+            <a class="btn" style="background: rgba(37,99,235,0.10); border-color: rgba(37,99,235,0.28); color: #1e3a8a;" href="#things" data-route="things" data-scrolltarget="things-books">Books 📚</a>
+            <a class="btn" style="background: rgba(14,165,166,0.10); border-color: rgba(14,165,166,0.28); color: #064e4e;" href="#things" data-route="things" data-scrolltarget="things-movies">Movies 🎬</a>
           </div>
         </aside>
       </div>
@@ -973,7 +1034,7 @@
                 <div class="tItem" style="box-shadow:none;">
                   <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
                     <div>
-                      <h3 style="font-size: 13px; margin: 0 0 10px 0; color: var(--text); font-weight: 600;">Software</h3>
+                      <h3 style="font-size: 15px; margin: 0 0 10px 0; color: var(--text); font-weight: 600;">Software</h3>
                       <ul class="list" style="margin: 0;">
                         <li>Python (intermediate)</li>
                         <li>SQL (basic, developing)</li>
@@ -981,7 +1042,7 @@
                       </ul>
                     </div>
                     <div>
-                      <h3 style="font-size: 13px; margin: 0 0 10px 0; color: var(--text); font-weight: 600;">Languages</h3>
+                      <h3 style="font-size: 15px; margin: 0 0 10px 0; color: var(--text); font-weight: 600;">Languages</h3>
                       <ul class="list" style="margin: 0;">
                         <li>English (native)</li>
                         <li>Thai (oral proficiency)</li>
@@ -1512,6 +1573,8 @@
     const routes = ["home","cv","research","posts","things","contact"];
     const pages = [...document.querySelectorAll(".page")];
     const navLinks = [...document.querySelectorAll("[data-route]")];
+    const hamburger = document.getElementById("hamburger");
+    const nav = document.getElementById("nav");
 
     function setActiveRoute(route){
       const safe = routes.includes(route) ? route : "home";
@@ -1522,6 +1585,29 @@
     function onHashChange(){
       const hash = (location.hash || "#home").replace("#","");
       setActiveRoute(hash);
+      // Close hamburger menu when navigating
+      if (hamburger && nav) {
+        hamburger.classList.remove("active");
+        nav.classList.remove("active");
+      }
+    }
+
+    // Hamburger menu toggle
+    if (hamburger) {
+      hamburger.addEventListener("click", () => {
+        hamburger.classList.toggle("active");
+        nav.classList.toggle("active");
+      });
+    }
+
+    // Close menu when clicking on a link
+    if (nav) {
+      nav.querySelectorAll("a").forEach(link => {
+        link.addEventListener("click", () => {
+          hamburger.classList.remove("active");
+          nav.classList.remove("active");
+        });
+      });
     }
 
     window.addEventListener("hashchange", onHashChange);
