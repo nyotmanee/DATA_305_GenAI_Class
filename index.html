@@ -1928,6 +1928,11 @@
     window.addEventListener('scroll', updateActiveSidebarLink, { passive: true });
     updateActiveSidebarLink();
 
+    // Check for CV page and ensure sidebar updates
+    if (document.querySelector('#page-cv')) {
+      setInterval(updateActiveSidebarLink, 500);
+    }
+
     // Things I Love Sidebar Link Active State and Autoscroll
     const thingsSidebarLinks = document.querySelectorAll('.thingsSidebarLink');
     
