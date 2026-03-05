@@ -1945,13 +1945,20 @@
     
     function updateActiveThingsSidebarLink() {
       const scrollPosition = window.scrollY + 120;
+      const pageHeight = document.body.scrollHeight;
+      const windowHeight = window.innerHeight;
       const sections = ['things-bucketlist', 'things-food', 'things-travel', 'things-books', 'things-movies'];
       let activeSection = sections[0];
 
-      for (let section of sections) {
-        const element = document.getElementById(section);
-        if (element && element.offsetTop <= scrollPosition) {
-          activeSection = section;
+      // Check if at bottom of page
+      if (scrollPosition + windowHeight >= pageHeight - 100) {
+        activeSection = 'things-movies';
+      } else {
+        for (let section of sections) {
+          const element = document.getElementById(section);
+          if (element && element.offsetTop <= scrollPosition) {
+            activeSection = section;
+          }
         }
       }
 
@@ -1967,18 +1974,29 @@
       link.addEventListener('click', (e) => {
         e.preventDefault();
         const sectionId = link.getAttribute('data-section');
-        const element = document.getElementById(sectionId);
-        if (element) {
-          const headerHeight = document.querySelector('.topbar')?.offsetHeight || 80;
-          const top = element.offsetTop - headerHeight - 20;
-          window.scrollTo({ top, behavior: 'smooth' });
-          setTimeout(() => updateActiveThingsSidebarLink(), 100);
+        
+        // If Movies link, scroll to bottom
+        if (sectionId === 'things-movies') {
+          window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+        } else {
+          const element = document.getElementById(sectionId);
+          if (element) {
+            const headerHeight = document.querySelector('.topbar')?.offsetHeight || 80;
+            const top = element.offsetTop - headerHeight - 20;
+            window.scrollTo({ top, behavior: 'smooth' });
+          }
         }
+        setTimeout(() => updateActiveThingsSidebarLink(), 100);
       });
     });
 
     window.addEventListener('scroll', updateActiveThingsSidebarLink, { passive: true });
     updateActiveThingsSidebarLink();
+
+    // Check for Things page and ensure sidebar updates
+    if (document.querySelector('#page-things')) {
+      setInterval(updateActiveThingsSidebarLink, 500);
+    }
 
     // Scroll to top and bottom buttons for CV sidebar
     const cvScrollTop = document.getElementById('cvScrollTop');
