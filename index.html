@@ -850,7 +850,8 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 36px;
+      width: auto;
+      min-width: 100px;
       height: 36px;
       border-radius: 8px;
       background: rgba(99, 102, 241, 0.12);
@@ -858,9 +859,10 @@
       color: var(--purple);
       cursor: pointer;
       transition: all 0.12s ease;
-      font-size: 16px;
-      padding: 0;
+      font-size: 13px;
+      padding: 0 12px;
       font-weight: 600;
+      gap: 6px;
     }
 
     .sidebarScrollBtn:hover {
@@ -869,11 +871,11 @@
       transform: translateY(-1px);
     }
 
-    .sidebarScrollBtn.top::after {
+    .sidebarScrollBtn.top::before {
       content: '↑';
     }
 
-    .sidebarScrollBtn.bottom::after {
+    .sidebarScrollBtn.bottom::before {
       content: '↓';
     }
   </style>
@@ -1014,7 +1016,7 @@
           <h3>Sections</h3>
           <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px;">
             <div></div>
-            <button class="sidebarScrollBtn top" id="cvScrollTop" aria-label="Scroll to top"></button>
+            <button class="sidebarScrollBtn top" id="cvScrollTop" aria-label="Scroll to top">To the Top</button>
           </div>
           
           <div class="cvSidebarLinks">
@@ -1026,7 +1028,7 @@
           
           <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-top: 12px;">
             <div></div>
-            <button class="sidebarScrollBtn bottom" id="cvScrollBottom" aria-label="Scroll to bottom"></button>
+            <button class="sidebarScrollBtn bottom" id="cvScrollBottom" aria-label="Scroll to bottom">To the Bottom</button>
           </div>
         </aside>
 
@@ -1676,7 +1678,7 @@
           <div class="thingsSidebarContent">
             <div class="thingsSidebarTop">
               <div></div>
-              <button class="sidebarScrollBtn top" id="thingsScrollTop" aria-label="Scroll to top"></button>
+              <button class="sidebarScrollBtn top" id="thingsScrollTop" aria-label="Scroll to top">To the Top</button>
             </div>
             
             <div class="thingsSidebarLinks">
@@ -1688,7 +1690,7 @@
             
             <div class="thingsSidebarTop" style="margin-top: 12px;">
               <div></div>
-              <button class="sidebarScrollBtn bottom" id="thingsScrollBottom" aria-label="Scroll to bottom"></button>
+              <button class="sidebarScrollBtn bottom" id="thingsScrollBottom" aria-label="Scroll to bottom">To the Bottom</button>
             </div>
           </div>
         </aside>
