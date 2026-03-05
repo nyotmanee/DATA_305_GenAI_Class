@@ -738,6 +738,13 @@
       font-weight: 600;
     }
 
+    .cvSidebarLinks {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      flex: 1;
+    }
+
     .thingsContainer {
       display: grid;
       grid-template-columns: 1fr;
@@ -779,6 +786,25 @@
       border-bottom: 1px solid var(--border);
     }
 
+    .thingsSidebarContent {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .thingsSidebarTop {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+
+    .thingsSidebarLinks {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
     .thingsSidebarLink {
       display: block;
       padding: 10px 12px;
@@ -805,21 +831,26 @@
       font-weight: 600;
     }
 
+    .sidebarScrollButtons {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
     .sidebarScrollBtn {
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 28px;
-      height: 28px;
-      border-radius: 6px;
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
       background: rgba(99, 102, 241, 0.12);
       border: 1px solid rgba(99, 102, 241, 0.28);
       color: var(--purple);
       cursor: pointer;
       transition: all 0.12s ease;
-      font-size: 14px;
-      margin: 4px 0;
-      align-self: flex-end;
+      font-size: 16px;
+      padding: 0;
     }
 
     .sidebarScrollBtn:hover {
@@ -963,12 +994,18 @@
       <div class="cvContainer">
         <aside class="cvSidebar">
           <h3>Sections</h3>
-          <button class="sidebarScrollBtn" id="cvScrollTop" aria-label="Scroll to top" style="margin-bottom: 8px;">↑</button>
-          <a class="cvSidebarLink active" href="#cv-education" data-section="cv-education">Education</a>
-          <a class="cvSidebarLink" href="#cv-experience" data-section="cv-experience">Experience</a>
-          <a class="cvSidebarLink" href="#cv-contrib-awards" data-section="cv-contrib-awards">Programs &amp; Awards</a>
-          <a class="cvSidebarLink" href="#cv-research-contrib" data-section="cv-research-contrib">Research Contributions &amp; Skills</a>
-          <button class="sidebarScrollBtn" id="cvScrollBottom" aria-label="Scroll to bottom" style="margin-top: 8px;">↓</button>
+          <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+            <div class="cvSidebarLinks">
+              <a class="cvSidebarLink active" href="#cv-education" data-section="cv-education">Education</a>
+              <a class="cvSidebarLink" href="#cv-experience" data-section="cv-experience">Experience</a>
+              <a class="cvSidebarLink" href="#cv-contrib-awards" data-section="cv-contrib-awards">Programs &amp; Awards</a>
+              <a class="cvSidebarLink" href="#cv-research-contrib" data-section="cv-research-contrib">Research Contributions &amp; Skills</a>
+            </div>
+            <div class="sidebarScrollButtons">
+              <button class="sidebarScrollBtn" id="cvScrollTop" aria-label="Scroll to top">⬆︎</button>
+              <button class="sidebarScrollBtn" id="cvScrollBottom" aria-label="Scroll to bottom">⬇︎</button>
+            </div>
+          </div>
         </aside>
 
         <div>
@@ -1614,13 +1651,27 @@
       <div class="thingsContainer">
         <aside class="thingsSidebar">
           <h3>Sections</h3>
-          <button class="sidebarScrollBtn" id="thingsScrollTop" aria-label="Scroll to top" style="margin-bottom: 8px;">↑</button>
-          <a class="thingsSidebarLink active" href="#things-bucketlist" data-section="things-bucketlist">Senior Year - Bucket List 🎓</a>
-          <a class="thingsSidebarLink" href="#things-food" data-section="things-food">Food 🍲</a>
-          <a class="thingsSidebarLink" href="#things-travel" data-section="things-travel">Travel 🌎</a>
-          <a class="thingsSidebarLink" href="#things-books" data-section="things-books">Books 📚</a>
-          <a class="thingsSidebarLink" href="#things-movies" data-section="things-movies">Movies 🎬</a>
-          <button class="sidebarScrollBtn" id="thingsScrollBottom" aria-label="Scroll to bottom" style="margin-top: 8px;">↓</button>
+          <div class="thingsSidebarContent">
+            <div class="thingsSidebarTop">
+              <div class="thingsSidebarLinks">
+                <a class="thingsSidebarLink active" href="#things-bucketlist" data-section="things-bucketlist">Senior Year 🎓</a>
+                <a class="thingsSidebarLink" href="#things-food" data-section="things-food">Food 🍲</a>
+                <a class="thingsSidebarLink" href="#things-travel" data-section="things-travel">Travel 🌎</a>
+              </div>
+              <div class="sidebarScrollButtons">
+                <button class="sidebarScrollBtn" id="thingsScrollTop" aria-label="Scroll to top">⬆︎</button>
+              </div>
+            </div>
+            
+            <div class="thingsSidebarLinks" style="margin-top: 8px;">
+              <a class="thingsSidebarLink" href="#things-books" data-section="things-books">Books &amp; Movies 📚🎬</a>
+            </div>
+            
+            <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-top: 8px;">
+              <div></div>
+              <button class="sidebarScrollBtn" id="thingsScrollBottom" aria-label="Scroll to bottom">⬇︎</button>
+            </div>
+          </div>
         </aside>
 
         <div>
@@ -1952,7 +2003,7 @@
 
       // Check if at bottom of page
       if (scrollPosition + windowHeight >= pageHeight - 100) {
-        activeSection = 'things-movies';
+        activeSection = 'things-books'; // Both Books and Movies map to things-books
       } else {
         for (let section of sections) {
           const element = document.getElementById(section);
@@ -1964,7 +2015,10 @@
 
       thingsSidebarLinks.forEach(link => {
         link.classList.remove('active');
-        if (link.getAttribute('data-section') === activeSection) {
+        const linkSection = link.getAttribute('data-section');
+        if (linkSection === 'things-books' && (activeSection === 'things-books' || activeSection === 'things-movies')) {
+          link.classList.add('active');
+        } else if (linkSection === activeSection) {
           link.classList.add('active');
         }
       });
@@ -1975,8 +2029,8 @@
         e.preventDefault();
         const sectionId = link.getAttribute('data-section');
         
-        // If Movies link, scroll to bottom
-        if (sectionId === 'things-movies') {
+        // If Books & Movies link, scroll to bottom
+        if (sectionId === 'things-books') {
           window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
         } else {
           const element = document.getElementById(sectionId);
