@@ -1874,12 +1874,15 @@
       });
     }
 
-    // Close menu when clicking on a link
+    // Close menu when clicking on a link (only on mobile)
     if (nav) {
       nav.querySelectorAll("a").forEach(link => {
         link.addEventListener("click", () => {
-          hamburger.classList.remove("active");
-          nav.classList.remove("visible");
+          // Only close menu on screens under 1000px
+          if (window.innerWidth < 1000) {
+            hamburger.classList.remove("active");
+            nav.classList.remove("visible");
+          }
         });
       });
     }
