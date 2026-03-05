@@ -797,6 +797,29 @@
       border-left-color: var(--purple);
       font-weight: 600;
     }
+
+    .sidebarScrollBtn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      border-radius: 6px;
+      background: rgba(99, 102, 241, 0.12);
+      border: 1px solid rgba(99, 102, 241, 0.28);
+      color: var(--purple);
+      cursor: pointer;
+      transition: all 0.12s ease;
+      font-size: 14px;
+      margin: 4px 0;
+      align-self: flex-end;
+    }
+
+    .sidebarScrollBtn:hover {
+      background: rgba(99, 102, 241, 0.18);
+      border-color: rgba(99, 102, 241, 0.40);
+      transform: translateY(-1px);
+    }
   </style>
 </head>
 
@@ -804,13 +827,15 @@
   <header class="topbar">
     <div class="topbarInner">
       <div class="brand" role="banner">
-        <div class="avatar" aria-hidden="true">
-          <img alt="Natasha Yotmanee" src="https://media.licdn.com/dms/image/v2/D4E03AQHGI9a5MyIa3A/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1730209655021?e=2147483647&t=HgT-tlrRoORyL3Ceta22UAp6S2l_dSJabJzMwwcDqoM&v=beta" />
-        </div>
-        <div class="brandText">
-          <strong>Natasha Yotmanee</strong>
-          <span>International Relations · Data Science · Asia-Pacific</span>
-        </div>
+        <a href="#home" data-route="home" style="display: flex; gap: 12px; align-items: center; text-decoration: none; color: inherit;">
+          <div class="avatar" aria-hidden="true">
+            <img alt="Natasha Yotmanee" src="https://media.licdn.com/dms/image/v2/D4E03AQHGI9a5MyIa3A/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1730209655021?e=2147483647&t=HgT-tlrRoORyL3Ceta22UAp6S2l_dSJabJzMwwcDqoM&v=beta" />
+          </div>
+          <div class="brandText">
+            <strong>Natasha Yotmanee</strong>
+            <span>International Relations · Data Science · Asia-Pacific</span>
+          </div>
+        </a>
       </div>
 
       <div class="navWrapper">
@@ -928,10 +953,12 @@
       <div class="cvContainer">
         <aside class="cvSidebar">
           <h3>Sections</h3>
+          <button class="sidebarScrollBtn" id="cvScrollTop" aria-label="Scroll to top" style="margin-bottom: 8px;">↑</button>
           <a class="cvSidebarLink active" href="#cv-education" data-section="cv-education">Education</a>
           <a class="cvSidebarLink" href="#cv-experience" data-section="cv-experience">Experience</a>
           <a class="cvSidebarLink" href="#cv-contrib-awards" data-section="cv-contrib-awards">Programs &amp; Awards</a>
           <a class="cvSidebarLink" href="#cv-research-contrib" data-section="cv-research-contrib">Research Contributions &amp; Skills</a>
+          <button class="sidebarScrollBtn" id="cvScrollBottom" aria-label="Scroll to bottom" style="margin-top: 8px;">↓</button>
         </aside>
 
         <div>
@@ -1577,11 +1604,13 @@
       <div class="thingsContainer">
         <aside class="thingsSidebar">
           <h3>Sections</h3>
+          <button class="sidebarScrollBtn" id="thingsScrollTop" aria-label="Scroll to top" style="margin-bottom: 8px;">↑</button>
           <a class="thingsSidebarLink active" href="#things-bucketlist" data-section="things-bucketlist">Senior Year - Bucket List 🎓</a>
           <a class="thingsSidebarLink" href="#things-food" data-section="things-food">Food 🍲</a>
           <a class="thingsSidebarLink" href="#things-travel" data-section="things-travel">Travel 🌎</a>
           <a class="thingsSidebarLink" href="#things-books" data-section="things-books">Books 📚</a>
           <a class="thingsSidebarLink" href="#things-movies" data-section="things-movies">Movies 🎬</a>
+          <button class="sidebarScrollBtn" id="thingsScrollBottom" aria-label="Scroll to bottom" style="margin-top: 8px;">↓</button>
         </aside>
 
         <div>
@@ -1630,6 +1659,12 @@
                 <ul class="list" style="margin-bottom:12px;">
                   <li><strong>I'm currently reading:</strong> <em>A Thousand Splendid Suns</em> by Khaled Hosseini</li>
                 </ul>
+                <p class="muted" style="margin-bottom:10px;">
+                  My "to-read" list is getting long, but I'm always looking for the next great book!
+                </p>
+                <p class="muted" style="margin-bottom:10px;">
+                  Click the link to recommend your favorite reads, hidden gems, or books everyone should experience at least once!
+                </p>
                 <div class="btnRow">
                   <a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLScT8fgONnDBYEE7lEEPCA-4Ltj7Jq-YR5qHclIJWMJcqlmGCQ/viewform?usp=publish-editor" target="_blank" rel="noopener">Recommendation Box ↗</a>
                 </div>
@@ -1913,6 +1948,38 @@
 
     window.addEventListener('scroll', updateActiveThingsSidebarLink, { passive: true });
     updateActiveThingsSidebarLink();
+
+    // Scroll to top and bottom buttons for CV sidebar
+    const cvScrollTop = document.getElementById('cvScrollTop');
+    const cvScrollBottom = document.getElementById('cvScrollBottom');
+    
+    if (cvScrollTop) {
+      cvScrollTop.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    }
+
+    if (cvScrollBottom) {
+      cvScrollBottom.addEventListener('click', () => {
+        window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+      });
+    }
+
+    // Scroll to top and bottom buttons for Things I Love sidebar
+    const thingsScrollTop = document.getElementById('thingsScrollTop');
+    const thingsScrollBottom = document.getElementById('thingsScrollBottom');
+    
+    if (thingsScrollTop) {
+      thingsScrollTop.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    }
+
+    if (thingsScrollBottom) {
+      thingsScrollBottom.addEventListener('click', () => {
+        window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+      });
+    }
   </script>
 </body>
 </html>
