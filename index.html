@@ -275,6 +275,37 @@
     .hamburger.active span:nth-child(3) {
       transform: rotate(-45deg) translate(7px, -7px);
     }
+
+    @media (max-width: 768px) {
+      .topbarInner {
+        flex-wrap: wrap;
+      }
+
+      .navWrapper {
+        width: 100%;
+        order: 3;
+        margin-top: 10px;
+      }
+
+      .nav {
+        width: 100%;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+        flex-direction: column;
+        gap: 4px;
+        align-items: stretch;
+        justify-content: flex-start;
+      }
+
+      .nav.visible {
+        max-height: 500px;
+      }
+
+      .nav .pill {
+        width: 100%;
+      }
+    }
     .pill{
       display: inline-flex;
       align-items: center;
@@ -700,7 +731,67 @@
       text-decoration: none;
     }
 
-    .cvSidebarLink.active {
+    .thingsContainer {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+      position: relative;
+    }
+
+    @media (min-width: 1200px) {
+      .thingsContainer {
+        grid-template-columns: 240px 1fr;
+      }
+    }
+
+    .thingsSidebar {
+      display: none;
+      position: sticky;
+      top: 80px;
+      height: fit-content;
+      padding: 16px;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    @media (min-width: 1200px) {
+      .thingsSidebar {
+        display: block;
+      }
+    }
+
+    .thingsSidebar h3 {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--muted2);
+      margin: 0 0 12px 0;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .thingsSidebarLink {
+      display: block;
+      padding: 10px 12px;
+      margin: 4px 0;
+      border-radius: 8px;
+      color: var(--muted);
+      font-size: 13px;
+      transition: background .12s ease, color .12s ease;
+      text-decoration: none;
+      border-left: 3px solid transparent;
+    }
+
+    .thingsSidebarLink:hover {
+      background: rgba(99, 102, 241, 0.08);
+      color: var(--text);
+      border-left-color: var(--purple);
+      text-decoration: none;
+    }
+
+    .thingsSidebarLink.active {
       background: rgba(99, 102, 241, 0.12);
       color: var(--purple);
       border-left-color: var(--purple);
@@ -727,8 +818,8 @@
           <a class="pill active" href="#home" data-route="home">Home</a>
           <a class="pill" href="#cv" data-route="cv">CV</a>
           <a class="pill" href="#research" data-route="research">Research &amp; Publications</a>
-          <a class="pill" href="#posts" data-route="posts">Posts</a>
           <a class="pill" href="#things" data-route="things">Things I Love &amp; Beyond</a>
+          <a class="pill" href="#posts" data-route="posts">Posts &amp; Pics</a>
           <a class="pill" href="#contact" data-route="contact">Contact</a>
         </nav>
         <button class="hamburger" id="hamburger" aria-label="Toggle menu">
@@ -783,21 +874,6 @@
               <li><strong>Software:</strong> Python (intermediate), SQL (basic, developing), R (basic)</li>
             </ul>
           </div>
-
-          <div class="card pad">
-            <h2>Featured Experience</h2>
-            <p class="muted">
-              A few organizations I've worked with and learned from. Click to jump to the related section on my CV.
-            </p>
-            <div class="btnRow">
-              <a class="btn fx" href="#cv" data-route="cv" data-scrolltarget="cv-experience">W&amp;M - Department of Government ↗</a>
-              <a class="btn fx" href="#cv" data-route="cv" data-scrolltarget="cv-asiapolicylab">W&amp;M - Asia Policy Lab ↗</a>
-              <a class="btn fx" href="#cv" data-route="cv" data-scrolltarget="cv-undp">UNDP - Crisis Bureau ↗</a>
-              <a class="btn fx" href="#cv" data-route="cv" data-scrolltarget="cv-usawc">USAWC - Strategic Studies Institute ↗</a>
-              <a class="btn fx" href="#cv" data-route="cv" data-scrolltarget="cv-ewc">East-West Center in Washington ↗</a>
-              <a class="btn fx" href="#cv" data-route="cv" data-scrolltarget="cv-rte">Royal Thai Embassy &amp; US-Asia Institute ↗</a>
-            </div>
-          </div>
         </div>
 
         <aside class="card pad">
@@ -814,6 +890,22 @@
           </div>
         </aside>
       </div>
+
+      <div class="card pad">
+        <h2>Featured Experience</h2>
+        <p class="muted">
+          A few organizations I've worked with and learned from. Click to jump to the related section on my CV.
+        </p>
+        <div class="btnRow">
+          <a class="btn fx" href="#cv" data-route="cv" data-scrolltarget="cv-experience">W&amp;M - Department of Government ↗</a>
+          <a class="btn fx" href="#cv" data-route="cv" data-scrolltarget="cv-asiapolicylab">W&amp;M - Asia Policy Lab ↗</a>
+          <a class="btn fx" href="#cv" data-route="cv" data-scrolltarget="cv-undp">UNDP - Crisis Bureau ↗</a>
+          <a class="btn fx" href="#cv" data-route="cv" data-scrolltarget="cv-usawc">USAWC - Strategic Studies Institute ↗</a>
+          <a class="btn fx" href="#cv" data-route="cv" data-scrolltarget="cv-ewc">East-West Center in Washington ↗</a>
+          <a class="btn fx" href="#cv" data-route="cv" data-scrolltarget="cv-rte">Royal Thai Embassy &amp; US-Asia Institute ↗</a>
+        </div>
+      </div>
+      </div>
       <footer>
         <div>© <span class="footerYear"></span> Natasha Yotmanee</div>
         <div>
@@ -823,9 +915,9 @@
           <span class="muted2"> · </span>
           <a href="#research" data-route="research">Research &amp; Publications</a>
           <span class="muted2"> · </span>
-          <a href="#posts" data-route="posts">Posts</a>
-          <span class="muted2"> · </span>
           <a href="#things" data-route="things">Things I Love &amp; Beyond</a>
+          <span class="muted2"> · </span>
+          <a href="#posts" data-route="posts">Posts &amp; Pics</a>
           <span class="muted2"> · </span>
           <a href="#contact" data-route="contact">Contact</a>
         </div>
@@ -1105,9 +1197,9 @@
           <span class="muted2"> · </span>
           <a href="#research" data-route="research">Research &amp; Publications</a>
           <span class="muted2"> · </span>
-          <a href="#posts" data-route="posts">Posts</a>
-          <span class="muted2"> · </span>
           <a href="#things" data-route="things">Things I Love &amp; Beyond</a>
+          <span class="muted2"> · </span>
+          <a href="#posts" data-route="posts">Posts &amp; Pics</a>
           <span class="muted2"> · </span>
           <a href="#contact" data-route="contact">Contact</a>
         </div>
@@ -1209,9 +1301,9 @@
           <span class="muted2"> · </span>
           <a href="#research" data-route="research">Research &amp; Publications</a>
           <span class="muted2"> · </span>
-          <a href="#posts" data-route="posts">Posts</a>
-          <span class="muted2"> · </span>
           <a href="#things" data-route="things">Things I Love &amp; Beyond</a>
+          <span class="muted2"> · </span>
+          <a href="#posts" data-route="posts">Posts &amp; Pics</a>
           <span class="muted2"> · </span>
           <a href="#contact" data-route="contact">Contact</a>
         </div>
@@ -1482,63 +1574,79 @@
 
     <!-- THINGS I LOVE & BEYOND -->
     <section class="page" id="page-things" data-page="things">
-      <div class="card pad">
-        <h1>Things I Love &amp; Beyond</h1>
-        <p class="muted">A collection of the things that bring me joy.</p>
+      <div class="thingsContainer">
+        <aside class="thingsSidebar">
+          <h3>Sections</h3>
+          <a class="thingsSidebarLink active" href="#things-bucketlist" data-section="things-bucketlist">Senior Year - Bucket List 🎓</a>
+          <a class="thingsSidebarLink" href="#things-food" data-section="things-food">Food 🍲</a>
+          <a class="thingsSidebarLink" href="#things-travel" data-section="things-travel">Travel 🌎</a>
+          <a class="thingsSidebarLink" href="#things-books" data-section="things-books">Books 📚</a>
+          <a class="thingsSidebarLink" href="#things-movies" data-section="things-movies">Movies 🎬</a>
+        </aside>
 
-        <div class="divider"></div>
+        <div>
+          <div class="card pad">
+            <h1>Things I Love &amp; Beyond</h1>
+            <p class="muted">A collection of the things that bring me joy.</p>
 
-        <div class="stack">
-          <div class="card pad" style="box-shadow:none;background:rgba(14,165,166,0.04);border-color:rgba(14,165,166,0.18);" id="things-bucketlist">
-            <h2>Senior Year - Bucket List 🎓</h2>
-            <p class="muted" style="margin-bottom:8px;">Time is ticking. Here are some things I'm looking forward to:</p>
-            <ul class="list">
-              <li>W&amp;M zip line (I didn't even know we had one)</li>
-              <li>Natasha Bedingfield &amp; B.o.B concert!</li>
-              <li>Visit Muscarelle Museum and W&amp;M Archives/Special Collections</li>
-              <li>Explore W&amp;M underground tunnels and crypt??</li>
-            </ul>
-          </div>
+            <div class="divider"></div>
 
-          <div class="card pad lovePurple" style="box-shadow:none;" id="things-food">
-            <h2>Food 🍲</h2>
-            <p class="muted" style="margin-bottom:8px;">I'm a foodie who loves trying new places.</p>
-            <p class="muted" style="margin-bottom:6px;"><strong>Current goals before graduation:</strong></p>
-            <ul class="list">
-              <li>Try all the Thai restaurants in Williamsburg!</li>
-              <li>Try as many breakfast spots in the "Pancake Capital of the World" as I can!</li>
-            </ul>
-          </div>
+            <div class="stack">
+              <div class="card pad" style="box-shadow:none;background:rgba(14,165,166,0.04);border-color:rgba(14,165,166,0.18);" id="things-bucketlist">
+                <h2>Senior Year - Bucket List 🎓</h2>
+                <p class="muted" style="margin-bottom:8px;">Time is ticking. Here are some things I'm looking forward to:</p>
+                <ul class="list">
+                  <li>W&amp;M zip line (I didn't even know we had one)</li>
+                  <li>Natasha Bedingfield &amp; B.o.B concert!</li>
+                  <li>Visit Muscarelle Museum and W&amp;M Archives/Special Collections</li>
+                  <li>Explore W&amp;M underground tunnels and crypt??</li>
+                </ul>
+              </div>
 
-          <div class="card pad loveBlue" style="box-shadow:none;" id="things-travel">
-            <h2>Travel 🌎</h2>
-            <p class="muted" style="margin-bottom:8px;">
-              I love traveling to see new places, experience culture, and learn from how people live.
-            </p>
-            <ul class="list">
-              <li>Recently traveled to 15 different cities in China!</li>
-              <li>Have been to countries across Europe, Africa, Asia, and North America!</li>
-            </ul>
-          </div>
+              <div class="card pad lovePurple" style="box-shadow:none;" id="things-food">
+                <h2>Food 🍲</h2>
+                <p class="muted" style="margin-bottom:8px;">I'm a foodie who loves trying new places.</p>
+                <p class="muted" style="margin-bottom:6px;"><strong>Current goals before graduation:</strong></p>
+                <ul class="list">
+                  <li>Try all the Thai restaurants in Williamsburg!</li>
+                  <li>Try as many breakfast spots in the "Pancake Capital of the World" as I can!</li>
+                </ul>
+              </div>
 
-          <div class="card pad loveGreen" style="box-shadow:none;" id="things-books">
-            <h2>Books 📚</h2>
-            <p class="muted" style="margin-bottom:8px;">Who doesn't like to read??</p>
-            <ul class="list" style="margin-bottom:12px;">
-              <li><strong>I'm currently reading:</strong> <em>A Thousand Splendid Suns</em> by Khaled Hosseini</li>
-            </ul>
-          </div>
+              <div class="card pad loveBlue" style="box-shadow:none;" id="things-travel">
+                <h2>Travel 🌎</h2>
+                <p class="muted" style="margin-bottom:8px;">
+                  I love traveling to see new places, experience culture, and learn from how people live.
+                </p>
+                <ul class="list">
+                  <li>Recently traveled to 15 different cities in China!</li>
+                  <li>Have been to countries across Europe, Africa, Asia, and North America!</li>
+                </ul>
+              </div>
 
-          <div class="card pad loveGreen" style="box-shadow:none;" id="things-movies">
-            <h2>Movies 🎬</h2>
-            <p class="muted" style="margin-bottom:10px;">
-              We (me &amp; my roomie) are tired of watching trailers for two hours and then watching mediocre movies before going to bed on our Movie Nights. Pitch us your favorite films, hidden gems, or the "so-bad-it's-good" masterpieces!
-            </p>
-            <p class="muted" style="margin-bottom:10px;">
-              The link below is our Movie Night Suggestion Box! Thanks for the recs, and just know that if we pick yours, that means you have superior movie taste. 🍿✨
-            </p>
-            <div class="btnRow">
-              <a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLSfqTbmzsW8QrHWum-mOJPvJSRIqS1NR0V_7xLdNfvRu9swF_w/viewform?usp=header" target="_blank" rel="noopener">Suggestion Box ↗</a>
+              <div class="card pad lovePurple" style="box-shadow:none;" id="things-books">
+                <h2>Books 📚</h2>
+                <p class="muted" style="margin-bottom:8px;">Who doesn't like to read??</p>
+                <ul class="list" style="margin-bottom:12px;">
+                  <li><strong>I'm currently reading:</strong> <em>A Thousand Splendid Suns</em> by Khaled Hosseini</li>
+                </ul>
+                <div class="btnRow">
+                  <a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLScT8fgONnDBYEE7lEEPCA-4Ltj7Jq-YR5qHclIJWMJcqlmGCQ/viewform?usp=publish-editor" target="_blank" rel="noopener">Recommendation Box ↗</a>
+                </div>
+              </div>
+
+              <div class="card pad loveBlue" style="box-shadow:none;" id="things-movies">
+                <h2>Movies 🎬</h2>
+                <p class="muted" style="margin-bottom:10px;">
+                  We (me &amp; my roomie) are tired of watching trailers for two hours and then watching mediocre movies before going to bed on our Movie Nights. Pitch us your favorite films, hidden gems, or the "so-bad-it's-good" masterpieces!
+                </p>
+                <p class="muted" style="margin-bottom:10px;">
+                  The link below is our Movie Night Suggestion Box! Thanks for the recs, and just know that if we pick yours, that means you have superior movie taste. 🍿✨
+                </p>
+                <div class="btnRow">
+                  <a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLSfqTbmzsW8QrHWum-mOJPvJSRIqS1NR0V_7xLdNfvRu9swF_w/viewform?usp=header" target="_blank" rel="noopener">Suggestion Box ↗</a>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -1552,9 +1660,9 @@
           <span class="muted2"> · </span>
           <a href="#research" data-route="research">Research &amp; Publications</a>
           <span class="muted2"> · </span>
-          <a href="#posts" data-route="posts">Posts</a>
-          <span class="muted2"> · </span>
           <a href="#things" data-route="things">Things I Love &amp; Beyond</a>
+          <span class="muted2"> · </span>
+          <a href="#posts" data-route="posts">Posts &amp; Pics</a>
           <span class="muted2"> · </span>
           <a href="#contact" data-route="contact">Contact</a>
         </div>
@@ -1631,7 +1739,7 @@
     if (hamburger) {
       hamburger.addEventListener("click", () => {
         hamburger.classList.toggle("active");
-        nav.style.display = nav.style.display === "none" ? "flex" : "none";
+        nav.classList.toggle("visible");
       });
     }
 
@@ -1640,7 +1748,7 @@
       nav.querySelectorAll("a").forEach(link => {
         link.addEventListener("click", () => {
           hamburger.classList.remove("active");
-          nav.style.display = "flex";
+          nav.classList.remove("visible");
         });
       });
     }
@@ -1765,6 +1873,46 @@
 
     window.addEventListener('scroll', updateActiveSidebarLink, { passive: true });
     updateActiveSidebarLink();
+
+    // Things I Love Sidebar Link Active State and Autoscroll
+    const thingsSidebarLinks = document.querySelectorAll('.thingsSidebarLink');
+    
+    function updateActiveThingsSidebarLink() {
+      const scrollPosition = window.scrollY + 120;
+      const sections = ['things-bucketlist', 'things-food', 'things-travel', 'things-books', 'things-movies'];
+      let activeSection = sections[0];
+
+      for (let section of sections) {
+        const element = document.getElementById(section);
+        if (element && element.offsetTop <= scrollPosition) {
+          activeSection = section;
+        }
+      }
+
+      thingsSidebarLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('data-section') === activeSection) {
+          link.classList.add('active');
+        }
+      });
+    }
+
+    thingsSidebarLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const sectionId = link.getAttribute('data-section');
+        const element = document.getElementById(sectionId);
+        if (element) {
+          const headerHeight = document.querySelector('.topbar')?.offsetHeight || 80;
+          const top = element.offsetTop - headerHeight - 20;
+          window.scrollTo({ top, behavior: 'smooth' });
+          setTimeout(() => updateActiveThingsSidebarLink(), 100);
+        }
+      });
+    });
+
+    window.addEventListener('scroll', updateActiveThingsSidebarLink, { passive: true });
+    updateActiveThingsSidebarLink();
   </script>
 </body>
 </html>
