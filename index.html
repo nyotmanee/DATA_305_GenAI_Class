@@ -176,38 +176,40 @@
       align-items: center;
       flex-wrap: wrap;
       justify-content: flex-end;
-      position: absolute;
-      top: 70px;
-      left: 0;
-      right: 0;
-      background: rgba(255,255,255,0.95);
-      backdrop-filter: blur(10px);
-      flex-direction: column;
-      padding: 12px;
-      border-bottom: 1px solid var(--border);
-      max-height: 0;
-      overflow: hidden;
-      justify-content: flex-start;
-      align-items: stretch;
-      width: 100%;
-      gap: 4px;
       transition: max-height 0.3s ease;
     }
 
-    .nav.visible {
-      max-height: 500px;
-    }
+    @media (max-width: 999px) {
+      .nav {
+        position: absolute;
+        top: 70px;
+        left: 0;
+        right: 0;
+        background: rgba(255,255,255,0.95);
+        backdrop-filter: blur(10px);
+        flex-direction: column;
+        padding: 12px;
+        border-bottom: 1px solid var(--border);
+        max-height: 0;
+        overflow: hidden;
+        justify-content: flex-start;
+        align-items: stretch;
+        width: 100%;
+        gap: 4px;
+      }
 
-    .nav .pill {
-      width: 100%;
+      .nav.visible {
+        max-height: 500px;
+      }
+
+      .nav .pill {
+        width: 100%;
+      }
     }
 
     @media (min-width: 1000px) {
       .nav {
-        position: relative;
-        top: 0;
-        left: 0;
-        right: 0;
+        position: static;
         background: transparent;
         backdrop-filter: none;
         flex-direction: row;
@@ -223,6 +225,11 @@
 
       .nav .pill {
         width: auto;
+      }
+
+      .nav:not(.visible) {
+        max-height: 0;
+        overflow: hidden;
       }
 
       .nav.visible {
@@ -908,7 +915,7 @@
       </div>
 
       <div class="navWrapper">
-        <nav class="nav" aria-label="Primary" id="nav">
+        <nav class="nav visible" aria-label="Primary" id="nav">
           <a class="pill active" href="#home" data-route="home">Home</a>
           <a class="pill" href="#cv" data-route="cv">CV</a>
           <a class="pill" href="#research" data-route="research">Research &amp; Publications</a>
