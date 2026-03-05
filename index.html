@@ -176,9 +176,6 @@
       align-items: center;
       flex-wrap: wrap;
       justify-content: flex-end;
-      max-height: 100%;
-      overflow: visible;
-      transition: max-height 0.3s ease;
       position: absolute;
       top: 70px;
       left: 0;
@@ -194,6 +191,7 @@
       align-items: stretch;
       width: 100%;
       gap: 4px;
+      transition: max-height 0.3s ease;
     }
 
     .nav.visible {
@@ -227,8 +225,8 @@
         width: auto;
       }
 
-      .hamburger {
-        display: none;
+      .nav.visible {
+        max-height: 100%;
       }
     }
 
