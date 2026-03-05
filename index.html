@@ -745,6 +745,14 @@
       flex: 1;
     }
 
+    .sidebarScrollBtn.top::after {
+      content: '↑';
+    }
+
+    .sidebarScrollBtn.bottom::after {
+      content: '↓';
+    }
+
     .thingsContainer {
       display: grid;
       grid-template-columns: 1fr;
@@ -796,13 +804,14 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 8px;
+      margin-bottom: 12px;
     }
 
     .thingsSidebarLinks {
       display: flex;
       flex-direction: column;
       gap: 0;
+      flex: 1;
     }
 
     .thingsSidebarLink {
@@ -851,12 +860,21 @@
       transition: all 0.12s ease;
       font-size: 16px;
       padding: 0;
+      font-weight: 600;
     }
 
     .sidebarScrollBtn:hover {
       background: rgba(99, 102, 241, 0.18);
       border-color: rgba(99, 102, 241, 0.40);
       transform: translateY(-1px);
+    }
+
+    .sidebarScrollBtn.top::after {
+      content: '↑';
+    }
+
+    .sidebarScrollBtn.bottom::after {
+      content: '↓';
     }
   </style>
 </head>
@@ -994,17 +1012,21 @@
       <div class="cvContainer">
         <aside class="cvSidebar">
           <h3>Sections</h3>
-          <div style="display: flex; justify-content: space-between; align-items: flex-start;">
-            <div class="cvSidebarLinks">
-              <a class="cvSidebarLink active" href="#cv-education" data-section="cv-education">Education</a>
-              <a class="cvSidebarLink" href="#cv-experience" data-section="cv-experience">Experience</a>
-              <a class="cvSidebarLink" href="#cv-contrib-awards" data-section="cv-contrib-awards">Programs &amp; Awards</a>
-              <a class="cvSidebarLink" href="#cv-research-contrib" data-section="cv-research-contrib">Research Contributions &amp; Skills</a>
-            </div>
-            <div class="sidebarScrollButtons">
-              <button class="sidebarScrollBtn" id="cvScrollTop" aria-label="Scroll to top">⬆︎</button>
-              <button class="sidebarScrollBtn" id="cvScrollBottom" aria-label="Scroll to bottom">⬇︎</button>
-            </div>
+          <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px;">
+            <div></div>
+            <button class="sidebarScrollBtn top" id="cvScrollTop" aria-label="Scroll to top"></button>
+          </div>
+          
+          <div class="cvSidebarLinks">
+            <a class="cvSidebarLink active" href="#cv-education" data-section="cv-education">Education</a>
+            <a class="cvSidebarLink" href="#cv-experience" data-section="cv-experience">Experience</a>
+            <a class="cvSidebarLink" href="#cv-contrib-awards" data-section="cv-contrib-awards">Programs &amp; Awards</a>
+            <a class="cvSidebarLink" href="#cv-research-contrib" data-section="cv-research-contrib">Research Contributions &amp; Skills</a>
+          </div>
+          
+          <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-top: 12px;">
+            <div></div>
+            <button class="sidebarScrollBtn bottom" id="cvScrollBottom" aria-label="Scroll to bottom"></button>
           </div>
         </aside>
 
@@ -1653,23 +1675,20 @@
           <h3>Sections</h3>
           <div class="thingsSidebarContent">
             <div class="thingsSidebarTop">
-              <div class="thingsSidebarLinks">
-                <a class="thingsSidebarLink active" href="#things-bucketlist" data-section="things-bucketlist">Senior Year 🎓</a>
-                <a class="thingsSidebarLink" href="#things-food" data-section="things-food">Food 🍲</a>
-                <a class="thingsSidebarLink" href="#things-travel" data-section="things-travel">Travel 🌎</a>
-              </div>
-              <div class="sidebarScrollButtons">
-                <button class="sidebarScrollBtn" id="thingsScrollTop" aria-label="Scroll to top">⬆︎</button>
-              </div>
-            </div>
-            
-            <div class="thingsSidebarLinks" style="margin-top: 8px;">
-              <a class="thingsSidebarLink" href="#things-books" data-section="things-books">Books &amp; Movies 📚🎬</a>
-            </div>
-            
-            <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-top: 8px;">
               <div></div>
-              <button class="sidebarScrollBtn" id="thingsScrollBottom" aria-label="Scroll to bottom">⬇︎</button>
+              <button class="sidebarScrollBtn top" id="thingsScrollTop" aria-label="Scroll to top"></button>
+            </div>
+            
+            <div class="thingsSidebarLinks">
+              <a class="thingsSidebarLink active" href="#things-bucketlist" data-section="things-bucketlist">Senior Year 🎓</a>
+              <a class="thingsSidebarLink" href="#things-food" data-section="things-food">Food 🍲</a>
+              <a class="thingsSidebarLink" href="#things-travel" data-section="things-travel">Travel 🌎</a>
+              <a class="thingsSidebarLink" href="#things-books" data-section="things-books">Books 📚 &amp; Movies 🎬</a>
+            </div>
+            
+            <div class="thingsSidebarTop" style="margin-top: 12px;">
+              <div></div>
+              <button class="sidebarScrollBtn bottom" id="thingsScrollBottom" aria-label="Scroll to bottom"></button>
             </div>
           </div>
         </aside>
