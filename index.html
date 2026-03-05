@@ -164,6 +164,12 @@
       transform: rotate(-45deg) translate(7px, -7px);
     }
 
+    .navWrapper {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
     .nav {
       display: flex;
       gap: 8px;
@@ -173,32 +179,56 @@
       max-height: 100%;
       overflow: visible;
       transition: max-height 0.3s ease;
+      position: absolute;
+      top: 70px;
+      left: 0;
+      right: 0;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(10px);
+      flex-direction: column;
+      padding: 12px;
+      border-bottom: 1px solid var(--border);
+      max-height: 0;
+      overflow: hidden;
+      justify-content: flex-start;
+      align-items: stretch;
+      width: 100%;
+      gap: 4px;
     }
 
-    @media (max-width: 1000px) {
+    .nav.visible {
+      max-height: 500px;
+    }
+
+    .nav .pill {
+      width: 100%;
+    }
+
+    @media (min-width: 1000px) {
       .nav {
-        position: absolute;
-        top: 70px;
+        position: relative;
+        top: 0;
         left: 0;
         right: 0;
-        background: rgba(255,255,255,0.95);
-        backdrop-filter: blur(10px);
-        flex-direction: column;
-        gap: 4px;
-        padding: 12px;
-        border-bottom: 1px solid var(--border);
-        max-height: 0;
-        overflow: hidden;
-        justify-content: flex-start;
-        align-items: stretch;
-      }
-
-      .nav.visible {
-        max-height: 500px;
+        background: transparent;
+        backdrop-filter: none;
+        flex-direction: row;
+        padding: 0;
+        border-bottom: none;
+        max-height: 100%;
+        overflow: visible;
+        justify-content: flex-end;
+        align-items: center;
+        width: auto;
+        gap: 8px;
       }
 
       .nav .pill {
-        width: 100%;
+        width: auto;
+      }
+
+      .hamburger {
+        display: none;
       }
     }
 
